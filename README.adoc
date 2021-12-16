@@ -1,0 +1,5 @@
+= NDES Gateway Test Client
+
+This is a small Python web client made to test the http://ndesgateway.surroundaustralia.com[NDES Gateway] API which is used to absorb data into the _Biodiversity Data Repository_ being built for the https://www.awe.gov.au[Department of Agriculture, Water and the Environment].
+
+This tool is mostly for internal testing but may be copied by others for their use.
