@@ -13,7 +13,7 @@ for f in Path(TEST_DATA / "messages").glob("*.ttl"):
     g = Graph().parse(f)
     if (None, RDF.type, ABISM.CreateMessage) in g:
         print(f)
-        r = validate(str(f), shacl_graph=str(Path(TEST_DATA) / "validators" / "vocpub.ttl"))
+        r = validate(str(f), shacl_graph=str(Path(TEST_DATA) / "validators" / "vocpub-bdr.ttl"))
         # ignore SHACL Warnings
         for vr in r[1].objects(subject=None, predicate=SH.result):
             for sev in r[1].objects(subject=vr, predicate=SH.resultSeverity):
