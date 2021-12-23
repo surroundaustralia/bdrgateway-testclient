@@ -1,0 +1,44 @@
+@prefix abism: <https://linked.data.gov.au/def/abis-msg/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tern: <https://w3id.org/tern/ontologies/tern/> .
+
+
+<http://createme.org/1>
+    a abism:CreateMessage ;
+    dcterms:hasPart
+        <http://createme.org/2> ,
+        <http://createme.org/3> ,
+        <http://createme.org/4> ;
+.
+
+<http://createme.org/2>
+    a tern:Site ;
+    dcterms:identifier "tbjc" ;  # requested IRI ID
+    dcterms:identifier "tbjc"^^<http://createme.org/egIdDatatype> ;  # real, external identifier
+    rdfs:label "Turn Back Jimmy Creek" ;
+    tern:siteDescription "A small, often dry, creek/creek bed in southern central NSW" ;
+    geo:hasGeometry [
+        geo:asWKT "POINT (145.6075, -35.2383)" ;
+    ] ;
+.
+
+<http://createme.org/3>
+    a tern:Site ;
+    # no requested ID given
+    rdfs:label "Alice Springs Mulga" ;
+    geo:hasGeometry [
+        geo:asWKT "POINT (133.2493, -22.2828)" ;
+    ] ;
+.
+
+<http://createme.org/4>
+    a rdfs:Datatype ;
+    dcterms:identifier "egIdDatatype" ;  # requested IRI ID
+    rdfs:isDefinedBy <https://linked.data.gov.au/dataset/bdr> ;
+    skos:prefLabel "Example Identifier Datatype"@en ;
+    skos:definition "This is an example of a custom datatype to be used for external identifiers for data elements submitted to the BDR."@en ;
+.
+

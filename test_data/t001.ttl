@@ -1,9 +1,0 @@
-PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX tern: <https://w3id.org/tern/ontologies/tern/>
-
-<http://example.org/x>
-	geo:hasGeometry [
-		geo:asWKT "POINT (153, -57)"
- 	] ;
-	sosa:resultTime "2021-12-09"^^xsd:dateTime ;
-.

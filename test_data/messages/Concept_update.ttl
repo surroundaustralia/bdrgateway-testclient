@@ -1,0 +1,19 @@
+@prefix abism: <https://linked.data.gov.au/def/abis-msg/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tern: <https://w3id.org/tern/ontologies/tern/> .
+
+
+<http://createme.org/1>
+    a abism:UpdateMessage ;
+    dcterms:hasPart
+        <https://linked.data.gov.au/dataset/bdr/site/asm> ;
+.
+
+# skos:prefLabel is replacing
+# skos:broaderMatch is adding
+# original IRI with 'z' in it reused
+<https://linked.data.gov.au/dataset/bdr/conceptscheme/efts/underground-habitat-z>
+    skos:prefLabel "Underground Habitat"@en ;
+    skos:broaderMatch <http://linked.data.gov.au/def/tern-cv/2090cfd9-8b6b-497b-9512-497456a18b99> ; # TERN's Habitat Feature Type
+.

@@ -1,0 +1,10 @@
+@prefix abism: <https://linked.data.gov.au/def/abis-msg/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+
+<http://createme.org/1>
+    a abism:DeleteMessage ;
+    dcterms:hasPart
+        <https://linked.data.gov.au/dataset/bdr/site/tbjc> ;  # Turn Back Jimmy Creek
+.
+

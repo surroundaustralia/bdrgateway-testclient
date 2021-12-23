@@ -1,0 +1,25 @@
+@prefix abism: <https://linked.data.gov.au/def/abis-msg/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix tern: <https://w3id.org/tern/ontologies/tern/> .
+
+
+<http://createme.org/1>
+    a abism:UpdateMessage ;
+    dcterms:hasPart
+        <https://linked.data.gov.au/dataset/bdr/site/asm> ;
+.
+
+
+<https://linked.data.gov.au/dataset/bdr/site/asm>
+    tern:siteDescription """The Alice Springs Mulga flux station is located on Pine Hill cattle station, near Alice Springs in the Northern Territory (GPS coordinates: -22.2828, 133.2493).
+
+The woodland is characterised by a mulga (Acacia aneura) canopy, which is 6.5m tall on average. Elevation of the site is 606m above sea level, and the terrain is flat. Mean annual precipitation at the nearby (45km distant) Bureau of Meteorology station is 305.9mm but ranges between 100mm in 2009 to 750mm in 2010. Predominant wind directions are from the southeast and east.
+
+The extent of the woodland is 11km to the east of the flux station and 16km to the south. The soil is red sandy clay (50:50 sand:clay) overlying a 49m deep water table. Pine Hill Station is a functioning cattle station that has been in operation for longer than 50 years.
+
+The instrument mast is 13.7m tall. Fluxes of heat, water vapour and carbon are measured using the open-path eddy covariance technique at 11.6m. Supplementary measurements above the canopy include temperature and humidity (11.6m), windspeed and wind direction (9.25m), downwelling and upwelling shortwave and longwave radiation (12.2m). Precipitation is monitored in a canopy gap (2.5m). Supplementary measurements within and below the canopy include barometric pressure (1m), wind speed (2m, 4.25m and 6.5m), and temperature and humidity (2m, 4.25m and 6m).
+
+Belowground soil measurements are made in bare soil, mulga, and understory habitats and include ground heat flux (0.08m), soil temperature (0.02m – 0.06m) and soil moisture (0 – 0.1m, 0.1 – 0.3m, 0.6 – 0.8m and 1.0 – 1.2m).
+
+Ancillary measurements include soil water and carbon fluxes, leaf water potential, leaf gas exchange, stem basal area, stem growth, litter production, leaf area index, stem hydraulic conductance, and carbon and water stable isotope ratios.""" ;
+.

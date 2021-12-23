@@ -5,9 +5,10 @@ description = ""
 authors = ["nicholascar <nicholas.car@surroundaustralia.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.9,<3.10"
 httpx = "^0.21.1"
 rdflib = "^6.0.2"
+pyshacl = "^0.17.3"
 
 [tool.poetry.dev-dependencies]
 
