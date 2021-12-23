@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ndesgateway-testclient"
+name = "bdrgateway-testclient"
 version = "0.1.0"
 description = ""
 authors = ["nicholascar <nicholas.car@surroundaustralia.com>"]

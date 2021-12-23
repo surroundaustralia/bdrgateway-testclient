@@ -14,7 +14,6 @@
 
 <http://createme.org/2>
     a tern:Site ;
-    # no requested ID given
     rdfs:label "Alice Springs Mulga" ;
     geo:hasGeometry [
         geo:asWKT "POINT (133.2493, -22.2828)" ;
