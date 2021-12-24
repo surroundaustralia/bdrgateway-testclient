@@ -1,12 +1,13 @@
-@prefix abism: <https://linked.data.gov.au/def/abis-msg/> .
+# Exists - invalid
+@prefix bdrm: <https://linked.data.gov.au/def/bdr-msg/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
 
 <http://createme.org/1>
-    a abism:ExistenceCheckMessage ;
+    a bdrm:ExistsMessage ;
     dcterms:hasPart
         <https://linked.data.gov.au/dataset/bdr/site/25> ,
-        <https://linked.data.gov.au/dataset/bdr/site/53677> ,
+        <http://createme.org/53677> ,
         <https://linked.data.gov.au/dataset/bdr/conceptscheme/31/203> ;
 .
 

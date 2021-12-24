@@ -1,4 +1,4 @@
-# Concept: delete
+# Site: delete - invalid
 @prefix bdrm: <https://linked.data.gov.au/def/bdr-msg/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
@@ -6,6 +6,6 @@
 <http://createme.org/1>
     a bdrm:DeleteMessage ;
     dcterms:hasPart
-        <https://linked.data.gov.au/dataset/bdr/conceptscheme/efts/underground-habitat-z> ;
+        <https://createme.org/tbjc> ;  # incorrect IRI, must be linked.data.gov.au/dataset/bdr/...
 .
 

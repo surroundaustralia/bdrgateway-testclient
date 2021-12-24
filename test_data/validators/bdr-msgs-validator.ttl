@@ -1,0 +1,68 @@
+# baseURI: https://linked.data.gov.au/def/bdr-msg-shapes
+
+@prefix bdrm: <https://linked.data.gov.au/def/bdr-msg/> .
+@prefix bdrmsgsh: <https://linked.data.gov.au/def/bdr-msg/shapes/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+<https://linked.data.gov.au/def/bdr-msg-shapes>
+    a owl:Ontology ;
+    rdfs:label "BDR Messages Shapes" ;
+    rdfs:comment "SHACL Shapes to validate BDR Messages" ;
+    dcterms:creator <https://linked.data.gov.au/org/surround> ;
+    dcterms:publisher <https://linked.data.gov.au/org/dawe> ;
+    dcterms:created "2012-12-24"^^xsd:date ;
+    dcterms:modified "2012-12-24"^^xsd:date ;
+.
+
+bdrmsgsh:Message
+	a sh:NodeShape ;
+	sh:targetClass bdrm:Message ;
+        sh:property [
+            sh:message "ABIS messages must have at least one part, indicated with dcterms:hasPart" ;
+            sh:path dcterms:hasPart ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+        ]
+.
+
+bdrmsgsh:CreateMessage
+	a sh:NodeShape ;
+	sh:targetClass bdrm:CreateMessage ;
+        sh:property [
+            sh:message "ABIS Create messages must indicate parts with createme.org IRIs only" ;
+            sh:path dcterms:hasPart ;
+            sh:nodeKind sh:IRI ;
+            sh:pattern "^http://createme.org/"
+        ]
+.
+
+bdrmsgsh:UpdateOrDeleteMessage
+	a sh:NodeShape ;
+	sh:targetClass
+	    bdrm:UpdateMessage ,
+	    bdrm:DeleteMessage ,
+	    bdrm:ExistsMessage ;
+        sh:property [
+            sh:message "ABIS Update & Delete messages must indicate parts with BDR IRIs only" ;
+            sh:path dcterms:hasPart ;
+            sh:nodeKind sh:IRI ;
+            sh:pattern "^https://linked.data.gov.au/dataset/bdr/"
+        ]
+.
+
+bdrmsgsh:CreateMessage
+	a sh:NodeShape ;
+	sh:targetClass bdrm:CreateMessage ;
+        sh:property [
+            sh:message "ABIS Create messages must indicate parts with createme.org IRIs only" ;
+            sh:path dcterms:hasPart ;
+            sh:nodeKind sh:IRI ;
+            sh:pattern "^http://createme.org/"
+        ]
+.

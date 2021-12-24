@@ -1,11 +1,12 @@
-@prefix abism: <https://linked.data.gov.au/def/abis-msg/> .
+# Concept: update
+@prefix bdrm: <https://linked.data.gov.au/def/bdr-msg/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix tern: <https://w3id.org/tern/ontologies/tern/> .
 
 
 <http://createme.org/1>
-    a abism:UpdateMessage ;
+    a bdrm:UpdateMessage ;
     dcterms:hasPart
         <https://linked.data.gov.au/dataset/bdr/site/asm> ;
 .

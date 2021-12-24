@@ -1,4 +1,4 @@
-# Concept: create
+# Concept: create - invalid
 @prefix bdrm: <https://linked.data.gov.au/def/bdr-msg/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
@@ -10,11 +10,11 @@
 <http://createme.org/1>
     a bdrm:CreateMessage ;
     dcterms:hasPart
-        <http://createme.org/2> ;
+        <http://something.org/2> ;
 .
 
 # assume <http://linked.data.gov.au/dataset/bdr/conceptscheme/bdr-extended-feature-types> exists - this will be checked
-<http://createme.org/2>
+<http://something.org/2>
     a skos:Concept ;
     skos:prefLabel "Underground Habitat z"@en ;  # notice the typo 'z'
     skos:definition "An environmental system located below the earth's surface"@en ;
