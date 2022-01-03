@@ -23,4 +23,6 @@ TERN validator to be added soon
 
 == Use
 
-The script `validate_egs.py` attempts to validate each example message file using all the validators combined.
+* `validate_egs.py` - attempts to validate each example message file using all the validators combined
+* `validate_egs_rdf.py` - just checks each example is valid RDF
+** useful if new problematic example files need testing as at least syntactically before full use in validation tests

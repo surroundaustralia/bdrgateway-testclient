@@ -7,4 +7,7 @@ TEST_DATA = Path(__file__).parent / "test_data" / "messages"
 g = Graph()
 for f in TEST_DATA.glob("*.ttl"):
     print(f)
-    g.parse(f)
+    try:
+        g.parse(f)
+    except Exception as e:
+        print(f"INVALID RDF: {e}")
