@@ -26,3 +26,4 @@ TERN validator to be added soon
 * `validate_egs.py` - attempts to validate each example message file using all the validators combined
 * `validate_egs_rdf.py` - just checks each example is valid RDF
 ** useful if new problematic example files need testing as at least syntactically before full use in validation tests
+* `create_sampling.py` - creates instances of Sampling and Sample from data (Python dict) and packages it within a BDR `CreateMessage`
