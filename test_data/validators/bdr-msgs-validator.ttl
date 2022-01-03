@@ -20,11 +20,11 @@
     dcterms:modified "2021-12-24"^^xsd:date ;
 .
 
-bdrmsgsh:Message
+bdrmsgsh:ClientMessage
 	a sh:NodeShape ;
-	sh:targetClass bdrm:Message ;
+	sh:targetClass bdrm:ClientMessage ;
     sh:property [
-        sh:message "ABIS messages must have at least one part, indicated with dcterms:hasPart" ;
+        sh:message "BDR Client Messages must have at least one part, indicated with dcterms:hasPart" ;
         sh:path dcterms:hasPart ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -35,34 +35,24 @@ bdrmsgsh:CreateMessage
 	a sh:NodeShape ;
 	sh:targetClass bdrm:CreateMessage ;
     sh:property [
-        sh:message "ABIS Create messages must indicate parts with createme.org IRIs only" ;
+        sh:message "BDR Create Messages must indicate parts with createme.org IRIs only" ;
         sh:path dcterms:hasPart ;
         sh:nodeKind sh:IRI ;
         sh:pattern "^http://createme.org/"
     ] ;
 .
 
-bdrmsgsh:UpdateOrDeleteMessage
+bdrmsgsh:UpdateOrDeleteOrExistsMessage
 	a sh:NodeShape ;
 	sh:targetClass
 	    bdrm:UpdateMessage ,
 	    bdrm:DeleteMessage ,
 	    bdrm:ExistsMessage ;
     sh:property [
-        sh:message "ABIS Update & Delete messages must indicate parts with BDR IRIs only" ;
+        sh:message "BDR Update, Delete & Exists Messages must indicate parts with BDR IRIs only" ;
         sh:path dcterms:hasPart ;
         sh:nodeKind sh:IRI ;
         sh:pattern "^https://linked.data.gov.au/dataset/bdr/"
     ] ;
 .
 
-bdrmsgsh:CreateMessage
-	a sh:NodeShape ;
-	sh:targetClass bdrm:CreateMessage ;
-    sh:property [
-        sh:message "ABIS Create messages must indicate parts with createme.org IRIs only" ;
-        sh:path dcterms:hasPart ;
-        sh:nodeKind sh:IRI ;
-        sh:pattern "^http://createme.org/"
-    ] ;
-.

@@ -1,14 +1,11 @@
 # Sampling: create
 @prefix bdrm: <https://linked.data.gov.au/def/bdr-msg/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix tern: <https://w3id.org/tern/ontologies/tern/> .
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
+@base <https://linked.data.gov.au/dataset/bdr/> .
 
 <http://createme.org/1>
     a bdrm:CreateMessage ;
@@ -19,16 +16,16 @@
 
 <http://createme.org/2>
     a tern:Sampling ;
-    sosa:hasFeatureOfInterest <https://linked.data.gov.au/dataset/bdr/site/tbjc> ;  # Site that will be checked for existence on ingest
+    sosa:hasFeatureOfInterest <site/tbjc> ;
+    sosa:hasResult <http://createme.org/3> ;
     sosa:resultTime "2022-01-03"^^xsd:date ;
     sosa:usedProcedure <http://example.com/procedure/x> ;
-    sosa:hasResult <http://createme.org/3>
 .
 
 <http://createme.org/3>
     a tern:Sample ;
+    void:inDataset <dataset/fake> ;
     sosa:isResultOf <http://createme.org/2> ;
-    sosa:isSampleOf <https://linked.data.gov.au/dataset/bdr/site/tbjc> ;
-    void:inDataset <https://linked.data.gov.au/dataset/bdr/dataset/fake> ;
-    tern:featureType <http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7> ;  # "animal individual"
+    sosa:isSampleOf <site/tbjc> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7> ;
 .

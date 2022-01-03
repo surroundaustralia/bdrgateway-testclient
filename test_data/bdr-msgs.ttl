@@ -20,33 +20,75 @@
 bdrm:Message
     a owl:Class ;
     rdfs:label "BDR Message" ;
-    rdfs:comment "BDR Messages are RDF documents sent to the Biodiversity Data Repository to alter its contents. Specialised forms of BDR Message indicate the action to perform - Create, Update, Delete or Exists - and the message content must be valid Australia Biodiversity Information Standard data." ;
+    rdfs:comment "BDR Messages are RDF documents sent between clients and the Biodiversity Data Repository." ;
+.
+
+bdrm:ClientMessage
+    a owl:Class ;
+    rdfs:subClassOf bdrm:Message ;
+    rdfs:label "BDR Client Message" ;
+    rdfs:comment "BDR Client Messages are RDF documents sent to the Biodiversity Data Repository to alter its contents. Specialised forms of BDR Message indicate the action to perform - Create, Update, Delete or Exists - and the message content must be valid Australia Biodiversity Information Standard data." ;
 .
 
 bdrm:CreateMessage
     a owl:Class ;
-    rdfs:subClassOf bdrm:Message ;
+    rdfs:subClassOf bdrm:ClientMessage ;
     rdfs:label "BDR Create Message" ;
     rdfs:comment "Message to create data in the BDR" ;
 .
 
 bdrm:UpdateMessage
     a owl:Class ;
-    rdfs:subClassOf bdrm:Message ;
+    rdfs:subClassOf bdrm:ClientMessage ;
     rdfs:label "BDR Update Message" ;
     rdfs:comment "Message to update data in the BDR" ;
 .
 
 bdrm:DeleteMessage
     a owl:Class ;
-    rdfs:subClassOf bdrm:Message ;
+    rdfs:subClassOf bdrm:ClientMessage ;
     rdfs:label "BDR Delete Message" ;
     rdfs:comment "Message to delete data in the BDR" ;
 .
 
 bdrm:ExistsMessage
     a owl:Class ;
-    rdfs:subClassOf bdrm:Message ;
+    rdfs:subClassOf bdrm:ClientMessage ;
     rdfs:label "BDR Exists Message" ;
     rdfs:comment "Message to check whether objects exist in the BDR" ;
+.
+
+bdrm:ResponseMessage
+    a owl:Class ;
+    rdfs:subClassOf bdrm:Message ;
+    rdfs:label "BDR Response Message" ;
+    rdfs:comment "BDR Response Messages are RDF documents sent from the Biodiversity Data Repository to clients in response to their client messages." ;
+.
+
+bdrm:CreateResponseMessage
+    a owl:Class ;
+    rdfs:subClassOf bdrm:ResponseMessage ;
+    rdfs:label "BDR Create Response Message" ;
+    rdfs:comment "BDR response Message to a Create Message from a client" ;
+.
+
+bdrm:UpdateResponseMessage
+    a owl:Class ;
+    rdfs:subClassOf bdrm:ResponseMessage ;
+    rdfs:label "BDR Update Response Message" ;
+    rdfs:comment "BDR response Message to an Update Message from a client" ;
+.
+
+bdrm:DeleteResponseMessage
+    a owl:Class ;
+    rdfs:subClassOf bdrm:ResponseMessage ;
+    rdfs:label "BDR Delete Response Message" ;
+    rdfs:comment "BDR response Message to a Delete Message from a client" ;
+.
+
+bdrm:ExistsResponseMessage
+    a owl:Class ;
+    rdfs:subClassOf bdrm:ResponseMessage ;
+    rdfs:label "BDR Exists Response Message" ;
+    rdfs:comment "BDR response Message to an Exists Message from a client" ;
 .
