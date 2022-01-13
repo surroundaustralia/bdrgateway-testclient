@@ -47,8 +47,8 @@ terndsh:sampling-class
         a sh:PropertyShape ;
         sh:class <https://w3id.org/tern/ontologies/loc/Geometry> ;
         sh:name "has geometry" ;
-        sh:nodeKind sh:IRI ;
-        sh:path <http://www.opengis.net/ont/geosparql#hasGeometry> 
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:path <http://www.opengis.net/ont/geosparql#hasGeometry>
     ],
     # SURROUND: allow either a sh:class tern:FeatureOfInterest
     # OR just an IRI with a linked.dat.gov.au/dataset/bdr/site/... IRI
@@ -70,9 +70,15 @@ terndsh:sampling-class
         sh:nodeKind sh:IRI ;
         sh:or (
             [ sh:class tern:FeatureOfInterest ]
-            [ sh:pattern "^https://linked.data.gov.au/dataset/bdr/site/" ]
+            [ sh:class tern:Sample ]
+            [ sh:class tern:MaterialSample ]
+            [ sh:class tern:Plot ]
+            [ sh:class tern:Quadrat ]
+            [ sh:class tern:Site ]
+            [ sh:class tern:Transect ]
+            [ sh:pattern "^https://linked.data.gov.au/dataset/bdr/" ]
         ) ;
-        sh:message "A tern:Sampling must indicate one and only one sosa:hasFeatureOfInterest property either a fully-described tern:FeatureOfInterest class instance or an IRI of the pattern <https://linked.data.gov.au/dataset/bdr/site/*>, which is a tern:Site within the Biodiversity Data Repository"
+        sh:message "A tern:Sampling must indicate one and only one sosa:hasFeatureOfInterest property either a fully-described tern:FeatureOfInterest class instance or an IRI of the pattern <https://linked.data.gov.au/dataset/bdr/*>, which is a BDR-managed object within the Biodiversity Data Repository"
     ],
     [ 
         a sh:PropertyShape ;
