@@ -1,0 +1,183 @@
+# baseURI: https://linked.data.gov.au/dataset/bdr
+# imports: https://w3id.org/tern/ontologies/tern/
+# prefix: bdr
+
+
+@base <https://linked.data.gov.au/dataset/bdr/> .
+@prefix bdrm: <https://linked.data.gov.au/def/bdr-msg/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix tern: <https://w3id.org/tern/ontologies/tern/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://linked.data.gov.au/dataset/bdr>
+    a owl:Ontology ;
+    rdfs:label "Dummy BDR Dataset" ;
+    rdfs:comment: "A small sample of BDR-like data for testing" ;
+.
+
+<dataset/fake>
+    a tern:RDFDataset ;
+    dcterms:title "Fake Dataset" ;
+    dcterms:description "Just a fake dataset for testing" ;
+    dcterms:issued "2022-01-20"^^xsd:date ;
+.
+
+<http://createme.org/3> a tern:Sample ;
+    rdfs:label "Sample 3" ;
+    void:inDataset <dataset/fake> ;
+    sosa:isResultOf <http://createme.org/2> ;
+    sosa:isSampleOf <site/tbjc> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7> .
+
+<http://createme.org/5> a tern:Sample ;
+    rdfs:label "Sample 5" ;
+    void:inDataset <dataset/fake> ;
+    sosa:isResultOf <http://createme.org/4> ;
+    sosa:isSampleOf <site/tbjc> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7> .
+
+<http://createme.org/7> a tern:Sample ;
+    rdfs:label "Sample 7" ;
+    void:inDataset <dataset/fake> ;
+    sosa:isResultOf <http://createme.org/6> ;
+    sosa:isSampleOf <site/tbjc> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7> .
+
+<http://createme.org/9> a tern:Sample ;
+    rdfs:label "Sample 9" ;
+    void:inDataset <dataset/fake> ;
+    sosa:isResultOf <http://createme.org/8> ;
+    sosa:isSampleOf <site/tbjc> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7> .
+
+<http://createme.org/2> a tern:Sampling ;
+    rdfs:label "Sampling 2" ;
+    sosa:hasFeatureOfInterest <site/tbjc> ;
+    sosa:hasResult <http://createme.org/3> ;
+    sosa:resultTime "2022-01-03"^^xsd:date ;
+    sosa:usedProcedure <http://example.com/procedure/x> .
+
+<http://createme.org/4> a tern:Sampling ;
+    rdfs:label "Sampling 4" ;
+    sosa:hasFeatureOfInterest <site/tbjc> ;
+    sosa:hasResult <http://createme.org/5> ;
+    sosa:resultTime "2022-01-03"^^xsd:date ;
+    sosa:usedProcedure <http://example.com/procedure/y> .
+
+<http://createme.org/6> a tern:Sampling ;
+    rdfs:label "Sampling 6" ;
+    geo:hasGeometry [
+        a geo:Geometry ;
+        geo:asWKT "POINT (145.609997 -35.238957)"^^geo:wktLiteral
+    ] ;
+    sosa:hasFeatureOfInterest <site/tbjc> ;
+    sosa:hasResult <http://createme.org/7> ;
+    sosa:resultTime "2022-01-03"^^xsd:date ;
+    sosa:usedProcedure <http://example.com/procedure/x> .
+
+<http://createme.org/8> a tern:Sampling ;
+    rdfs:label "Sampling 8" ;
+    geo:hasGeometry [
+        a geo:Geometry ;
+        geo:asWKT "POINT (145.772569 -35.265073)"^^geo:wktLiteral
+    ] ;
+    sosa:hasFeatureOfInterest <site/tbjc> ;
+    sosa:hasResult <http://createme.org/9> ;
+    sosa:resultTime "2022-01-03"^^xsd:date ;
+    sosa:usedProcedure <http://example.com/procedure/x> .
+
+<site/tbjc>
+    a tern:Site ;
+    rdfs:label "Turn Back Jimmy Creek Site" ;
+    rdfs:comment "A mostly dry creek bed site that is occasionally wet for 4 - 5 months, usually starting in April." ;
+    sosa:isSampleOf <https://sws.geonames.org/2151546/> ;  # NSW Riverina
+    void:inDataset <dataset/fake> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/8282fb22-4135-415c-8ca2-317860d102fb> ;  # land surface
+    geo:hasGeometry [
+        a geo:Geometry ;
+        geo:asWKT """POLYGON ((
+              145.7083427 -35.1671588,
+              145.7007896 -35.1651942,
+              145.6939232 -35.1744556,
+              145.7045662 -35.1795068,
+              145.721389 -35.1761394,
+              145.7303154 -35.1744556,
+              145.7632744 -35.169404,
+              145.7704842 -35.1573352,
+              145.7821571 -35.1477911,
+              145.7900536 -35.1525633,
+              145.8017265 -35.1609841,
+              145.8185493 -35.1635102,
+              145.8250725 -35.1604227,
+              145.8391487 -35.1604227,
+              145.8442986 -35.1562124,
+              145.8436119 -35.1505983,
+              145.8271324 -35.1475104,
+              145.8103096 -35.1480718,
+              145.8079063 -35.1413342,
+              145.8010399 -35.132069,
+              145.7835304 -35.1309459,
+              145.766021 -35.1402112,
+              145.7622444 -35.1505983,
+              145.7474815 -35.1564931,
+              145.7241356 -35.1578966,
+              145.7083427 -35.1671588
+        ))"""^^geo:wktLiteral ;
+    ] ;
+.
+
+<https://sws.geonames.org/2151546/>
+    a geo:Feature , tern:FeatureOfInterest ;
+    rdfs:label "NSW Riverina" ;
+    void:inDataset <dataset/fake> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/8282fb22-4135-415c-8ca2-317860d102fb> ;
+.
+
+<http://linked.data.gov.au/def/tern-cv/8282fb22-4135-415c-8ca2-317860d102fb>
+    a skos:Concept ;
+    rdfs:label "land surface" ;
+.
+
+<site/ykc>
+    a tern:Site ;
+    rdfs:label "Yanco Creek/Kidman Way Site" ;
+    void:inDataset <dataset/fake> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/8282fb22-4135-415c-8ca2-317860d102fb> ;  # land surface
+    geo:hasGeometry [
+        a geo:Geometry ;
+           geo:asWKT """POLYGON ((
+              145.7564079 -35.256359,
+              145.7529747 -35.2501911,
+              145.7313454 -35.2521537,
+              145.7210457 -35.2586018,
+              145.7189857 -35.2672919,
+              145.7316887 -35.2801852,
+              145.7509148 -35.2843891,
+              145.7838737 -35.2857904,
+              145.806533 -35.2793444,
+              145.8257591 -35.2686935,
+              145.8398354 -35.2600035,
+              145.8566582 -35.2605641,
+              145.8648979 -35.2628068,
+              145.8889305 -35.2667313,
+              145.90438 -35.2608445,
+              145.9030067 -35.2546769,
+              145.8813774 -35.255518,
+              145.8721077 -35.2448639,
+              145.862838 -35.2398167,
+              145.8504784 -35.2370126,
+              145.8357155 -35.2403775,
+              145.8195793 -35.2518733,
+              145.8068764 -35.2597231,
+              145.7938301 -35.2684131,
+              145.7701408 -35.2605641,
+              145.7564079 -35.256359
+        ))"""^^geo:wktLiteral ;
+    ] ;
+.

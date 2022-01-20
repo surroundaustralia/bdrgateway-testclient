@@ -1,0 +1,33 @@
+# baseURI: https://data.surroundaustralia.com/def/tern-helper
+# imports: http://datashapes.org/dash
+# imports: http://www.opengis.net/ont/geosparql
+# prefix: h
+
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tern: <https://w3id.org/tern/ontologies/tern/> .
+@prefix h: <https://data.surroundaustralia.com/def/tern-helper/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://data.surroundaustralia.com/def/tern-helper>
+    a owl:Ontology ;
+    owl:imports <http://www.opengis.net/ont/geosparql> ;
+    rdfs:label "TERN Ontology Helper" ;
+    rdfs:comment: "Provides some fill-in classes for working with the TERN Ontology in SOP" ;
+.
+
+tern:FeatureOfInterest rdfs:subClassOf geo:Feature .
+tern:Sampling rdfs:subClassOf tern:Observation .
+tern:Observation rdfs:subClassOf geo:Feature .
+tern:Sample rdfs:subClassOf h:SuperClass .
+tern:RDFDataset rdfs:subClassOf h:SuperClass .
+
+h:SuperClass
+    a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    rdfs:label "TERN Ontology Superclass" ;
+    rdfs:comment "A superclass of the main things in the TERN Ontology" ;
+.
+
+geo:Feature rdfs:subClassOf h:SuperClass .

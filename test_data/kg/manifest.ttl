@@ -1,0 +1,47 @@
+# baseURI: https://data.surroundaustralia.com/manifest/bdr-testdata
+# imports: https://data.surroundaustralia.com/def/standards-baseline
+
+@prefix : <https://data.surroundaustralia.com/manifest/bdr-testdata/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix h: <https://data.surroundaustralia.com/def/tern-helper/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sop: <http://surroundaustralia.com/ns/platform/> .
+@prefix sopbl: <https://data.surroundaustralia.com/def/standards-baseline#> .
+@prefix swa: <http://topbraid.org/swa#> .
+@prefix teamwork: <http://topbraid.org/teamwork#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://data.surroundaustralia.com/manifest/bdr-testdata>
+  a owl:Ontology ;
+  swa:defaultNamespace "https://data.surroundaustralia.com/manifest/bdr-testdata/"^^xsd:anyURI ;
+  teamwork:newInstancesUserCannotModifyURI false ;
+  rdfs:comment "This Manifest contains a list of all the assets within BDR Test Data KG"@en ;
+  rdfs:label "BDR Test Data"@en ;
+  owl:imports <https://data.surroundaustralia.com/def/standards-baseline> ;
+.
+:dataset-demo
+  a sopbl:ManagedGraph ;
+  dcterms:provenance "Where is this asset from?"@en ;
+  teamwork:rootClass h:SuperClass ;
+  rdfs:comment "This is a demo dataset"@en ;
+  rdfs:label "BDR Demo Dataset"@en ;
+  sopbl:edgType <http://teamwork.topbraidlive.org/datagraph/datagraphprojects#ProjectType> ;
+  sopbl:include "https://data.surroundaustralia.com/def/tern-display"^^xsd:anyURI ;
+  sopbl:include "https://data.surroundaustralia.com/def/tern-helper"^^xsd:anyURI ;
+  sopbl:include "https://data.surroundaustralia.com/platform/shapes/ontprez"^^xsd:anyURI ;
+  sopbl:include "https://w3id.org/tern/ontologies/tern/"^^xsd:anyURI ;
+  sopbl:proxy "https://linked.data.gov.au/dataset/bdr"^^xsd:anyURI ;
+.
+:tern-ontology
+  a sopbl:ManagedGraph ;
+  teamwork:rootClass h:SuperClass ;
+  rdfs:label "Tern Ontology" ;
+  sopbl:edgType <http://teamwork.topbraidlive.org/ontologyprojects#ProjectType> ;
+  sopbl:include "https://data.surroundaustralia.com/def/tern-helper"^^xsd:anyURI ;
+  sopbl:include "https://data.surroundaustralia.com/platform/shapes/ontprez"^^xsd:anyURI ;
+  sopbl:proxy "https://w3id.org/tern/ontologies/tern/"^^xsd:anyURI ;
+.

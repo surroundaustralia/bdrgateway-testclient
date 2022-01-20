@@ -1,0 +1,43 @@
+# baseURI: https://data.surroundaustralia.com/def/tern-display
+# imports: http://datashapes.org/dash
+# prefix: d
+
+@prefix d: <https://data.surroundaustralia.com/def/tern-display/> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix tern: <https://w3id.org/tern/ontologies/tern/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://data.surroundaustralia.com/def/tern-display>
+    a owl:Ontology ;
+    owl:imports <http://datashapes.org/dash> ;
+    rdfs:label "TERN Ontology Display Shapes" ;
+    rdfs:comment "Provides some display shapes for TERN Ontology data" ;
+.
+
+geo:Geometry
+	a sh:NodeShape ;
+	sh:targetClass geo:Geometry ;	
+	dash:viewer dash:DetailsViewer ;
+	sh:property [
+	    a sh:PropertyShape ;
+	    sh:path geo:asWKT ;
+	    dash:viewer dash:LiteralViewer ;
+	    sh:minCount 1 ;
+		sh:maxCount 1 ;
+		sh:nodeKind sh:Literal ;
+	] ;
+.
+
+d:site 
+	a sh:NodeShape ;
+	sh:targetClass geo:Feature ;
+	sh:property [
+	    a sh:PropertyShape ;
+	    sh:path geo:xxx ;
+	    sh:minCount 1 ;
+	] ;
+.
