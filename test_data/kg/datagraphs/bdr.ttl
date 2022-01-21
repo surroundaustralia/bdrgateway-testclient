@@ -181,3 +181,14 @@
         ))"""^^geo:wktLiteral ;
     ] ;
 .
+
+<http://createme.org/100>
+    a tern:Site ;
+    rdfs:label "Point Site" ;
+    void:inDataset <dataset/fake> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/8282fb22-4135-415c-8ca2-317860d102fb> ;  # land surface
+    geo:hasGeometry [
+        a geo:Geometry ;
+        geo:asWKT "POINT (145.808076 -35.245184)"^^geo:wktLiteral
+    ] ;
+.
