@@ -1,13 +1,15 @@
 from rdflib import Graph, URIRef, Literal, BNode, Namespace
 from rdflib.namespace import DCTERMS, RDF, SOSA, VOID, XSD
+from _TERN import TERN
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
-TERN = Namespace("https://w3id.org/tern/ontologies/tern/")
 
+# Feature Types vocab http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d
+# Method Types vocab http://linked.data.gov.au/def/tern-cv/9b6e057f-271b-48f6-8c33-0528bf6b60df
 samplings_data = [
     {
         "foi": "tbjc",
-        "time": "2022-01-03",
+        "time": "2022-01-03T12:13:14",
         "procedure": "http://example.com/procedure/x",
         "result": {
             "dataset": "fake",
@@ -16,7 +18,7 @@ samplings_data = [
     },
     {
         "foi": "tbjc",
-        "time": "2022-01-03",
+        "time": "2022-01-03T12:13:14",
         "procedure": "http://example.com/procedure/y",
         "result": {
             "dataset": "fake",
@@ -25,7 +27,7 @@ samplings_data = [
     },
     {
         "foi": "tbjc",
-        "time": "2022-01-03",
+        "time": "2022-01-03T12:13:14",
         "procedure": "http://example.com/procedure/x",
         "result": {
             "dataset": "fake",
@@ -37,7 +39,7 @@ samplings_data = [
     },
     {
         "foi": "tbjc",
-        "time": "2022-01-03",
+        "time": "2022-01-03T12:13:14",
         "procedure": "http://example.com/procedure/x",
         "result": {
             "dataset": "fake",
@@ -56,8 +58,23 @@ g.bind("sosa", SOSA)
 g.bind("tern", TERN)
 g.bind("void", VOID)
 
+# BDR Message
 msg_iri = URIRef("http://createme.org/1")
 g.add((msg_iri, RDF.type, BDRM.CreateMessage))
+
+# RDFDataset
+# TODO: scale this up from 1 to total no. of Samplings / y (y = 200)
+ds = URIRef("http://example.com/dummy/dataset")
+g.add((ds, RDF.type, TERN.RDFDataset))
+
+# FoI
+# TODO: scale this up from 1 to total no. of Samplings / x (x = 50)
+foi = URIRef("https://linked.data.gov.au/dataset/bdr/site/tbjc")
+g.add((foi, RDF.type, TERN.FeatureOfInterest))
+g.add((foi, TERN.featureType, URIRef("http://linked.data.gov.au/def/tern-cv/2090cfd9-8b6b-497b-9512-497456a18b99")))
+# TODO: use all of the Datasets in the list that you've generated above
+g.add((foi, VOID.inDataset, ds))
+
 
 createme_id_max = 1
 for sampling in samplings_data:
@@ -66,11 +83,12 @@ for sampling in samplings_data:
     sampling_iri = URIRef("http://createme.org/" + str(createme_id_max))
     g.add((msg_iri, DCTERMS.hasPart, sampling_iri))  # link Sampling to CreateMessage
 
+    # TODO: use all of the FoIs in the list that you've generated above
     foi_iri = URIRef("https://linked.data.gov.au/dataset/bdr/site/" + sampling["foi"])
 
     g.add((sampling_iri, RDF.type, TERN.Sampling))
     g.add((sampling_iri, SOSA.hasFeatureOfInterest, foi_iri))
-    g.add((sampling_iri, SOSA.resultTime, Literal(sampling["time"], datatype=XSD.date)))
+    g.add((sampling_iri, SOSA.resultTime, Literal(sampling["time"], datatype=XSD.dateTime)))
     g.add((sampling_iri, SOSA.usedProcedure, URIRef(sampling["procedure"])))
 
     if sampling.get("geometry") is not None:

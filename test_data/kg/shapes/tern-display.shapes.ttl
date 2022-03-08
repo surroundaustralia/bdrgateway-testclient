@@ -18,9 +18,10 @@
     rdfs:comment "Provides some display shapes for TERN Ontology data" ;
 .
 
+	
 geo:Geometry
 	a sh:NodeShape ;
-	sh:targetClass geo:Geometry ;	
+	sh:targetObjectsOf geo:hasGeometry ;	
 	dash:viewer dash:DetailsViewer ;
 	sh:property [
 	    a sh:PropertyShape ;
@@ -32,12 +33,3 @@ geo:Geometry
 	] ;
 .
 
-d:site 
-	a sh:NodeShape ;
-	sh:targetClass geo:Feature ;
-	sh:property [
-	    a sh:PropertyShape ;
-	    sh:path geo:xxx ;
-	    sh:minCount 1 ;
-	] ;
-.
