@@ -40,13 +40,39 @@ FEATURE_TYPES = [URIRef("http://linked.data.gov.au/def/tern-cv/05dac53a-269c-469
                  # plant specimen
                  ]
 
-METHOD_TYPES = ["HCL_droplets_1_ML", "densitometer", "dgps",
-                "electrical_conductivity_meter", "ph_meter", "point_intercept",
-                "soil_core", "soil_pit", "visual_assessment", "basal_wedge",
-                "diameter_measurement_instrument", "diameter_tape",
-                "human_measurement", "human_observation", "instrument_measurement",
-                "munsell_soil_colour_chart", "soil_10_cm_samples",
-                "soil_auger_boring", "soil_vertical_exposure", "vertex_hypsometer"]
+METHOD_TYPES = [URIRef("http://linked.data.gov.au/def/tern-cv/40261295-d985-4739-a420-048093e4d3ac"),  # HCL Droplets
+                URIRef("http://linked.data.gov.au/def/tern-cv/80df57c3-be8a-4e6a-a730-34d31d01923c"),  # densitometer
+                URIRef("http://linked.data.gov.au/def/tern-cv/9f0624f0-86d2-41a5-9c43-b49fbff0abc7"),  # dgps
+                URIRef("http://linked.data.gov.au/def/tern-cv/f7b2bb78-8ca2-4437-b2b2-45a8c2456dfb"),
+                # Electricity conductivity meter
+                URIRef("http://linked.data.gov.au/def/tern-cv/931d9940-f25c-43b0-980a-d235f4d8a4b0"),  # PH meter
+                URIRef("http://linked.data.gov.au/def/tern-cv/ae1a6ef6-c56f-441e-bb1b-ec87ae5f5c05"),  # point intercept
+                URIRef("http://linked.data.gov.au/def/tern-cv/7a28af9b-13b2-49c3-9b72-b94850a1c2b6"),  # soil core
+                URIRef("http://linked.data.gov.au/def/tern-cv/70e2c6e3-c699-4505-aeb0-4af2684f3bb2"),  # soil pit
+                URIRef("http://linked.data.gov.au/def/tern-cv/8fef9acb-e702-4b2c-8b79-3b22b00987da"),
+                # visual assessment
+                URIRef("http://linked.data.gov.au/def/tern-cv/693aca27-8c3b-44c4-b535-78bc92b4142d"),  # basal wedge
+                URIRef("http://linked.data.gov.au/def/tern-cv/6226f002-84ff-457b-bd0c-712f131cf60a"),
+                # diameter measurement
+                URIRef("http://linked.data.gov.au/def/tern-cv/d0c3ba01-ff35-40bd-8d0b-e9a222240ddf"),  # diameter tape
+                URIRef("http://linked.data.gov.au/def/tern-cv/5e097749-4293-49c5-8f53-c7c92e20ecc8"),  # gridded data
+                URIRef("http://linked.data.gov.au/def/tern-cv/591086c7-a52b-45cc-b506-3fa1bc0be7d8"),
+                # human measurement
+                URIRef("http://linked.data.gov.au/def/tern-cv/ea1d6342-1901-4f88-8482-3111286ec157"),
+                # human observation
+                URIRef("http://linked.data.gov.au/def/tern-cv/b11d2a42-9982-4e40-896c-df909f14839d"),
+                # instrument measurement
+                URIRef("http://linked.data.gov.au/def/tern-cv/e9ce7cdb-cb2f-4d2e-8011-05b1669cfade"),
+                # munsell soil colour chart
+                URIRef("http://linked.data.gov.au/def/tern-cv/3f9c834b-2188-4fad-871e-fcca0a406c21"),
+                # SOIL 10 CM SAMPLES
+                URIRef("http://linked.data.gov.au/def/tern-cv/cfe311c1-c762-4b86-b59c-1ff216f077c5"),
+                # soil auger boring
+                URIRef("http://linked.data.gov.au/def/tern-cv/21e03c11-719c-4298-a9a5-efd3d53a8fe8"),
+                # soil vertical exposure
+                URIRef("http://linked.data.gov.au/def/tern-cv/b6bbfc2d-97e1-4fee-b86b-c02594350c1b"),
+                # vertex hypsometer
+                ]
 
 
 def validate_number(n):
@@ -91,7 +117,7 @@ def create_sampling_data(n):
     for index in range(0, n):
         samplings_data.append({"foi": x[int(index / 50)],
                                "time": "2022-01-03T12:13:14",
-                               "procedure": "http://example.com/procedure/" + random.choice(METHOD_TYPES),
+                               "procedure": random.choice(METHOD_TYPES),   # "http://example.com/procedure/" +
                                "result": {
                                    "dataset": "fake",
                                    "feature_type": random.choice(FEATURE_TYPES)
@@ -101,7 +127,7 @@ def create_sampling_data(n):
 
 
 def create_dataset(n):
-    if validate_number(n) != False:
+    if validate_number(n):
         pass
     else:
         exit(1)
@@ -170,4 +196,4 @@ def create_dataset(n):
     print(g.serialize(destination="test.ttl"))
 
 
-create_dataset(10000)
+create_dataset(3)

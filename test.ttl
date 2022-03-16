@@ -1,0 +1,55 @@
+@base <https://linked.data.gov.au/dataset/bdr/> .
+@prefix bdrm: <https://linked.data.gov.au/def/bdr-msg/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix tern: <https://w3id.org/tern/ontologies/tern/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://createme.org/1> a bdrm:CreateMessage ;
+    dcterms:hasPart <http://createme.org/2>,
+        <http://createme.org/4>,
+        <http://createme.org/6> .
+
+<http://createme.org/3> a tern:Sample ;
+    void:inDataset <dataset/fake> ;
+    sosa:isResultOf <http://createme.org/2> ;
+    sosa:isSampleOf <site/lFtwD> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/2361dea8-598c-4b6f-a641-2b98ff199e9e> .
+
+<http://createme.org/5> a tern:Sample ;
+    void:inDataset <dataset/fake> ;
+    sosa:isResultOf <http://createme.org/4> ;
+    sosa:isSampleOf <site/lFtwD> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/2e122e23-881c-43fa-a921-a8745f016ceb> .
+
+<http://createme.org/7> a tern:Sample ;
+    void:inDataset <dataset/fake> ;
+    sosa:isResultOf <http://createme.org/6> ;
+    sosa:isSampleOf <site/lFtwD> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/7e256d28-e686-4b6a-b64a-ac1b1a8f164d> .
+
+<http://example.com/dummy/dataset/1> a tern:RDFDataset .
+
+<http://createme.org/2> a tern:Sampling ;
+    sosa:hasFeatureOfInterest <site/lFtwD> ;
+    sosa:hasResult <http://createme.org/3> ;
+    sosa:resultTime "2022-01-03T12:13:14"^^xsd:dateTime ;
+    sosa:usedProcedure <http://linked.data.gov.au/def/tern-cv/b6bbfc2d-97e1-4fee-b86b-c02594350c1b> .
+
+<http://createme.org/4> a tern:Sampling ;
+    sosa:hasFeatureOfInterest <site/lFtwD> ;
+    sosa:hasResult <http://createme.org/5> ;
+    sosa:resultTime "2022-01-03T12:13:14"^^xsd:dateTime ;
+    sosa:usedProcedure <http://linked.data.gov.au/def/tern-cv/21e03c11-719c-4298-a9a5-efd3d53a8fe8> .
+
+<http://createme.org/6> a tern:Sampling ;
+    sosa:hasFeatureOfInterest <site/lFtwD> ;
+    sosa:hasResult <http://createme.org/7> ;
+    sosa:resultTime "2022-01-03T12:13:14"^^xsd:dateTime ;
+    sosa:usedProcedure <http://linked.data.gov.au/def/tern-cv/ea1d6342-1901-4f88-8482-3111286ec157> .
+
+<site/lFtwD> a tern:FeatureOfInterest ;
+    void:inDataset <http://example.com/dummy/dataset/1> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/06461021-a6c2-4175-9651-23653c2b9116> .
+
