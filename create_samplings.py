@@ -1,11 +1,16 @@
 from rdflib import Graph, URIRef, Literal, BNode, Namespace
 from rdflib.namespace import DCTERMS, RDF, SOSA, VOID, XSD
-from _TERN import TERN
+
+# from _TERN import TERN
+# adding this for now as I'm recieing errors
+TERN = Namespace("https://w3id.org/tern/ontologies/tern/")
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
 
+
 # Feature Types vocab http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d
 # Method Types vocab http://linked.data.gov.au/def/tern-cv/9b6e057f-271b-48f6-8c33-0528bf6b60df
+
 samplings_data = [
     {
         "foi": "tbjc",
@@ -75,7 +80,6 @@ g.add((foi, TERN.featureType, URIRef("http://linked.data.gov.au/def/tern-cv/2090
 # TODO: use all of the Datasets in the list that you've generated above
 g.add((foi, VOID.inDataset, ds))
 
-
 createme_id_max = 1
 for sampling in samplings_data:
     # Sampling
@@ -111,3 +115,4 @@ for sampling in samplings_data:
     g.add((sampling_iri, SOSA.hasResult, sample_iri))
 
 print(g.serialize())
+
