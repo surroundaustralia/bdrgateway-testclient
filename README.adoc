@@ -1,10 +1,14 @@
 = BDR Gateway Test Client
 
-This is a small Python web client made to test the http://bdrgateway.surroundaustralia.com[BDR Gateway] API which is used to absorb data into the _Biodiversity Data Repository_ being built for the https://www.awe.gov.au[Department of Agriculture, Water and the Environment].
+This is a small Python program made to test the http://bdrgateway.surroundaustralia.com[BDR Gateway] API which is used to absorb data into the _Biodiversity Data Repository_ being built for the https://www.awe.gov.au[Department of Agriculture, Water and the Environment].
 
-This tool is mostly for internal testing but may be copied by others for their use.
+This tool synthesis data that emulates the kind of messages likley to be sent to the BDR. The messages conform to the https://surroundaustralia.github.io/abis/specification.html[ABIS Specification] although we also expect to test messages that deliberately don't conform. The majority of the messages' content conforms to the https://linkeddata.tern.org.au/information-models/tern-ontology[TERN Ontology] so it mainly consists of `Sampling`, `Sample`, `Site`, `Observation` and `Dataset` objects.
 
 == Data
+
+=== Data element coverage
+
+
 
 === Example Messages
 
