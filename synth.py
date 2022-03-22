@@ -1,15 +1,14 @@
-from rdflib import Graph, URIRef, Literal, BNode, Namespace
+from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import DCTERMS, RDF, SOSA, VOID, XSD
 import random
+import sys
 import string
+from _TERN import TERN
 
-# from _TERN import TERN
-# adding this for now as I'm recieing errors
-TERN = Namespace("https://w3id.org/tern/ontologies/tern/")
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
+
 # Feature Types vocab http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d
-# Method Types vocab http://linked.data.gov.au/def/tern-cv/9b6e057f-271b-48f6-8c33-0528bf6b60df
 FEATURE_TYPES = [URIRef("http://linked.data.gov.au/def/tern-cv/05dac53a-269c-4699-9673-bf99a9406b14"),
                  # administrative_area
                  URIRef("http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7"),
@@ -40,6 +39,7 @@ FEATURE_TYPES = [URIRef("http://linked.data.gov.au/def/tern-cv/05dac53a-269c-469
                  # plant specimen
                  ]
 
+# Method Types vocab http://linked.data.gov.au/def/tern-cv/9b6e057f-271b-48f6-8c33-0528bf6b60df
 METHOD_TYPES = [URIRef("http://linked.data.gov.au/def/tern-cv/40261295-d985-4739-a420-048093e4d3ac"),  # HCL Droplets
                 URIRef("http://linked.data.gov.au/def/tern-cv/80df57c3-be8a-4e6a-a730-34d31d01923c"),  # densitometer
                 URIRef("http://linked.data.gov.au/def/tern-cv/9f0624f0-86d2-41a5-9c43-b49fbff0abc7"),  # dgps
@@ -76,8 +76,8 @@ METHOD_TYPES = [URIRef("http://linked.data.gov.au/def/tern-cv/40261295-d985-4739
 
 
 def validate_number(n):
-    if n < 0 or n > 10000:
-        print("Data number has to be greater than 0 and less than 10000")
+    if n < 1 or n > 10000:
+        print("The number of Samplings you select must be > 1, < 10,000")
         return False
     return True
 
@@ -127,10 +127,9 @@ def create_sampling_data(n):
 
 
 def create_dataset(n):
-    if validate_number(n):
-        pass
-    else:
+    if not validate_number(n):
         exit(1)
+
     # Prefix and base URI creation
     g = Graph(base="https://linked.data.gov.au/dataset/bdr/")
     g.bind("bdrm", BDRM)
@@ -193,7 +192,20 @@ def create_dataset(n):
         # link Sample to Sampling
         g.add((sampling_iri, SOSA.hasResult, sample_iri))
 
-    print(g.serialize(destination="test.ttl"))
+    return g.serialize()
 
 
-create_dataset(3)
+def main():
+    args = sys.argv[1:]
+
+    try:
+        n = int(args[0])
+    except:
+        print("You must supply an integer as the sole command line argument to this program - the number of Samplings to make")
+        exit()
+
+    print(create_dataset(n))
+
+
+if __name__ == "__main__":
+    main()
