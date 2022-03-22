@@ -8,7 +8,7 @@ This tool synthesis data that emulates the kind of messages likley to be sent to
 
 === Data element coverage
 
-
+![](images/class-test-availability-status.png)
 
 === Example Messages
 
@@ -30,6 +30,6 @@ TERN validator to be added soon
 * `validate_egs.py` - attempts to validate each example message file using all the validators combined
 * `validate_egs_rdf.py` - just checks each example is valid RDF
 ** useful if new problematic example files need testing as at least syntactically before full use in validation tests
-* `create_sampling.py` - creates instances of Sampling and Sample from data (Python dict) and packages it within a BDR `CreateMessage`
+* `create_samplings.py` - creates instances of Sampling and Sample from data (Python dict) and packages it within a BDR `CreateMessage`
 * 'utils.py' - This page includes a create_dataset function which allows creation of sampling data. The function can create up to 10000 datapoints and serializes the data to the 'test.ttl' file.
 ** This function can be used by altering the create_dataset code to something like create_dataset(2) -> where it creates 2 sampling data points and associated features of interest and datasets.
