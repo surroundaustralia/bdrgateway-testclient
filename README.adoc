@@ -8,7 +8,8 @@ This tool synthesis data that emulates the kind of messages likley to be sent to
 
 === Data element coverage
 
-![](images/class-test-availability-status.png)
+.Class Test Availability
+image::images/class-test-availability-status.png[Class Test Availability,750,align="center"]
 
 === Example Messages
 
