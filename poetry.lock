@@ -137,16 +137,16 @@ diagrams = ["jinja2", "railroad-diagrams"]
 
 [[package]]
 name = "pyshacl"
-version = "0.17.3"
+version = "0.19.0"
 description = "Python SHACL Validator"
 category = "main"
 optional = false
-python-versions = ">=3.7.0,<3.10"
+python-versions = ">=3.7.0,<4.0.0"
 
 [package.dependencies]
-owlrl = ">=5.2.3,<7"
+owlrl = ">=6.0.2,<7"
 prettytable = ">=2.2.1,<3.0.0"
-rdflib = ">=6.0.0,<7"
+rdflib = ">=6.1.1,<8"
 
 [package.extras]
 dev-lint = ["black (==21.9b0)", "flake8 (>=3.8.0,<4.0.0)", "isort (>=5.7.0,<6.0.0)"]
@@ -212,7 +212,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9,<3.10"
-content-hash = "082fe1a12904e2eb7f4fa7f701fe1d63e9bb10183718fe0142c4ea45759cf176"
+content-hash = "19eb474fe854e2560a57a182bee2a9160777251a24dc1c5e68c7585a3b1d8727"
 
 [metadata.files]
 anyio = [
@@ -260,8 +260,8 @@ pyparsing = [
     {file = "pyparsing-3.0.7.tar.gz", hash = "sha256:18ee9022775d270c55187733956460083db60b37d0d0fb357445f3094eed3eea"},
 ]
 pyshacl = [
-    {file = "pyshacl-0.17.3-py3-none-any.whl", hash = "sha256:4a1040dce2b0cd67abb5496fff429b39079b91c18392e3c2d4568c5376f15ad1"},
-    {file = "pyshacl-0.17.3.tar.gz", hash = "sha256:a76c444f9156fd24e915455a173dc45d080b153702705359c031b47f8cb964b7"},
+    {file = "pyshacl-0.19.0-py3-none-any.whl", hash = "sha256:76ecd84a13387c8d0a56b059ce232d723469187ebc0dd852c24c18b99fac713b"},
+    {file = "pyshacl-0.19.0.tar.gz", hash = "sha256:f1f5ba943db1437502e6e7a5da74152e90998d24753029aad4db68393fc1d601"},
 ]
 rdflib = [
     {file = "rdflib-6.1.1-py3-none-any.whl", hash = "sha256:fc81cef513cd552d471f2926141396b633207109d0154c8e77926222c70367fe"},
