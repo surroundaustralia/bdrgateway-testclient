@@ -199,9 +199,10 @@ def main():
     args = sys.argv[1:]
 
     try:
-        n = int(args[0])
+        n = validate_number(int(args[0]))
     except:
-        print("You must supply an integer as the sole command line argument to this program - the number of Samplings to make")
+        print("You must supply an integer as the sole command line argument to this program - "
+              "the number of Samplings to make ")
         exit()
 
     print(create_dataset(n))
