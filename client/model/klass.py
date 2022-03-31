@@ -9,11 +9,14 @@ class Klass:
     def __init__(self, iri: Optional[str] = None):
         """Receive and use or make an IRI"""
         if iri is None:
-            self.id = uuid4()
+            self.id = self._make_uuid()
             iri = URIRef(f"http://example.com/{self.id}")
 
         self.iri = URIRef(iri)
         self.label = f"Class with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
+
+    def make_uuid(self):
+        return uuid4()
 
     def to_graph(self) -> Graph:
         g = Graph()

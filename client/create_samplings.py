@@ -18,8 +18,8 @@ samplings_data = [
         "procedure": "http://example.com/procedure/x",
         "result": {
             "dataset": "fake",
-            "feature_type": "http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7"
-        }
+            "feature_type": "http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7",
+        },
     },
     {
         "foi": "tbjc",
@@ -27,8 +27,8 @@ samplings_data = [
         "procedure": "http://example.com/procedure/y",
         "result": {
             "dataset": "fake",
-            "feature_type": "http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7"
-        }
+            "feature_type": "http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7",
+        },
     },
     {
         "foi": "tbjc",
@@ -36,11 +36,9 @@ samplings_data = [
         "procedure": "http://example.com/procedure/x",
         "result": {
             "dataset": "fake",
-            "feature_type": "http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7"
+            "feature_type": "http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7",
         },
-        "geometry": {
-            "WKT": "POINT (145.609997 -35.238957)"
-        }
+        "geometry": {"WKT": "POINT (145.609997 -35.238957)"},
     },
     {
         "foi": "tbjc",
@@ -48,11 +46,9 @@ samplings_data = [
         "procedure": "http://example.com/procedure/x",
         "result": {
             "dataset": "fake",
-            "feature_type": "http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7"
+            "feature_type": "http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7",
         },
-        "geometry": {
-            "WKT": "POINT (145.772569 -35.265073)"
-        }
+        "geometry": {"WKT": "POINT (145.772569 -35.265073)"},
     },
 ]
 g = Graph(base="https://linked.data.gov.au/dataset/bdr/")
@@ -76,7 +72,15 @@ g.add((ds, RDF.type, TERN.RDFDataset))
 # TODO: scale this up from 1 to total no. of Samplings / x (x = 50)
 foi = URIRef("https://linked.data.gov.au/dataset/bdr/site/tbjc")
 g.add((foi, RDF.type, TERN.FeatureOfInterest))
-g.add((foi, TERN.featureType, URIRef("http://linked.data.gov.au/def/tern-cv/2090cfd9-8b6b-497b-9512-497456a18b99")))
+g.add(
+    (
+        foi,
+        TERN.featureType,
+        URIRef(
+            "http://linked.data.gov.au/def/tern-cv/2090cfd9-8b6b-497b-9512-497456a18b99"
+        ),
+    )
+)
 # TODO: use all of the Datasets in the list that you've generated above
 g.add((foi, VOID.inDataset, ds))
 
@@ -92,19 +96,34 @@ for sampling in samplings_data:
 
     g.add((sampling_iri, RDF.type, TERN.Sampling))
     g.add((sampling_iri, SOSA.hasFeatureOfInterest, foi_iri))
-    g.add((sampling_iri, SOSA.resultTime, Literal(sampling["time"], datatype=XSD.dateTime)))
+    g.add(
+        (
+            sampling_iri,
+            SOSA.resultTime,
+            Literal(sampling["time"], datatype=XSD.dateTime),
+        )
+    )
     g.add((sampling_iri, SOSA.usedProcedure, URIRef(sampling["procedure"])))
 
     if sampling.get("geometry") is not None:
         geom = BNode()
         g.add((geom, RDF.type, GEO.Geometry))
-        g.add((geom, GEO.asWKT, Literal(sampling.get("geometry")["WKT"], datatype=GEO.wktLiteral)))
+        g.add(
+            (
+                geom,
+                GEO.asWKT,
+                Literal(sampling.get("geometry")["WKT"], datatype=GEO.wktLiteral),
+            )
+        )
         g.add((sampling_iri, GEO.hasGeometry, geom))
 
     # Sample
     createme_id_max += 1
     sample_iri = URIRef("http://createme.org/" + str(createme_id_max))
-    dataset_iri = URIRef("https://linked.data.gov.au/dataset/bdr/dataset/" + sampling["result"]["dataset"])
+    dataset_iri = URIRef(
+        "https://linked.data.gov.au/dataset/bdr/dataset/"
+        + sampling["result"]["dataset"]
+    )
     g.add((sample_iri, RDF.type, TERN.Sample))
     g.add((sample_iri, SOSA.isResultOf, sampling_iri))
     g.add((sample_iri, SOSA.isSampleOf, foi_iri))
@@ -115,4 +134,3 @@ for sampling in samplings_data:
     g.add((sampling_iri, SOSA.hasResult, sample_iri))
 
 print(g.serialize())
-

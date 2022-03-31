@@ -35,7 +35,7 @@ class TERN(DefinedNamespace):
     MaterialSample: URIRef  # A physical result of a sampling (or subsampling) event. In biological collections, the material sample is typically collected, and either preserved or destructively processed.
     Method: URIRef  # A Method describes in detailed steps how a workflow, protocol, plan or algorithm is carried out to make an [Observation](#Observation) or a [Sample](#Sample). It explains the steps to be carried out to arrive at reproducible [Result](#Result).
     MobilePlatform: URIRef  # A moving mobile platform on land, in water or in space.
-    ObservableProperty: URIRef  # An observable quality (property, characteristic) of a [FeatureOfInterest](http://w3.org/ns/sosa/FeatureOfInterest). A feature-of-interest refers to a feature whose properties are measured or observed. 
+    ObservableProperty: URIRef  # An observable quality (property, characteristic) of a [FeatureOfInterest](http://w3.org/ns/sosa/FeatureOfInterest). A feature-of-interest refers to a feature whose properties are measured or observed.
     Observation: URIRef  # Act of carrying out an (Observation) [Procedure](#Procedure) to estimate or calculate a value of a property of a [FeatureOfInterest](http://w3.org/ns/sosa/FeatureOfInterest). Links to a [Sensor](http://w3.org/ns/sosa/Sensor) to describe what made the [Observation](#Observation) and how; links to an [ObservableProperty](#ObservableProperty) to describe what the result is an estimate of, and to a [FeatureOfInterest](http://w3.org/ns/sosa/FeatureOfInterest) to detail what that property was associated with.
     ObservationCollection: URIRef  # Collection of one or more observations, whose members share a common value for one or more property
     Parameter: URIRef  # A [FeatureOfInterest's](http://w3.org/ns/sosa/FeatureOfInterest) property or characteristic which an [Observation](#Observation) is measuring using some [Procedure](#Procedure).
@@ -45,19 +45,19 @@ class TERN(DefinedNamespace):
     RDFDataset: URIRef  # None
     Result: URIRef  # The result of an [Observation](https://w3id.org/tern/ontologies/tern/Observation), [Actuation](http://w3.org/ns/sosa/Actuation), or act of [Sampling](https://w3id.org/tern/ontologies/tern/Sampling).
     Sample: URIRef  # *A feature which is intended to be representative of a [FeatureOfInterest](http://w3.org/ns/sosa/FeatureOfInterest) on which [Observations](#Observation) may be made. Physical samples are sometimes known as physical specimens.
-    Sampler: URIRef  # Sampler - A device that is used by, or implements, a (Sampling) [Procedure](#Procedure) to create or transform one or more samples. 
+    Sampler: URIRef  # Sampler - A device that is used by, or implements, a (Sampling) [Procedure](#Procedure) to create or transform one or more samples.
     Sampling: URIRef  # An activity of [Sampling](#Sampling) carries out a (Sampling) [Procedure](#Procedure) to create or transform one or more [Samples](#Sample).
     Sensor: URIRef  # Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. Sensors respond to a stimulus, e.g., a change in the environment, or input data composed from the results of prior Observations, and generate a Result. Sensors can be hosted by Platforms.
     Site: URIRef  # An ecological monitoring site where where observations and samplings occur. This Site class is a subclass of [Sample](#Sample) since ecological sites are designed to be representative of an environmental system (which may be an ecosystem or bioregion) or zone (which may be a zone such as a parcel or tract).
-    SiteVisit: URIRef  # A Site Visit is a discrete time-bounded activity at a [Site](#Site), during which [Sampling](#Sampling) or [Observation](#Observation) activities occur. 
+    SiteVisit: URIRef  # A Site Visit is a discrete time-bounded activity at a [Site](#Site), during which [Sampling](#Sampling) or [Observation](#Observation) activities occur.
     System: URIRef  # None
     Taxon: URIRef  # A group of organisms (sensu http://purl.obolibrary.org/obo/OBI_0100026) considered by taxonomists to form a homogeneous unit.
     Text: URIRef  # Class to encapsulate a textual value.
     Transect: URIRef  # None
-    Value: URIRef  # A value of an [Attribute](https://w3id.org/tern/ontologies/tern/Attribute) or an [Observation](https://w3id.org/tern/ontologies/tern/Observation). 
+    Value: URIRef  # A value of an [Attribute](https://w3id.org/tern/ontologies/tern/Attribute) or an [Observation](https://w3id.org/tern/ontologies/tern/Observation).
     area: URIRef  # The extent of a [Site](#EcologicalSite) area, e.g., in m2
     attribute: URIRef  # Point to a concept representing the attribute.
-    cardinalDirection: URIRef  # The cardinal direction of the *thing* represented as a string and expressed by cardinal and intercardinal points. 
+    cardinalDirection: URIRef  # The cardinal direction of the *thing* represented as a string and expressed by cardinal and intercardinal points.
     centroidPoint: URIRef  # The centroid point of an object-of-interest.
     dateCommissioned: URIRef  # The date when, e.g., a [Site](#EcologicalSite) is ready to commence its operations, after it is successfully installed and tested.
     dateDecommissioned: URIRef  # The date when, e.g., a [Site](#EcologicalSite) is decommissioned or stopped operating.

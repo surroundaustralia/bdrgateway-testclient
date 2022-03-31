@@ -23,6 +23,7 @@ def print_validity(r):
     print(f"Valid: {v}")
     print()
 
+
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
 TEST_DATA = Path(__file__).parent / "test_data"
 
@@ -42,7 +43,9 @@ print()
 if len(sys.argv) > 1:
     f = Path(TEST_DATA / "messages" / sys.argv[1])
     print(f)
-    r = validate(str(f), shacl_graph=g_sh, ont_graph=Graph().parse(TEST_DATA / "bdr-msgs.ttl"))
+    r = validate(
+        str(f), shacl_graph=g_sh, ont_graph=Graph().parse(TEST_DATA / "bdr-msgs.ttl")
+    )
     print_validity(r)
 
     exit()
@@ -58,5 +61,7 @@ for f in sorted(list(Path(TEST_DATA / "messages").glob("*.ttl"))):
         print()
         continue
 
-    r = validate(str(f), shacl_graph=g_sh, ont_graph=Graph().parse(TEST_DATA / "bdr-msgs.ttl"))
+    r = validate(
+        str(f), shacl_graph=g_sh, ont_graph=Graph().parse(TEST_DATA / "bdr-msgs.ttl")
+    )
     print_validity(r)

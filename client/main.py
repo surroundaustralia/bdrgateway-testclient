@@ -10,7 +10,7 @@ tests = [
         "name": "Single Sampling",
         "desc": "Simplest form of a valid Sampling",
         "file": TEST_DATA / "t001.ttl",
-        "valid": True
+        "valid": True,
     }
 ]
 
@@ -19,7 +19,7 @@ def post_rdf_to_gateway(g: Graph):
     return httpx.post(
         "http://bdrgateway.surroundaustralia.com/validate",
         data=g.serialize(),
-        headers={"Accept": "application/json"}
+        headers={"Accept": "application/json"},
     )
 
 
