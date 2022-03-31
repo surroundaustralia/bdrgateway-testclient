@@ -4,6 +4,8 @@ import random
 import sys
 import string
 from _TERN import TERN
+import argparse
+from typing import Literal as Lit
 
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
@@ -75,6 +77,9 @@ METHOD_TYPES = [URIRef("http://linked.data.gov.au/def/tern-cv/40261295-d985-4739
                 ]
 
 
+MESSAGE_TYPES = ["create", "update", "delete", "exists"]
+
+
 def validate_number(n):
     if n < 1 or n > 10000:
         print("The number of Samplings you select must be > 1, < 10,000")
@@ -126,9 +131,12 @@ def create_sampling_data(n):
     return samplings_data
 
 
-def create_dataset(n):
+def create_dataset(n: int, msg_type: Lit["create", "update", "delete", "exists"]):
     if not validate_number(n):
-        exit(1)
+        raise ValueError("%s is not >= 1" % n)
+
+    if msg_type not in MESSAGE_TYPES:
+        raise ValueError(f"msg_type must be one of {', '.join(MESSAGE_TYPES)}")
 
     # Prefix and base URI creation
     g = Graph(base="https://linked.data.gov.au/dataset/bdr/")
@@ -139,7 +147,13 @@ def create_dataset(n):
     g.bind("tern", TERN)
     g.bind("void", VOID)
 
-    # BDR Messages
+    # BDR Message
+    msg_iris = {
+        "create": BDRM.CreateMessage,
+        "update": BDRM.UpdateMessage,
+        "delete": BDRM.DeleteMessage,
+        "exists": BDRM.ExistsMessage,
+    }
     msg_iri = URIRef("http://createme.org/1")
     g.add((msg_iri, RDF.type, BDRM.CreateMessage))
 
@@ -196,16 +210,31 @@ def create_dataset(n):
 
 
 def main():
-    args = sys.argv[1:]
+    parser = argparse.ArgumentParser()
 
-    try:
-        n = int(args[0])
-    except:
-        print("You must supply an integer as the sole command line argument to this program - the number of Samplings to make")
-        exit()
+    def check_positive_one(value):
+        ivalue = int(value)
+        if ivalue <= 1:
+            raise argparse.ArgumentTypeError("%s is not >= 1" % value)
+        return ivalue
 
-    print(create_dataset(n))
+    parser.add_argument(
+        "num",
+        help="The number of Samplings you want to synthesise data for",
+        type=check_positive_one
+    )
+
+    parser.add_argument(
+        "msg_type",
+        help="The type of message to wrap the data in",
+        choices=MESSAGE_TYPES,
+    )
+
+    args = parser.parse_args()
+
+    print(create_dataset(args.num, args.msg_type))
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    create_dataset(2, "nick")
