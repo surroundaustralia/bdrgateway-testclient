@@ -1,7 +1,9 @@
-from rdflib import Graph, URIRef, Namespace, Literal
-from rdflib.namespace import RDF, RDFS, OWL, SKOS
-from client.model.klass import Klass
 from typing import Optional
+
+from rdflib import Graph, URIRef, Literal
+from rdflib.namespace import RDF, RDFS, OWL, SKOS
+
+from client.model.klass import Klass
 
 
 class Concept(Klass):

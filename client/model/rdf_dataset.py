@@ -1,9 +1,11 @@
-from rdflib import Graph, URIRef, Namespace, Literal
-from rdflib.namespace import RDF, RDFS, OWL
-from client.model.klass import Klass
-from client._TERN import TERN
-from uuid import uuid4
 from typing import Optional
+from uuid import uuid4
+
+from rdflib import Graph, URIRef, Literal
+from rdflib.namespace import RDF, RDFS, OWL
+
+from client._TERN import TERN
+from client.model.klass import Klass
 
 
 class RDFDataset(Klass):

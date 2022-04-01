@@ -1,7 +1,9 @@
-from rdflib import Graph, URIRef, Literal
 from typing import Optional
 from uuid import uuid4
+
+from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import RDF, RDFS, OWL
+
 from client._TERN import TERN
 
 
@@ -9,7 +11,7 @@ class Klass:
     def __init__(self, iri: Optional[str] = None):
         """Receive and use or make an IRI"""
         if iri is None:
-            self.id = self._make_uuid()
+            self.id = self.make_uuid()
             iri = URIRef(f"http://example.com/{self.id}")
 
         self.iri = URIRef(iri)

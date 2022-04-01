@@ -1,5 +1,6 @@
-from client.model import Klass
 from rdflib.namespace import RDF, OWL
+
+from client.model import Klass
 
 
 def test_basic_rdf():

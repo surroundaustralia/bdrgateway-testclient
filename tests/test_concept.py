@@ -1,5 +1,6 @@
-from client.model import Concept
 from rdflib.namespace import OWL, RDF, SKOS
+
+from client.model import Concept
 
 
 def test_basic_rdf():
