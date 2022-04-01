@@ -45,12 +45,12 @@ class Sample(Klass):
 
         self.iri = URIRef(iri)
 
-        super(Sample, self).__init__(iri)
+        super().__init__(iri)
 
         self.label = f"Sample with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
 
         self.is_sample_of = is_sample_of
-        # self.is_result_of = is_result_of
+        self.is_result_of = is_result_of
         self.feature_type = feature_type
         self.in_dataset = in_dataset
 
@@ -62,8 +62,9 @@ class Sample(Klass):
         g.add((self.iri, RDFS.label, Literal(self.label)))
         for iso in self.is_sample_of:
             g.add((self.iri, SOSA.isSampleOf, iso.iri))
-        # g.add((self.iri, SOSA.isResultOf, self.is_result_of.iri))
         g.add((self.iri, TERN.featureType, self.feature_type.iri))
         g.add((self.iri, VOID.inDataset, self.in_dataset.iri))
+        if self.is_result_of is not None:
+            g.add((self.iri, SOSA.isResultOf, self.is_result_of.iri))
 
         return g

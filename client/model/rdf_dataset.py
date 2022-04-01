@@ -17,7 +17,7 @@ class RDFDataset(Klass):
 
         self.iri = URIRef(iri)
 
-        super(RDFDataset, self).__init__(iri)
+        super().__init__(iri)
 
         self.label = f"RDF Dataset with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
 

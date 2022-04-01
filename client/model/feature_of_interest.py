@@ -28,7 +28,7 @@ class FeatureOfInterest(Klass):
 
         self.iri = URIRef(iri)
 
-        super(FeatureOfInterest, self).__init__(iri)
+        super().__init__(iri)
 
         self.label = f"Feature of Interest with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
 

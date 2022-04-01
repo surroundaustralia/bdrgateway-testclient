@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from rdflib import Graph, URIRef, Literal
-from rdflib.namespace import RDF, RDFS, OWL, XSD
+from rdflib.namespace import RDF, RDFS, SOSA, OWL, XSD
 
 from client._TERN import TERN
 from client.model.feature_of_interest import FeatureOfInterest
@@ -50,9 +50,13 @@ class Sampling(Klass):
 
         self.iri = URIRef(iri)
 
-        super(Sampling, self).__init__(iri)
+        super().__init__(iri)
 
         self.label = f"Sampling with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
+
+        self.result_date_time = result_date_time
+        self.used_procedure = used_procedure
+        self.has_result = has_result
 
     def to_graph(self) -> Graph:
         g = super().to_graph()
@@ -60,5 +64,9 @@ class Sampling(Klass):
         g.add((self.iri, RDF.type, TERN.Sampling))
         g.remove((self.iri, RDFS.label, None))
         g.add((self.iri, RDFS.label, Literal(self.label)))
+        g.add((self.iri, TERN.resultDateTime, self.result_date_time))
+        g.add((self.iri, SOSA.usedProcedure, self.used_procedure))
+        for result in self.has_result:
+            g.add((self.iri, SOSA.hasResult, result.iri))
 
         return g
