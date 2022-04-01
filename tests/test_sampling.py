@@ -11,13 +11,14 @@ def test_basic_rdf():
         Concept(),
         rdfdataset1,
     )
-    results = [Sample([foi1], Concept(), rdfdataset1, None)]
+    sample1 = Sample([foi1], Concept(), rdfdataset1, None)
     s1 = Sampling(
         foi1,
         Literal("2001-01-01", datatype=XSD.date),
         URIRef("http://example.com/producure/x"),
-        results,
+        [sample1],
     )
+    sample1.is_result_of = s1  # link the Sample to the Sampling, now that both are declared
     rdf = s1.to_graph()
 
     assert (None, RDF.type, OWL.Class) not in rdf
