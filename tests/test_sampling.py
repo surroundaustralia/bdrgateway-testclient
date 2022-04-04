@@ -15,7 +15,7 @@ def test_basic_rdf():
     s1 = Sampling(
         foi1,
         Literal("2001-01-01", datatype=XSD.date),
-        URIRef("http://example.com/producure/x"),
+        URIRef("http://example.com/procedure/x"),
         [sample1],
     )
     sample1.is_result_of = s1  # link the Sample to the Sampling, now that both are declared
