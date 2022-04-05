@@ -16,7 +16,7 @@ class Observation(Klass):
         self,
         in_dataset: RDFDataset,
         has_result: Union[Value, Taxon],
-        has_feature_of_interest: FeatureOfInterest,
+        has_feature_of_interest: Union[FeatureOfInterest, "Sample"],
         has_simple_result: Union[URIRef, Literal],
         observed_property: URIRef,
         phenomenon_time: URIRef,
@@ -37,7 +37,7 @@ class Observation(Klass):
         ), "The object supplied for the property has_feature_of_interest must be of type FeatureOfInterest"
 
         assert (
-            len(has_simple_result) != 1
+            isinstance(has_simple_result.__class__, URIRef) or isinstance(has_simple_result.__class__, Literal),
         ), "There must be exactly 1 has_simple_result property"
 
         assert (

@@ -18,8 +18,8 @@ parser = argparse.ArgumentParser()
 
 def validate_number(value):
     ivalue = int(value)
-    if 1 < ivalue <= 10000:
-        raise argparse.ArgumentTypeError(f"Samplings number must be <= 1 and <= 10000, you gave {value}")
+    if ivalue < 1 or ivalue > 10000:
+        raise argparse.ArgumentTypeError(f"Samplings number must be >= 1 and <= 10000, you gave {value}")
     return ivalue
 
 

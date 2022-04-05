@@ -6,10 +6,18 @@ from typing import List
 
 from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import DCTERMS, RDF, SOSA, VOID, XSD
-
-from client.model._TERN import TERN
-from client.model import *
 from uuid import uuid4
+
+try:
+    from client.model._TERN import TERN
+    from client.model import *
+except:
+    import sys
+    from pathlib import Path
+    p = Path(__file__).parent.parent.resolve()
+    sys.path.append(str(p))
+    from client.model._TERN import TERN
+    from client.model import *
 
 
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
@@ -239,6 +247,14 @@ class Synthesizer:
     def __init__(self, n: int):
         assert n > 0, "n, the number of Samples, must be greater than zero"
 
+        self.datasets = []
+        self.fois = []
+        self.sites = []
+        self.samplings = []
+        self.samples = []
+        self.observations = []
+        self.taxa = []
+
         # create a list of RDFDataset instances
         for i in range(math.floor(n / 100) + 1):  # 1 per 100 Samplings
             self.datasets.append(RDFDataset())
@@ -250,6 +266,7 @@ class Synthesizer:
         # create Samplings
         for i in range(n):
             this_foi = self.fois[math.floor(i / 50)]
+            this_sni = random.choice(SCIENTIFIC_NAME_IDS)
             if random.random() > 0.667:  # 2/3 of Samplings have Samples with Observations with Taxa
                 this_concept = ANIMAL_CONCEPT
                 this_simple_result = Literal(f"Species {this_sni.split('/')[1]}"),
@@ -269,7 +286,6 @@ class Synthesizer:
                 [this_sample],
             )
             this_sample.is_result_of = this_sampling
-            this_sni = random.choice(SCIENTIFIC_NAME_IDS)
             this_obs = Observation(
                 self.datasets[math.floor(i / 2)],
                 this_result,

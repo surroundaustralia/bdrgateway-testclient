@@ -13,8 +13,8 @@ class Float(Value):
             value: Union[int, float],
             unit: Optional[URIRef] = None
     ):
-        assert type(value) not in [int, float], \
-            "You must supply an integer or a float for the value inpur parameter"
+        assert isinstance(value.__class__, int.__class__) or isinstance(value.__class__, float.__class__), \
+            "You must supply an integer or a float for the value input parameter"
 
         if unit is not None:
             assert type(unit) == URIRef, "If you supply a value for the input parameter unit, it must ne a URIRef"
