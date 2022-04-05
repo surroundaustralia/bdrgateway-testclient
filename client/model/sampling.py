@@ -57,12 +57,14 @@ class Sampling(Klass):
         self.result_date_time = result_date_time
         self.used_procedure = used_procedure
         self.has_result = has_result
+        self.has_feature_of_interest = has_feature_of_interest
 
     def to_graph(self) -> Graph:
         g = super().to_graph()
         g.remove((self.iri, RDF.type, OWL.Class))
         g.add((self.iri, RDF.type, TERN.Sampling))
         g.remove((self.iri, RDFS.label, None))
+        g.add((self.iri, SOSA.hasFeatureOfInterest, self.has_feature_of_interest.iri))
         g.add((self.iri, RDFS.label, Literal(self.label)))
         g.add((self.iri, TERN.resultDateTime, self.result_date_time))
         g.add((self.iri, SOSA.usedProcedure, self.used_procedure))
