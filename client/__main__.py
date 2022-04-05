@@ -37,4 +37,4 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-print(Synthesizer(args.num).to_graph())
+open("out.ttl", "w").write(Synthesizer(args.num).to_graph().serialize())

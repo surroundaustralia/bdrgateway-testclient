@@ -269,7 +269,7 @@ class Synthesizer:
             this_sni = random.choice(SCIENTIFIC_NAME_IDS)
             if random.random() > 0.667:  # 2/3 of Samplings have Samples with Observations with Taxa
                 this_concept = ANIMAL_CONCEPT
-                this_simple_result = Literal(f"Species {this_sni.split('/')[1]}"),
+                this_simple_result = Literal(f"Species {this_sni.split('/')[1]}")
                 this_result = Taxon(scientific_name_id=this_sni)
                 this_observed_property = URIRef("http://linked.data.gov.au/def/tern-cv/70646576-6dc7-4bc5-a9d8-c4c366850df0")  # Taxon
             else:  # 1/3 of Samplings have Observations with some numerical count, not Taxa
@@ -287,7 +287,7 @@ class Synthesizer:
             )
             this_sample.is_result_of = this_sampling
             this_obs = Observation(
-                self.datasets[math.floor(i / 2)],
+                self.datasets[math.floor(n / 100)],
                 this_result,
                 this_sample,
                 this_simple_result,
@@ -302,6 +302,7 @@ class Synthesizer:
             # s.is_sample_of.append(site1)
 
             self.samples.append(this_sample)
+            self.observations.append(this_obs)
 
     def _bind_prefixes(self, g: Graph):
         g.bind("bdrm", BDRM)
@@ -316,6 +317,8 @@ class Synthesizer:
         self._bind_prefixes(g)
         for s in self.samples:
             g += s.to_graph()
+        for o in self.observations:
+            g += o.to_graph()
         return g
 
 
