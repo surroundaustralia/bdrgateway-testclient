@@ -60,12 +60,33 @@ def create_synth_data(n: int, msg_type: Lit["create", "update", "delete", "exist
 
 
 def create_sampling_data(n: int):
-    # Sampling - has foi, result_date_time, used_procedure_has_result, optional iri
+    # Sampling - has foi, result_date_time, used_procedure, _has_result, optional iri
     # an activity of sampling carries out a sampling procedure to create a sample.
     # a sampling is the higher level of a sample
-    # we should say that every 50 samples we create a new sampling.
-        # Sample ->
+    # we should say that every 50 samples we create a new sampling. (therefore link to the has_result)
+    # the feature of interest can be every 50 samplings -> generate another loop to create 50 of these
+    # can have a fixed result_date_time for the time being
+
+    # every 50 samples create a new sampling and append to sampling list
+    # have a new rdf data set every 200 samplings
+
+    # SUMMARY:
+    # every 50 samplings -> sample, create a foi, every 4 foi create dataset
+    sampling = []
+    for index in range(0, sampling_number(n)):
+        pass
+    return sampling
+
+
+def create_feature_of_interest(n: int):
     pass
 
+
+def create_rdf_dataset(n: int):
+    pass
+
+
+def create_sample(n: int):
+    pass
 
 # create_synth_data(3, "create")
