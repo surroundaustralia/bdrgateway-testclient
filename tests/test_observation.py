@@ -25,9 +25,9 @@ def test_basic_rdf():
         rdfdataset1,
         Value(),
         foi1,
-        URIRef("https://example.com"),
-        foi1,
-        URIRef("http://example.com"),
+        URIRef("https://example.com/simpleresult/x"),
+        URIRef("http://example.com/observedproperty/x"),
+        URIRef("http://example.com/instant/x"),
         Literal("2001-01-01", datatype=XSD.date),
         URIRef("https://example.com/procedure/x/"),
     )
