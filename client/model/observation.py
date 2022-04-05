@@ -20,7 +20,7 @@ class Observation(Klass):
             has_result: Union[Value, Taxon],
             has_feature_of_interest: FeatureOfInterest,
             has_simple_result: Union[URIRef, Literal],
-            observed_property: FeatureOfInterest,
+            observed_property: URIRef,
             phenomenon_time: URIRef,
             result_date_time: Literal,
             used_procedure: URIRef,
@@ -43,8 +43,8 @@ class Observation(Klass):
         ), "There must be exactly 1 has_simple_result property"
 
         assert (
-                type(observed_property) == FeatureOfInterest
-        ), "The object supplied for the property observed_property must be of type FeatureOfInterest"
+                type(observed_property) == URIRef
+        ), "The object supplied for the property observed_property must be of type URIRef"
 
         assert (
                 len(phenomenon_time) != 1
@@ -93,7 +93,7 @@ class Observation(Klass):
         g.add((self.iri, SOSA.hasResult, self.has_result.iri))
         g.add((self.iri, SOSA.hasFeatureOfInterest, self.has_feature_of_interest.iri))
         g.add((self.iri, SOSA.hasSimpleResult, self.has_simple_result))
-        g.add((self.iri, SOSA.observedProperty, self.observed_property.iri))
+        g.add((self.iri, SOSA.observedProperty, self.observed_property))
         g.add((self.iri, SOSA.phenomenonTime, self.phenomenon_time))
         g.add((self.iri, TERN.resultDateTime, Literal(self.result_date_time)))
         g.add((self.iri, SOSA.usedProcedure, self.used_procedure))

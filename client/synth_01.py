@@ -95,20 +95,52 @@ def create_sample(n: int):
 if __name__ == "__main__":
     from client.model import *
 
-    ds = RDFDataset()
-    foi = FeatureOfInterest(Concept(), ds)
-    sam = Sample(
-        [foi],
+    # Sample
+    # Sampling
+    # FoI
+    # RDFDataset
+    ds1 = RDFDataset()
+    foi1 = FeatureOfInterest(Concept(), ds1)
+    sam1 = Sample(
+        [foi1],
         Concept(),
-        ds,
+        ds1,
         None
     )
-    s = Sampling(
-        foi,
+    s1 = Sampling(
+        foi1,
         Literal("2000-01-01", datatype=XSD.date),
         URIRef("http://example.com/procedure/x"),
-        [sam]
+        [sam1]
     )
-    sam.is_result_of = s
+    sam1.is_result_of = s1
+    # Site
+    # Observation
+    # Value
+    # Attribute
+    obs1 = Observation(
+        ds1,
+        Value(),
+        foi1,
+        Literal("timple result"),
+        URIRef("http://example.com/observedproperty/n"),
+        URIRef("http://example.com/instant/z"),
+        Literal("2000-01-01", datatype=XSD.date),
+        URIRef("http://example.com/procedure/a"),
+    )
+    site1 = Site(
+        obs1,
+        [foi1],
+        ds1,
+        Concept()
+    )
+    sam1.is_sample_of.append(site1)
+    g = sam1.to_graph()
+    g += s1.to_graph()
+    g += foi1.to_graph()
+    g += ds1.to_graph()
 
-    print(s.to_graph().serialize())
+    g += site1.to_graph()
+    g += obs1.to_graph()
+
+    print(g.serialize())

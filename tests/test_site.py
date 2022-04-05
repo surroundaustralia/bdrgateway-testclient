@@ -15,13 +15,12 @@ from client.model import (
 def test_basic_rdf():
     rdfdataset1 = RDFDataset()
     foi1 = FeatureOfInterest(Concept(), rdfdataset1)
-    foi2 = FeatureOfInterest(Concept(), rdfdataset1)
     obs1 = Observation(
         rdfdataset1,
         Value(),
         foi1,
         Literal("timple result"),
-        foi2,
+        URIRef("http://example.com/observedproperty/n"),
         URIRef("http://example.com/instant/z"),
         Literal("2000-01-01", datatype=XSD.date),
         URIRef("http://example.com/procedure/a"),
