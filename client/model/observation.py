@@ -16,22 +16,22 @@ from client.model.taxon import Taxon
 class Observation(Klass):
     def __init__(
         self,
-            in_dataset: RDFDataset,
-            has_result: Union[Value, Taxon],
-            has_feature_of_interest: FeatureOfInterest,
-            has_simple_result: Union[URIRef, Literal],
-            observed_property: URIRef,
-            phenomenon_time: URIRef,
-            result_date_time: Literal,
-            used_procedure: URIRef,
-            iri: Optional[str] = None
+        in_dataset: RDFDataset,
+        has_result: Union[Value, Taxon],
+        has_feature_of_interest: FeatureOfInterest,
+        has_simple_result: Union[URIRef, Literal],
+        observed_property: URIRef,
+        phenomenon_time: URIRef,
+        result_date_time: Literal,
+        used_procedure: URIRef,
+        iri: Optional[str] = None,
     ):
         assert (
             type(in_dataset) == RDFDataset
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
-        assert (
-            isinstance(has_result, Value)
+        assert isinstance(
+            has_result, Value
         ), "The object supplied for the property has_result must be of type Value or a subclass of it"
 
         assert (
@@ -43,16 +43,16 @@ class Observation(Klass):
         ), "There must be exactly 1 has_simple_result property"
 
         assert (
-                type(observed_property) == URIRef
+            type(observed_property) == URIRef
         ), "The object supplied for the property observed_property must be of type URIRef"
 
         assert (
-                len(phenomenon_time) != 1
+            len(phenomenon_time) != 1
         ), "There must be exactly 1 phenomenon of time property"
 
         xsd_date_types = [XSD.date, XSD.dateTime, XSD.dateTimeStamp]
         assert (
-                result_date_time.datatype in xsd_date_types
+            result_date_time.datatype in xsd_date_types
         ), f"The datatype of the property result_date_time must be one of {', '.join(xsd_date_types)}"
 
         assert (

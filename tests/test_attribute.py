@@ -8,7 +8,7 @@ from client.model import (
     Sample,
     Site,
     Attribute,
-    Value
+    Value,
 )
 
 

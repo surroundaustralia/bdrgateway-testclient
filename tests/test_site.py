@@ -8,7 +8,7 @@ from client.model import (
     FeatureOfInterest,
     Observation,
     Site,
-    Value
+    Value,
 )
 
 
@@ -25,15 +25,9 @@ def test_basic_rdf():
         Literal("2000-01-01", datatype=XSD.date),
         URIRef("http://example.com/procedure/a"),
     )
-    s1 = Site(
-        obs1,
-        [foi1],
-        rdfdataset1,
-        Concept()
-    )
+    s1 = Site(obs1, [foi1], rdfdataset1, Concept())
     rdf = s1.to_graph()
     print(rdf.serialize())
 
     assert (None, RDF.type, OWL.Class) not in rdf
     assert (None, RDF.type, TERN.Site)
-

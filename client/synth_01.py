@@ -1,24 +1,14 @@
-import argparse
-import random
-import string
 from typing import Literal as Lit
 
-from rdflib import Graph, URIRef, Literal, Namespace
+from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import DCTERMS, RDF, SOSA, VOID, XSD
 
 from _TERN import TERN
-from synth import FEATURE_TYPES, METHOD_TYPES, MESSAGE_TYPES, BDRM, GEO, ATTRIBUTE_LIST, GEOMETRY_DICT
-from synth import validate_number, random_char, rdf_ds_number, sampling_number, every_50_function
-from model import Sampling
+from synth import MESSAGE_TYPES, BDRM, GEO
+from synth import validate_number, sampling_number, rdf_ds_number
+from client.model import *
 
 
-# need to be able to create N samplings
-# start with making attribute list
-# allow the sampling to have different:
-# attribute, concept, foi,
-# observations, rdfdatasets, sample,
-# samplings, sites, values
-# ADDITIONALLY: should have some geosparql data -> using the geometry dict
 def prefix_creation():
     g = Graph()
     g.bind("bdrm", BDRM)
@@ -48,7 +38,9 @@ def create_synth_data(n: int, msg_type: Lit["create", "update", "delete", "exist
         "delete": BDRM.DeleteMessage,
         "exists": BDRM.ExistsMessage,
     }
-    msg_iri = URIRef("http://created_message.org/1")  # TODO: figure out what this iri is meant to be
+    msg_iri = URIRef(
+        "http://created_message.org/1"
+    )  # TODO: figure out what this iri is meant to be
     if msg_type == "create":
         g.add((msg_iri, RDF.type, msg_iris[msg_type]))
     else:  # TODO: fill in various options after following bdrm update/delete logic completed
@@ -59,19 +51,15 @@ def create_synth_data(n: int, msg_type: Lit["create", "update", "delete", "exist
     print(g.serialize())
 
 
-def create_sampling_data(n: int):
-    # Sampling - has foi, result_date_time, used_procedure, _has_result, optional iri
-    # an activity of sampling carries out a sampling procedure to create a sample.
-    # a sampling is the higher level of a sample
-    # we should say that every 50 samples we create a new sampling. (therefore link to the has_result)
-    # the feature of interest can be every 50 samplings -> generate another loop to create 50 of these
-    # can have a fixed result_date_time for the time being
+def create_rdf_dataset(n: int):
+    g = Graph()
+    for index in range(0, rdf_ds_number(n)):
+        rdf_data_set = RDFDataset()
+        g += rdf_data_set.to_graph()
+    return g
 
-    # every 50 samples create a new sampling and append to sampling list
-    # have a new rdf data set every 200 samplings
 
-    # SUMMARY:
-    # every 50 samplings -> sample, create a foi, every 4 foi create dataset
+def create_sampling(n: int):
     sampling = []
     for index in range(0, sampling_number(n)):
         pass
@@ -82,65 +70,84 @@ def create_feature_of_interest(n: int):
     pass
 
 
-def create_rdf_dataset(n: int):
-    pass
-
-
 def create_sample(n: int):
     pass
 
-# create_synth_data(3, "create")
+
+def link_sample_to_sampling_is_result_of(n: int):
+    pass
+
+
+def create_observation(n: int):
+    pass
+
+
+def create_site(n: int):
+    pass
+
+
+def append_site(n: int):
+    pass
+
+
+def add_to_graph(n: int):
+    pass
+
+
+# 200 samplings -> 1 dataset
+def create_synthetic_data(n):
+    create_rdf_dataset(n)
+    create_feature_of_interest(n)
+    create_sample(n)
+    create_sampling(n)
+    link_sample_to_sampling_is_result_of(n)
+    create_observation(n)
+    create_site(n)
+    append_site(n)
+    add_to_graph(n)
 
 
 if __name__ == "__main__":
     from client.model import *
 
+    # Creating one of each
     # Sample
     # Sampling
     # FoI
     # RDFDataset
-    ds1 = RDFDataset()
-    foi1 = FeatureOfInterest(Concept(), ds1)
-    sam1 = Sample(
-        [foi1],
-        Concept(),
-        ds1,
-        None
-    )
-    s1 = Sampling(
-        foi1,
+    dataset_1 = RDFDataset()
+    feature_of_interest_1 = FeatureOfInterest(Concept(), dataset_1)
+    sample_1 = Sample([feature_of_interest_1], Concept(), dataset_1, None)
+    sampling_1 = Sampling(
+        feature_of_interest_1,
         Literal("2000-01-01", datatype=XSD.date),
         URIRef("http://example.com/procedure/x"),
-        [sam1]
+        [sample_1],
     )
-    sam1.is_result_of = s1
+    sample_1.is_result_of = sampling_1
     # Site
     # Observation
     # Value
     # Attribute
-    obs1 = Observation(
-        ds1,
+    observation_1 = Observation(
+        dataset_1,
         Value(),
-        foi1,
+        feature_of_interest_1,
         Literal("timple result"),
         URIRef("http://example.com/observedproperty/n"),
         URIRef("http://example.com/instant/z"),
         Literal("2000-01-01", datatype=XSD.date),
         URIRef("http://example.com/procedure/a"),
     )
-    site1 = Site(
-        obs1,
-        [foi1],
-        ds1,
-        Concept()
-    )
-    sam1.is_sample_of.append(site1)
-    g = sam1.to_graph()
-    g += s1.to_graph()
-    g += foi1.to_graph()
-    g += ds1.to_graph()
+    site1 = Site(observation_1, [feature_of_interest_1], dataset_1, Concept())
+    sample_1.is_sample_of.append(site1)
+    g = sample_1.to_graph()
+    g += sampling_1.to_graph()
+    g += feature_of_interest_1.to_graph()
+    g += dataset_1.to_graph()
 
     g += site1.to_graph()
-    g += obs1.to_graph()
+    g += observation_1.to_graph()
 
-    print(g.serialize())
+    # print(g.serialize())
+

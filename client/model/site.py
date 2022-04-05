@@ -14,21 +14,21 @@ from client.model.feature_of_interest import FeatureOfInterest
 class Site(Klass):
     def __init__(
         self,
-            is_result_of: Observation,
-            is_sample_of: List[FeatureOfInterest],
-            in_dataset: RDFDataset,
-            feature_type: Concept,
-            iri: Optional[str] = None,
-            label: Optional[Literal] = None,
+        is_result_of: Observation,
+        is_sample_of: List[FeatureOfInterest],
+        in_dataset: RDFDataset,
+        feature_type: Concept,
+        iri: Optional[str] = None,
+        label: Optional[Literal] = None,
     ):
         assert (
             type(is_result_of) == Observation
         ), "You must supply an observation for sosa:isResultOf"
 
-        assert (
-            len(is_sample_of) >= 1
-        ), "You must supply a minimum of 1 Sample object(s)" \
-           " for the property is_sample_of"
+        assert len(is_sample_of) >= 1, (
+            "You must supply a minimum of 1 Sample object(s)"
+            " for the property is_sample_of"
+        )
 
         assert (
             type(in_dataset) == RDFDataset
@@ -39,7 +39,9 @@ class Site(Klass):
         ), "The object supplied for the property feature_type must be of type Concept"
 
         if label is not None:
-            assert type(label) == Literal, "If you supply a label, it must be an RDFLib Literal"
+            assert (
+                type(label) == Literal
+            ), "If you supply a label, it must be an RDFLib Literal"
 
         # this is potentially problematic as these sites shouldn't be random
         # But for now will continue and use the same logic as prior

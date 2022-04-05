@@ -8,4 +8,3 @@ from .attribute import Attribute
 from .site import Site
 from .value import Value
 from .observation import Observation
-

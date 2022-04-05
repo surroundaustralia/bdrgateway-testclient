@@ -18,7 +18,9 @@ def test_basic_rdf():
         URIRef("http://example.com/procedure/x"),
         [sample1],
     )
-    sample1.is_result_of = s1  # link the Sample to the Sampling, now that both are declared
+    sample1.is_result_of = (
+        s1  # link the Sample to the Sampling, now that both are declared
+    )
     rdf = s1.to_graph()
 
     assert (None, RDF.type, OWL.Class) not in rdf

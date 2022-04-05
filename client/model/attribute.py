@@ -13,19 +13,15 @@ from client.model.value import Value
 class Attribute(Klass):
     def __init__(
         self,
-            attribute: URIRef,
-            has_simple_value: str or URIRef,
-            has_value: Value,    # in the tern this says its a class but am unsure how to execute properly TODO: Confirm Value.py is correct
-            in_dataset: RDFDataset,
-            iri: Optional[str] = None
+        attribute: URIRef,
+        has_simple_value: str or URIRef,
+        has_value: Value,  # in the tern this says its a class but am unsure how to execute properly TODO: Confirm Value.py is correct
+        in_dataset: RDFDataset,
+        iri: Optional[str] = None,
     ):
-        assert (
-            len(attribute) >= 1
-        ), "You must supply exactly 1 attributes"
+        assert len(attribute) >= 1, "You must supply exactly 1 attributes"
 
-        assert (
-            len(has_simple_value) >= 1
-        ), "You must supply a exactly 1 attributes"
+        assert len(has_simple_value) >= 1, "You must supply a exactly 1 attributes"
 
         assert (
             type(has_value) == Value

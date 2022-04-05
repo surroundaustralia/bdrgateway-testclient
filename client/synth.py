@@ -12,29 +12,54 @@ BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
 
 # randomised points in WA
-GEOMETRY_DICT = {"CF": "POINT (-33.463985, 116.195552)",
-                 "MSF": "POINT (-33.458375, 116.118227)",
-                 "WF": "POINT (-33.351726, 116.030816)",
-                 "HRSF": "POINT (-33.289922, 116.094693)",
-                 "ACF": "POINT (-33.455571, 116.245981)",
-                 "TW": "POINT (-33.629302, 116.511577)",
-                 "OV": "POINT (-33.947830, 116.827601)",
-                 "W": "POINT (-33.177438, 116.720018)",
-                 "RW": "POINT (-32.836297, 116.948632)"}
+GEOMETRY_DICT = {
+    "CF": "POINT (-33.463985, 116.195552)",
+    "MSF": "POINT (-33.458375, 116.118227)",
+    "WF": "POINT (-33.351726, 116.030816)",
+    "HRSF": "POINT (-33.289922, 116.094693)",
+    "ACF": "POINT (-33.455571, 116.245981)",
+    "TW": "POINT (-33.629302, 116.511577)",
+    "OV": "POINT (-33.947830, 116.827601)",
+    "W": "POINT (-33.177438, 116.720018)",
+    "RW": "POINT (-32.836297, 116.948632)",
+}
 
 # Note this isn't complete attribute list
-ATTRIBUTE_LIST = [URIRef("http://linked.data.gov.au/def/tern-cv/dbff3449-2ec9-4722-a953-87c78da86f74"), # bioregion
-                  URIRef("https://linkeddata.tern.org.au/viewer/tern/id/http://linked.data.gov.au/def/tern-cv/335a84cd-01af-49cb-8532-acf71dc1d980"), #comment on community extent
-                  URIRef("http://linked.data.gov.au/def/tern-cv/e5953626-5c62-4baa-b8e5-36a7e6660611"), # comment on distance to infrastructure
-                  URIRef("https://linkeddata.tern.org.au/viewer/tern/id/http://linked.data.gov.au/def/tern-cv/5acbfe4f-19e0-456c-89db-961013e6cd7c"), # date identified
-                  URIRef("http://linked.data.gov.au/def/tern-cv/e926b2ca-2688-486c-aa28-435f91c3c110"), #distance to nearest human infrastructure
-                  URIRef("http://linked.data.gov.au/def/tern-cv/76806e0f-61a2-447c-8177-7e666637e23a"), #elevation of site
-                  URIRef("http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924"), # growth form
-                  URIRef("http://linked.data.gov.au/def/tern-cv/45a86abc-43c7-4a30-ac73-fc8d62538140"), # identification remarks
-                  URIRef("http://linked.data.gov.au/def/tern-cv/54e40f12-8c13-495a-9f8d-838d78faa5a7"), #identification uncertainty
-                  URIRef("http://linked.data.gov.au/def/tern-cv/2ad7e552-5bca-45cf-805a-10ba5a98862a"), # identified by
-                  URIRef("http://linked.data.gov.au/def/tern-cv/9b2ab960-da97-473a-81af-d50ab6041739"), # canopy sky
-                  ]
+ATTRIBUTE_LIST = [
+    URIRef(
+        "http://linked.data.gov.au/def/tern-cv/dbff3449-2ec9-4722-a953-87c78da86f74"
+    ),  # bioregion
+    URIRef(
+        "https://linkeddata.tern.org.au/viewer/tern/id/http://linked.data.gov.au/def/tern-cv/335a84cd-01af-49cb-8532-acf71dc1d980"
+    ),  # comment on community extent
+    URIRef(
+        "http://linked.data.gov.au/def/tern-cv/e5953626-5c62-4baa-b8e5-36a7e6660611"
+    ),  # comment on distance to infrastructure
+    URIRef(
+        "https://linkeddata.tern.org.au/viewer/tern/id/http://linked.data.gov.au/def/tern-cv/5acbfe4f-19e0-456c-89db-961013e6cd7c"
+    ),  # date identified
+    URIRef(
+        "http://linked.data.gov.au/def/tern-cv/e926b2ca-2688-486c-aa28-435f91c3c110"
+    ),  # distance to nearest human infrastructure
+    URIRef(
+        "http://linked.data.gov.au/def/tern-cv/76806e0f-61a2-447c-8177-7e666637e23a"
+    ),  # elevation of site
+    URIRef(
+        "http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924"
+    ),  # growth form
+    URIRef(
+        "http://linked.data.gov.au/def/tern-cv/45a86abc-43c7-4a30-ac73-fc8d62538140"
+    ),  # identification remarks
+    URIRef(
+        "http://linked.data.gov.au/def/tern-cv/54e40f12-8c13-495a-9f8d-838d78faa5a7"
+    ),  # identification uncertainty
+    URIRef(
+        "http://linked.data.gov.au/def/tern-cv/2ad7e552-5bca-45cf-805a-10ba5a98862a"
+    ),  # identified by
+    URIRef(
+        "http://linked.data.gov.au/def/tern-cv/9b2ab960-da97-473a-81af-d50ab6041739"
+    ),  # canopy sky
+]
 
 # Feature Types vocab http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d
 FEATURE_TYPES = [
