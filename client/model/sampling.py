@@ -15,7 +15,7 @@ class Sampling(Klass):
         has_feature_of_interest: FeatureOfInterest,
         result_date_time: Literal,
         used_procedure: URIRef,
-        has_result: List[Sample],
+        has_result: List[Sample] = [],
         iri: Optional[str] = None,
     ):
         assert (
@@ -35,13 +35,14 @@ class Sampling(Klass):
             isinstance(used_procedure.__class__, URIRef.__class__)
         ), "The object supplied for the property used_procedure must be of type URIRef"
 
-        assert (
-            len(has_result) >= 1
-        ), "You must supply a minimum of 1 Sample objects for the property has_result"
+        # assert (
+        #     len(has_result) >= 1
+        # ), "You must supply a minimum of 1 Sample objects for the property has_result"
 
-        assert all(
-            isinstance(el.__class__, Sample.__class__) for el in has_result
-        ), "Every object supplied in the property has_result list must be of type Sample"
+        if len(has_result) > 0:
+            assert all(
+                isinstance(el.__class__, Sample.__class__) for el in has_result
+            ), "Every value supplied for has_result must be of type Sample"
 
         """Receive and use or make an IRI"""
         if iri is None:

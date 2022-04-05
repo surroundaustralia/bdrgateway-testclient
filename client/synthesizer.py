@@ -1,18 +1,21 @@
-import argparse
+import math
 import random
 import string
 from typing import Literal as Lit
+from typing import List
 
 from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import DCTERMS, RDF, SOSA, VOID, XSD
 
 from client.model._TERN import TERN
+from client.model import *
+from uuid import uuid4
+
 
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
 
-# randomised points in WA
-GEOMETRY_DICT = {
+GEOMETRY_EXTENT = {
     "CF": "POINT (-33.463985, 116.195552)",
     "MSF": "POINT (-33.458375, 116.118227)",
     "WF": "POINT (-33.351726, 116.030816)",
@@ -25,7 +28,7 @@ GEOMETRY_DICT = {
 }
 
 # Note this isn't complete attribute list
-ATTRIBUTE_LIST = [
+ATTRIBUTE_TYPES = [
     URIRef(
         "http://linked.data.gov.au/def/tern-cv/dbff3449-2ec9-4722-a953-87c78da86f74"
     ),  # bioregion
@@ -89,7 +92,7 @@ FEATURE_TYPES = [
     URIRef(
         "http://linked.data.gov.au/def/tern-cv/45a73139-f6bf-47b7-88d4-4b2865755545"
     ),
-    # fungal occurence
+    # fungal occurrence
     URIRef(
         "http://linked.data.gov.au/def/tern-cv/afc81cca-9122-4e36-823d-31dd765e9257"
     ),
@@ -126,6 +129,9 @@ FEATURE_TYPES = [
     ),
     # plant specimen
 ]
+
+ANIMAL_CONCEPT = Concept("http://linked.data.gov.au/def/tern-cv/2361dea8-598c-4b6f-a641-2b98ff199e9e")
+ANIMAL_POPULATION_CONCEPT = Concept("http://linked.data.gov.au/def/tern-cv/cd5cbdbb-07d9-4a5b-9b11-5ab9d6015be6")
 
 # Method Types vocab http://linked.data.gov.au/def/tern-cv/9b6e057f-271b-48f6-8c33-0528bf6b60df
 METHOD_TYPES = [
@@ -205,8 +211,96 @@ METHOD_TYPES = [
     # vertex hypsometer
 ]
 
+SCIENTIFIC_NAME_IDS = [
+    URIRef("https://fake-scientific-name-id.com/name/afd/001"),
+    URIRef("https://fake-scientific-name-id.com/name/afd/002"),
+    URIRef("https://fake-scientific-name-id.com/name/afd/003"),
+    URIRef("https://fake-scientific-name-id.com/name/afd/004"),
+    URIRef("https://fake-scientific-name-id.com/name/afd/005"),
+    URIRef("https://fake-scientific-name-id.com/name/afd/006"),
+    URIRef("https://fake-scientific-name-id.com/name/afd/007"),
+    URIRef("https://fake-scientific-name-id.com/name/afd/008"),
+    URIRef("https://fake-scientific-name-id.com/name/afd/009"),
+    URIRef("https://fake-scientific-name-id.com/name/afd/010"),
+]
 
 MESSAGE_TYPES = ["create", "update", "delete", "exists"]
+
+
+class Synthesizer:
+    datasets: List[RDFDataset]
+    fois = List[FeatureOfInterest]
+    sites = List[Site]
+    samplings = List[Sampling]
+    samples = List[Sample]
+    observations = List[Observation]
+    taxa = List[Taxon]
+
+    def __init__(self, n: int):
+        assert n > 0, "n, the number of Samples, must be greater than zero"
+
+        # create a list of RDFDataset instances
+        for i in range(math.floor(n / 100) + 1):  # 1 per 100 Samplings
+            self.datasets.append(RDFDataset())
+
+        # create a list of FoI instances: 1 per 50 Samplings
+        for i in range(math.floor(n / 50) + 1):
+            self.fois.append(FeatureOfInterest(Concept(), self.datasets[math.floor(i / 2)]))
+
+        # create Samplings
+        for i in range(n):
+            this_foi = self.fois[math.floor(i / 50)]
+            if random.random() > 0.667:  # 2/3 of Samplings have Samples with Observations with Taxa
+                this_concept = ANIMAL_CONCEPT
+                this_simple_result = Literal(f"Species {this_sni.split('/')[1]}"),
+                this_result = Taxon(scientific_name_id=this_sni)
+                this_observed_property = URIRef("http://linked.data.gov.au/def/tern-cv/70646576-6dc7-4bc5-a9d8-c4c366850df0")  # Taxon
+            else:  # 1/3 of Samplings have Observations with some numerical count, not Taxa
+                this_concept = ANIMAL_POPULATION_CONCEPT
+                this_simple_result = Literal(f"Count {this_sni.split('/')[1]}")
+                this_result = Float(random.randint(0, 1000))
+                this_observed_property = URIRef("http://linked.data.gov.au/def/tern-cv/2023575a-f0f9-40cc-b211-febbb652da22")  # basal area count
+
+            this_sample = Sample([this_foi], this_concept, self.datasets[math.floor(1 / 100)], None)
+            this_sampling = Sampling(
+                this_foi,
+                Literal("2000-01-01", datatype=XSD.date),
+                random.choice(METHOD_TYPES),
+                [this_sample],
+            )
+            this_sample.is_result_of = this_sampling
+            this_sni = random.choice(SCIENTIFIC_NAME_IDS)
+            this_obs = Observation(
+                self.datasets[math.floor(i / 2)],
+                this_result,
+                this_sample,
+                this_simple_result,
+                this_observed_property,
+                URIRef(f"http://example.com/instant/{uuid4()}"),
+                Literal("2000-01-01", datatype=XSD.date),
+                random.choice(METHOD_TYPES),
+            )
+
+            # no Sites for now
+            # site1 = Site(observation_1, [this_foi], ds, Concept())
+            # s.is_sample_of.append(site1)
+
+            self.samples.append(this_sample)
+
+    def _bind_prefixes(self, g: Graph):
+        g.bind("bdrm", BDRM)
+        g.bind("dcterms", DCTERMS)
+        g.bind("geo", GEO)
+        g.bind("sosa", SOSA)
+        g.bind("tern", TERN)
+        g.bind("void", VOID)
+
+    def to_graph(self):
+        g = Graph()
+        self._bind_prefixes(g)
+        for s in self.samples:
+            g += s.to_graph()
+        return g
 
 
 def validate_number(n):
@@ -360,34 +454,3 @@ def create_dataset(n: int, msg_type: Lit["create", "update", "delete", "exists"]
         g.add((sampling_iri, SOSA.hasResult, sample_iri))
 
     return g.serialize()
-
-
-def main():
-    parser = argparse.ArgumentParser()
-
-    def check_positive_one(value):
-        ivalue = int(value)
-        if ivalue <= 1:
-            raise argparse.ArgumentTypeError("%s is not >= 1" % value)
-        return ivalue
-
-    parser.add_argument(
-        "num",
-        help="The number of Samplings you want to synthesise data for",
-        type=check_positive_one,
-    )
-
-    parser.add_argument(
-        "msg_type",
-        help="The type of message to wrap the data in",
-        choices=MESSAGE_TYPES,
-    )
-
-    args = parser.parse_args()
-
-    print(create_dataset(args.num, args.msg_type))
-
-
-if __name__ == "__main__":
-    # main()
-    create_dataset(2, "nick")

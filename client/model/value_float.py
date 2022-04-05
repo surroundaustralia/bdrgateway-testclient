@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Union
 
 from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import RDF, RDFS, XSD
@@ -10,18 +10,18 @@ from client.model.value import Value
 class Float(Value):
     def __init__(
             self,
-            value: Literal,
+            value: Union[int, float],
             unit: Optional[URIRef] = None
     ):
-        assert type(value) == Literal and value.datatype == XSD.double, \
-            "You must supply a Literal value for the input parameter value and it must be of datatype xsd:double"
+        assert type(value) not in [int, float], \
+            "You must supply an integer or a float for the value inpur parameter"
 
         if unit is not None:
             assert type(unit) == URIRef, "If you supply a value for the input parameter unit, it must ne a URIRef"
 
         super().__init__()
 
-        self.value = value
+        self.value = Literal(value, datatype=XSD.double)
         self.unit = unit
 
     def to_graph(self) -> Graph:

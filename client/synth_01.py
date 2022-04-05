@@ -9,15 +9,13 @@ from synth import validate_number, sampling_number, rdf_ds_number
 from model import *
 
 
-def prefix_creation():
-    g = Graph()
+def bind_prefixes(g: Graph):
     g.bind("bdrm", BDRM)
     g.bind("dcterms", DCTERMS)
     g.bind("geo", GEO)
     g.bind("sosa", SOSA)
     g.bind("tern", TERN)
     g.bind("void", VOID)
-    return g
 
 
 def create_synth_data(n: int, msg_type: Lit["create", "update", "delete", "exists"]):
@@ -30,7 +28,7 @@ def create_synth_data(n: int, msg_type: Lit["create", "update", "delete", "exist
         raise ValueError(f"msg_type must be one of {', '.join(MESSAGE_TYPES)}")
 
     # Prefix and base URI creation
-    g = prefix_creation()
+    g = bind_prefixes()
     # BDR Message
     msg_iris = {
         "create": BDRM.CreateMessage,
@@ -66,53 +64,13 @@ def create_sampling(n: int):
     return sampling
 
 
-def create_feature_of_interest(n: int):
-    pass
-
-
-def create_sample(n: int):
-    pass
-
-
 def link_sample_to_sampling_is_result_of(n: int):
     pass
 
 
-def create_observation(n: int):
-    pass
+def create_n_samples_graph(n: int) -> Graph:
 
 
-def create_site(n: int):
-    pass
-
-
-def append_site(n: int):
-    pass
-
-
-def add_to_graph(n: int):
-    pass
-
-
-# 200 samplings -> 1 dataset
-def create_synthetic_data(n):
-    create_rdf_dataset(n)
-    create_feature_of_interest(n)
-    create_sample(n)
-    create_sampling(n)
-    link_sample_to_sampling_is_result_of(n)
-    create_observation(n)
-    create_site(n)
-    append_site(n)
-    add_to_graph(n)
-
-
-if __name__ == "__main__":
-    # Creating one of each
-    # Sample
-    # Sampling
-    # FoI
-    # RDFDataset
     dataset_1 = RDFDataset()
     feature_of_interest_1 = FeatureOfInterest(Concept(), dataset_1)
     sample_1 = Sample([feature_of_interest_1], Concept(), dataset_1, None)
@@ -123,15 +81,11 @@ if __name__ == "__main__":
         [sample_1],
     )
     sample_1.is_result_of = sampling_1
-    # Site
-    # Observation
-    # Value
-    # Attribute
     observation_1 = Observation(
         dataset_1,
         Float(Literal(42.3)),
         feature_of_interest_1,
-        Literal("timple result"),
+        Literal("simple result"),
         URIRef("http://example.com/observedproperty/n"),
         URIRef("http://example.com/instant/z"),
         Literal("2000-01-01", datatype=XSD.date),
@@ -139,6 +93,9 @@ if __name__ == "__main__":
     )
     site1 = Site(observation_1, [feature_of_interest_1], dataset_1, Concept())
     sample_1.is_sample_of.append(site1)
-    g = sample_1.to_graph()
 
-    open("out2.ttl", "w").write(g.serialize())
+    return sample_1.to_graph()
+
+
+if __name__ == "__main__":
+    print(create_n_samples_graph(n).serialize())
