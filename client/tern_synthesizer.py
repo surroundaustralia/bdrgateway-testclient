@@ -11,6 +11,7 @@ from uuid import uuid4
 try:
     from client.model._TERN import TERN
     from client.model import *
+    from client.__main__ import MESSAGE_TYPES
 except:
     import sys
     from pathlib import Path
@@ -19,6 +20,7 @@ except:
     sys.path.append(str(p))
     from client.model._TERN import TERN
     from client.model import *
+    from client.__main__ import MESSAGE_TYPES
 
 
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")

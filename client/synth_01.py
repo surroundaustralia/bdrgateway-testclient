@@ -4,8 +4,8 @@ from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import DCTERMS, RDF, SOSA, VOID, XSD
 
 from client.model._TERN import TERN
-from synth import MESSAGE_TYPES, BDRM, GEO
-from synth import validate_number, sampling_number, rdf_ds_number
+from client.tern_synthesizer import BDRM, GEO, validate_number, sampling_number, rdf_ds_number
+from client.__main__ import MESSAGE_TYPES
 from model import *
 
 
