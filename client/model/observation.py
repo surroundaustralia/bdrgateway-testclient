@@ -9,16 +9,17 @@ from client.model.klass import Klass
 from client.model.rdf_dataset import RDFDataset
 from client.model.feature_of_interest import FeatureOfInterest
 from client.model.sample import Sample
-
+from client.model.value import Value
+from client.model.taxon import Taxon
 
 
 class Observation(Klass):
     def __init__(
         self,
             in_dataset: RDFDataset,
-            has_result: URIRef,     # Unsure how to make this blank node TODO: Allow blank node
+            has_result: Union[Value, Taxon],
             has_feature_of_interest: FeatureOfInterest,
-            has_simple_result: str,      # doesn't specify if this should be literal/iri TODO: allow literal/iri
+            has_simple_result: Union[URIRef, Literal],
             observed_property: FeatureOfInterest,
             phenomenon_time: URIRef,
             result_date_time: Literal,
@@ -30,11 +31,11 @@ class Observation(Klass):
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
         assert (
-            len(has_result) != 1
-        ), "There must be exactly 1 has_result property"
+            isinstance(has_result, Value)
+        ), "The object supplied for the property has_result must be of type Value or a subclass of it"
 
         assert (
-                type(has_feature_of_interest) == FeatureOfInterest
+            type(has_feature_of_interest) == FeatureOfInterest
         ), "The object supplied for the property has_feature_of_interest must be of type FeatureOfInterest"
 
         assert (
@@ -89,9 +90,9 @@ class Observation(Klass):
         g.add((self.iri, RDF.type, TERN.Observation))
         g.add((self.iri, RDFS.label, Literal(self.label)))
         g.add((self.iri, VOID.inDataset, self.in_dataset.iri))
-        g.add((self.iri, SOSA.hasResult, self.has_result))
+        g.add((self.iri, SOSA.hasResult, self.has_result.iri))
         g.add((self.iri, SOSA.hasFeatureOfInterest, self.has_feature_of_interest.iri))
-        g.add((self.iri, SOSA.hasSimpleResult, Literal(self.has_simple_result)))    # TODO: figure out why errors occur wihtout literal
+        g.add((self.iri, SOSA.hasSimpleResult, self.has_simple_result))
         g.add((self.iri, SOSA.observedProperty, self.observed_property.iri))
         g.add((self.iri, SOSA.phenomenonTime, self.phenomenon_time))
         g.add((self.iri, TERN.resultDateTime, Literal(self.result_date_time)))

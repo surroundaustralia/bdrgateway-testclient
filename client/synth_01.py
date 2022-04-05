@@ -90,3 +90,25 @@ def create_sample(n: int):
     pass
 
 # create_synth_data(3, "create")
+
+
+if __name__ == "__main__":
+    from client.model import *
+
+    ds = RDFDataset()
+    foi = FeatureOfInterest(Concept(), ds)
+    sam = Sample(
+        [foi],
+        Concept(),
+        ds,
+        None
+    )
+    s = Sampling(
+        foi,
+        Literal("2000-01-01", datatype=XSD.date),
+        URIRef("http://example.com/procedure/x"),
+        [sam]
+    )
+    sam.is_result_of = s
+
+    print(s.to_graph().serialize())

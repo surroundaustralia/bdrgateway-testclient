@@ -16,13 +16,12 @@ from client.model import (
 # TODO: Confirm this testing is sufficient
 def test_basic_rdf():
     rdfdataset1 = RDFDataset()
-    has_result = URIRef("https://example.org")
     foi1 = FeatureOfInterest(Concept(), rdfdataset1, )
 
     s1 = Observation(rdfdataset1,
-                     has_result,
+                     Value(),
                      foi1,
-                     "https://example.com",
+                     URIRef("https://example.com"),
                      foi1,
                      URIRef("http://example.com"),
                      Literal("2001-01-01", datatype=XSD.date),
