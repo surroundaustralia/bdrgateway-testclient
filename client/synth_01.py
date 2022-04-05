@@ -1,0 +1,71 @@
+import argparse
+import random
+import string
+from typing import Literal as Lit
+
+from rdflib import Graph, URIRef, Literal, Namespace
+from rdflib.namespace import DCTERMS, RDF, SOSA, VOID, XSD
+
+from _TERN import TERN
+from synth import FEATURE_TYPES, METHOD_TYPES, MESSAGE_TYPES, BDRM, GEO, ATTRIBUTE_LIST, GEOMETRY_DICT
+from synth import validate_number, random_char, rdf_ds_number, sampling_number, every_50_function
+from model import Sampling
+
+
+# need to be able to create N samplings
+# start with making attribute list
+# allow the sampling to have different:
+# attribute, concept, foi,
+# observations, rdfdatasets, sample,
+# samplings, sites, values
+# ADDITIONALLY: should have some geosparql data -> using the geometry dict
+def prefix_creation():
+    g = Graph()
+    g.bind("bdrm", BDRM)
+    g.bind("dcterms", DCTERMS)
+    g.bind("geo", GEO)
+    g.bind("sosa", SOSA)
+    g.bind("tern", TERN)
+    g.bind("void", VOID)
+    return g
+
+
+def create_synth_data(n: int, msg_type: Lit["create", "update", "delete", "exists"]):
+    # validate the data and ensure data points is within 1 - 10000
+    if not validate_number(n):
+        raise ValueError("%s is not >= 1" % n)
+
+    # ensuring a bdrm message is used
+    if msg_type not in MESSAGE_TYPES:
+        raise ValueError(f"msg_type must be one of {', '.join(MESSAGE_TYPES)}")
+
+    # Prefix and base URI creation
+    g = prefix_creation()
+    # BDR Message
+    msg_iris = {
+        "create": BDRM.CreateMessage,
+        "update": BDRM.UpdateMessage,
+        "delete": BDRM.DeleteMessage,
+        "exists": BDRM.ExistsMessage,
+    }
+    msg_iri = URIRef("http://created_message.org/1")  # TODO: figure out what this iri is meant to be
+    if msg_type == "create":
+        g.add((msg_iri, RDF.type, msg_iris[msg_type]))
+    else:  # TODO: fill in various options after following bdrm update/delete logic completed
+        pass
+
+    # Create Sampling Data -> every 50 samples should have a new feature of interest
+
+    print(g.serialize())
+
+
+def create_sampling_data(n: int):
+    # Sampling - has foi, result_date_time, used_procedure_has_result, optional iri
+    # an activity of sampling carries out a sampling procedure to create a sample.
+    # a sampling is the higher level of a sample
+    # we should say that every 50 samples we create a new sampling.
+        # Sample ->
+    pass
+
+
+# create_synth_data(3, "create")
