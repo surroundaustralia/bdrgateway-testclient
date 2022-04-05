@@ -6,7 +6,7 @@ from typing import Literal as Lit
 from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import DCTERMS, RDF, SOSA, VOID, XSD
 
-from _TERN import TERN
+from client.model._TERN import TERN
 
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")

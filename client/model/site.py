@@ -3,15 +3,14 @@ from typing import Optional, List
 from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import RDF, RDFS, OWL, VOID, SOSA
 
-from client._TERN import TERN
-from client.model.observation import Observation
+from client.model._TERN import TERN
 from client.model.concept import Concept
-from client.model.klass import Klass
-from client.model.rdf_dataset import RDFDataset
 from client.model.feature_of_interest import FeatureOfInterest
+from client.model.observation import Observation
+from client.model.rdf_dataset import RDFDataset
 
 
-class Site(Klass):
+class Site(FeatureOfInterest):
     def __init__(
         self,
         is_result_of: Observation,
@@ -22,7 +21,7 @@ class Site(Klass):
         label: Optional[Literal] = None,
     ):
         assert (
-            type(is_result_of) == Observation
+            isinstance(is_result_of.__class__, Observation.__class__)
         ), "You must supply an observation for sosa:isResultOf"
 
         assert len(is_sample_of) >= 1, (
@@ -31,16 +30,16 @@ class Site(Klass):
         )
 
         assert (
-            type(in_dataset) == RDFDataset
+            isinstance(in_dataset.__class__, RDFDataset.__class__)
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
         assert (
-            type(feature_type) == Concept
+            isinstance(feature_type.__class__, Concept.__class__)
         ), "The object supplied for the property feature_type must be of type Concept"
 
         if label is not None:
             assert (
-                type(label) == Literal
+                isinstance(label.__class__, Literal.__class__)
             ), "If you supply a label, it must be an RDFLib Literal"
 
         # this is potentially problematic as these sites shouldn't be random
@@ -51,7 +50,7 @@ class Site(Klass):
             iri = URIRef(f"http://example.com/site/{self.id}")
 
         self.iri = URIRef(iri)
-        super().__init__(iri)
+        super().__init__(feature_type, iri)
         self.feature_type = feature_type
         self.in_dataset = in_dataset
         self.is_result_of = is_result_of
@@ -77,6 +76,8 @@ class Site(Klass):
 
         if self.is_result_of is not None:
             g.add((self.iri, SOSA.isResultOf, self.is_result_of.iri))
+            if (self.is_result_of.iri, RDF.type, None) not in g:
+                g += self.is_result_of.to_graph()
         for ele in self.is_sample_of:
             g.add((self.iri, SOSA.isSampleOf, ele.iri))
 

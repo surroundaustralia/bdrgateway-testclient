@@ -1,8 +1,8 @@
 from rdflib import Literal, URIRef
 from rdflib.namespace import OWL, RDF, XSD
 
-from client._TERN import TERN
 from client.model import Concept, FeatureOfInterest, RDFDataset, Sample, Sampling
+from client.model._TERN import TERN
 
 
 def test_basic_rdf():

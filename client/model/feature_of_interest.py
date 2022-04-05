@@ -3,7 +3,7 @@ from typing import Optional
 from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import RDF, RDFS, OWL, VOID
 
-from client._TERN import TERN
+from client.model._TERN import TERN
 from client.model.concept import Concept
 from client.model.klass import Klass
 from client.model.rdf_dataset import RDFDataset
@@ -14,11 +14,11 @@ class FeatureOfInterest(Klass):
         self, feature_type: Concept, in_dataset: RDFDataset, iri: Optional[str] = None
     ):
         assert (
-            type(feature_type) == Concept
-        ), "The object supplied for the property feature_type must be of type Concept"
+            isinstance(feature_type.__class__, Concept.__class__)
+        ), f"The object supplied for the property feature_type must be of type Concept. You gave a {type(feature_type)}"
 
         assert (
-            type(in_dataset) == RDFDataset
+            isinstance(in_dataset.__class__, RDFDataset.__class__)
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
         """Receive and use or make an IRI"""

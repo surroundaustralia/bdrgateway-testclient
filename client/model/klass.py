@@ -4,10 +4,12 @@ from uuid import uuid4
 from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import RDF, RDFS, OWL
 
-from client._TERN import TERN
+from client.model._TERN import TERN
 
 
 class Klass:
+    iri = None
+
     def __init__(self, iri: Optional[str] = None):
         """Receive and use or make an IRI"""
         if iri is None:

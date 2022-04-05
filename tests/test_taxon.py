@@ -1,8 +1,8 @@
-from rdflib import URIRef, Literal, Namespace
-from rdflib.namespace import OWL, RDF, SKOS
+from rdflib import URIRef, Namespace
+from rdflib.namespace import OWL, RDF
 
-from client._TERN import TERN
 from client.model import Taxon
+from client.model._TERN import TERN
 
 DWC = Namespace("http://rs.tdwg.org/dwc/terms/")
 

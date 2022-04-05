@@ -1,10 +1,9 @@
 from typing import Optional
-from uuid import uuid4
 
 from rdflib import Graph, URIRef, Literal, Namespace
-from rdflib.namespace import RDF, RDFS, OWL
+from rdflib.namespace import RDF, RDFS
 
-from client._TERN import TERN
+from client.model._TERN import TERN
 from client.model.value import Value
 
 DWC = Namespace("http://rs.tdwg.org/dwc/terms/")

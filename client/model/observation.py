@@ -1,12 +1,12 @@
 from typing import Optional, Union
 
-from rdflib import Graph, URIRef, Literal, BNode
+from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import RDF, RDFS, OWL, VOID, SOSA, XSD
 
-from client._TERN import TERN
+from client.model._TERN import TERN
+from client.model.feature_of_interest import FeatureOfInterest
 from client.model.klass import Klass
 from client.model.rdf_dataset import RDFDataset
-from client.model.feature_of_interest import FeatureOfInterest
 from client.model.value import Value
 from client.model.value_taxon import Taxon
 
@@ -25,15 +25,15 @@ class Observation(Klass):
         iri: Optional[str] = None,
     ):
         assert (
-            type(in_dataset) == RDFDataset
+            isinstance(in_dataset.__class__, RDFDataset.__class__)
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
         assert isinstance(
-            has_result, Value
+            has_result.__class__, Value.__class__
         ), "The object supplied for the property has_result must be of type Value or a subclass of it"
 
         assert (
-            type(has_feature_of_interest) == FeatureOfInterest
+            isinstance(has_feature_of_interest.__class__, FeatureOfInterest.__class__)
         ), "The object supplied for the property has_feature_of_interest must be of type FeatureOfInterest"
 
         assert (
@@ -41,7 +41,7 @@ class Observation(Klass):
         ), "There must be exactly 1 has_simple_result property"
 
         assert (
-            type(observed_property) == URIRef
+            isinstance(observed_property.__class__, URIRef.__class__)
         ), "The object supplied for the property observed_property must be of type URIRef"
 
         assert (
@@ -58,7 +58,7 @@ class Observation(Klass):
         ), "There must be exactly 1 used_procedure property"
 
         assert (
-            type(in_dataset) == RDFDataset
+            isinstance(in_dataset.__class__, RDFDataset.__class__)
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
         """Receive and use or make an IRI"""

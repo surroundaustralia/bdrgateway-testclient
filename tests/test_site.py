@@ -1,7 +1,7 @@
+from rdflib import Literal
 from rdflib import URIRef
 from rdflib.namespace import OWL, RDF, XSD
-from rdflib import Literal
-from client._TERN import TERN
+
 from client.model import (
     Concept,
     RDFDataset,
@@ -10,6 +10,7 @@ from client.model import (
     Site,
     Value,
 )
+from client.model._TERN import TERN
 
 
 def test_basic_rdf():
@@ -27,7 +28,6 @@ def test_basic_rdf():
     )
     s1 = Site(obs1, [foi1], rdfdataset1, Concept())
     rdf = s1.to_graph()
-    print(rdf.serialize())
 
     assert (None, RDF.type, OWL.Class) not in rdf
     assert (None, RDF.type, TERN.Site)

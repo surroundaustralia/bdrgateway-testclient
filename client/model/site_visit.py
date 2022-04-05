@@ -1,14 +1,11 @@
-from typing import Optional, List
+from typing import Optional
 
 from rdflib import Graph, URIRef, Literal
-from rdflib.namespace import RDF, RDFS, OWL, VOID, SOSA, PROV, XSD
+from rdflib.namespace import RDF, RDFS, OWL, VOID, PROV, XSD
 
-from client._TERN import TERN
-from client.model.observation import Observation
-from client.model.concept import Concept
+from client.model._TERN import TERN
 from client.model.klass import Klass
 from client.model.rdf_dataset import RDFDataset
-from client.model.feature_of_interest import FeatureOfInterest
 
 
 class SiteVisit(Klass):

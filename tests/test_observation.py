@@ -1,16 +1,14 @@
-from rdflib.namespace import OWL, RDF, URIRef, XSD
 from rdflib import Literal, URIRef
-from client._TERN import TERN
+from rdflib.namespace import OWL, RDF, XSD
+
 from client.model import (
     Concept,
     RDFDataset,
     FeatureOfInterest,
-    Sample,
-    Site,
-    Attribute,
     Value,
     Observation,
 )
+from client.model._TERN import TERN
 
 
 # TODO: Confirm this testing is sufficient

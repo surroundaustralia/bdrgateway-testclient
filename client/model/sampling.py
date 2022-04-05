@@ -3,7 +3,7 @@ from typing import List, Optional
 from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import RDF, RDFS, SOSA, OWL, XSD
 
-from client._TERN import TERN
+from client.model._TERN import TERN
 from client.model.feature_of_interest import FeatureOfInterest
 from client.model.klass import Klass
 from client.model.sample import Sample
@@ -19,11 +19,11 @@ class Sampling(Klass):
         iri: Optional[str] = None,
     ):
         assert (
-            type(has_feature_of_interest) == FeatureOfInterest
+            isinstance(has_feature_of_interest.__class__, FeatureOfInterest.__class__)
         ), "The object supplied for the property has_feature_of_interest must be of type FeatureOfInterest"
 
         assert (
-            type(result_date_time) == Literal
+            isinstance(result_date_time.__class__, Literal.__class__)
         ), "The object supplied for the property result_date_time must be of type Literal"
 
         xsd_date_types = [XSD.date, XSD.dateTime, XSD.dateTimeStamp]
@@ -32,7 +32,7 @@ class Sampling(Klass):
         ), f"The datatype of the property result_date_time must be one of {', '.join(xsd_date_types)}"
 
         assert (
-            type(used_procedure) == URIRef
+            isinstance(used_procedure.__class__, URIRef.__class__)
         ), "The object supplied for the property used_procedure must be of type URIRef"
 
         assert (
@@ -40,7 +40,7 @@ class Sampling(Klass):
         ), "You must supply a minimum of 1 Sample objects for the property has_result"
 
         assert all(
-            type(el) == Sample for el in has_result
+            isinstance(el.__class__, Sample.__class__) for el in has_result
         ), "Every object supplied in the property has_result list must be of type Sample"
 
         """Receive and use or make an IRI"""
@@ -72,7 +72,7 @@ class Sampling(Klass):
         g.add((self.iri, SOSA.usedProcedure, self.used_procedure))
         for result in self.has_result:
             g.add((self.iri, SOSA.hasResult, result.iri))
-            if (result.iri, RDF.type, None) not in g:
-                g += result.to_graph()
+            # if (result.iri, RDF.type, None) not in g:
+            #     g += result.to_graph()
 
         return g

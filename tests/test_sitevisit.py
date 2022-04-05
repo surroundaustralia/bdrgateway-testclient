@@ -1,10 +1,11 @@
-from rdflib.namespace import OWL, RDF, XSD
 from rdflib import Literal
-from client._TERN import TERN
+from rdflib.namespace import OWL, RDF, XSD
+
 from client.model import (
     RDFDataset,
     SiteVisit
 )
+from client.model._TERN import TERN
 
 
 def test_basic_rdf():

@@ -3,7 +3,7 @@ from typing import Optional
 from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import RDF, RDFS, OWL, VOID
 
-from client._TERN import TERN
+from client.model._TERN import TERN
 from client.model.klass import Klass
 from client.model.rdf_dataset import RDFDataset
 from client.model.value import Value

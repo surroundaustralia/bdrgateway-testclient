@@ -3,17 +3,18 @@ from typing import Optional, List, Union
 from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import OWL, RDF, RDFS, SOSA, VOID
 
-from client._TERN import TERN
+from client.model._TERN import TERN
 from client.model.concept import Concept
 from client.model.feature_of_interest import FeatureOfInterest
 from client.model.klass import Klass
 from client.model.rdf_dataset import RDFDataset
+from client.model.site import Site
 
 
 class Sample(Klass):
     def __init__(
         self,
-        is_sample_of: List[FeatureOfInterest],
+        is_sample_of: List[Union[FeatureOfInterest, Site]],
         feature_type: Concept,
         in_dataset: RDFDataset,
         is_result_of: Union["Sampling", None],
@@ -24,18 +25,18 @@ class Sample(Klass):
         ), "You must supply a minimum of 1 FeatureOfInterest objects for the property is_sample_of"
 
         assert all(
-            type(el) == FeatureOfInterest for el in is_sample_of
+            isinstance(el.__class__, FeatureOfInterest.__class__) for el in is_sample_of
         ), "Every object supplied in the property is_sample_of must be of type FeatureOfInterest"
 
         # assert type(is_result_of) == Sampling, \
         #     "The object supplied for the property is_result_of must be of type Sampling"
 
         assert (
-            type(feature_type) == Concept
+            isinstance(feature_type.__class__, Concept.__class__)
         ), "The object supplied for the property feature_type must be of type Concept"
 
         assert (
-            type(in_dataset) == RDFDataset
+            isinstance(in_dataset.__class__, RDFDataset.__class__)
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
         """Receive and use or make an IRI"""
@@ -70,5 +71,7 @@ class Sample(Klass):
             g += self.in_dataset.to_graph()
         if self.is_result_of is not None:
             g.add((self.iri, SOSA.isResultOf, self.is_result_of.iri))
+            if (self.is_result_of.iri, RDF.type, None) not in g:
+                g += self.is_result_of.to_graph()
 
         return g

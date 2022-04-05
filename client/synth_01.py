@@ -3,10 +3,10 @@ from typing import Literal as Lit
 from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import DCTERMS, RDF, SOSA, VOID, XSD
 
-from _TERN import TERN
+from client.model._TERN import TERN
 from synth import MESSAGE_TYPES, BDRM, GEO
 from synth import validate_number, sampling_number, rdf_ds_number
-from client.model import *
+from model import *
 
 
 def prefix_creation():
@@ -108,8 +108,6 @@ def create_synthetic_data(n):
 
 
 if __name__ == "__main__":
-    from client.model import *
-
     # Creating one of each
     # Sample
     # Sampling
@@ -131,7 +129,7 @@ if __name__ == "__main__":
     # Attribute
     observation_1 = Observation(
         dataset_1,
-        Value(),
+        Float(Literal(42.3)),
         feature_of_interest_1,
         Literal("timple result"),
         URIRef("http://example.com/observedproperty/n"),
@@ -142,12 +140,5 @@ if __name__ == "__main__":
     site1 = Site(observation_1, [feature_of_interest_1], dataset_1, Concept())
     sample_1.is_sample_of.append(site1)
     g = sample_1.to_graph()
-    g += sampling_1.to_graph()
-    g += feature_of_interest_1.to_graph()
-    g += dataset_1.to_graph()
 
-    g += site1.to_graph()
-    g += observation_1.to_graph()
-
-    # print(g.serialize())
-
+    open("out2.ttl", "w").write(g.serialize())

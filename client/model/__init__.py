@@ -10,3 +10,4 @@ from .value import Value
 from .observation import Observation
 from .value_taxon import Taxon
 from .value_float import Float
+from .site_visit import SiteVisit

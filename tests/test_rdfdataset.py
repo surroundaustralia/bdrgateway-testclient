@@ -1,7 +1,7 @@
 from rdflib.namespace import OWL, RDF
 
-from client._TERN import TERN
 from client.model import RDFDataset
+from client.model._TERN import TERN
 
 
 def test_basic_rdf():

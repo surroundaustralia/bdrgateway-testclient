@@ -1,15 +1,11 @@
 from rdflib.namespace import OWL, RDF, URIRef
 
-from client._TERN import TERN
 from client.model import (
-    Concept,
     RDFDataset,
-    FeatureOfInterest,
-    Sample,
-    Site,
     Attribute,
     Value,
 )
+from client.model._TERN import TERN
 
 
 def test_basic_rdf():
