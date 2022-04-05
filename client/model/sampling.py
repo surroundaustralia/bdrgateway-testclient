@@ -65,10 +65,14 @@ class Sampling(Klass):
         g.add((self.iri, RDF.type, TERN.Sampling))
         g.remove((self.iri, RDFS.label, None))
         g.add((self.iri, SOSA.hasFeatureOfInterest, self.has_feature_of_interest.iri))
+        if (self.has_feature_of_interest.iri, RDF.type, None) not in g:
+            g += self.has_feature_of_interest.to_graph()
         g.add((self.iri, RDFS.label, Literal(self.label)))
         g.add((self.iri, TERN.resultDateTime, self.result_date_time))
         g.add((self.iri, SOSA.usedProcedure, self.used_procedure))
         for result in self.has_result:
             g.add((self.iri, SOSA.hasResult, result.iri))
+            if (result.iri, RDF.type, None) not in g:
+                g += result.to_graph()
 
         return g

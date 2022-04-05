@@ -1,16 +1,14 @@
-from typing import Optional, Union, List
+from typing import Optional, Union
 
-from rdflib import Graph, URIRef, Literal
+from rdflib import Graph, URIRef, Literal, BNode
 from rdflib.namespace import RDF, RDFS, OWL, VOID, SOSA, XSD
 
 from client._TERN import TERN
-from client.model.concept import Concept
 from client.model.klass import Klass
 from client.model.rdf_dataset import RDFDataset
 from client.model.feature_of_interest import FeatureOfInterest
-from client.model.sample import Sample
 from client.model.value import Value
-from client.model.taxon import Taxon
+from client.model.value_taxon import Taxon
 
 
 class Observation(Klass):
@@ -90,8 +88,13 @@ class Observation(Klass):
         g.add((self.iri, RDF.type, TERN.Observation))
         g.add((self.iri, RDFS.label, Literal(self.label)))
         g.add((self.iri, VOID.inDataset, self.in_dataset.iri))
+        if (self.in_dataset.iri, RDF.type, None) not in g:
+            g += self.in_dataset.to_graph()
         g.add((self.iri, SOSA.hasResult, self.has_result.iri))
+        g += self.has_result.to_graph()
         g.add((self.iri, SOSA.hasFeatureOfInterest, self.has_feature_of_interest.iri))
+        if (self.has_feature_of_interest.iri, RDF.type, None) not in g:
+            g += self.has_feature_of_interest.to_graph()
         g.add((self.iri, SOSA.hasSimpleResult, self.has_simple_result))
         g.add((self.iri, SOSA.observedProperty, self.observed_property))
         g.add((self.iri, SOSA.phenomenonTime, self.phenomenon_time))

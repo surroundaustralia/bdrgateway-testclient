@@ -1,4 +1,4 @@
-from typing import Optional, Union, List
+from typing import Optional, List
 
 from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import RDF, RDFS, OWL, VOID, SOSA
@@ -72,6 +72,8 @@ class Site(Klass):
         g.add((self.iri, RDFS.label, Literal(self.label)))
         g.add((self.iri, TERN.featureType, self.feature_type.iri))
         g.add((self.iri, VOID.inDataset, self.in_dataset.iri))
+        if (self.in_dataset.iri, RDF.type, None) not in g:
+            g += self.in_dataset.to_graph()
 
         if self.is_result_of is not None:
             g.add((self.iri, SOSA.isResultOf, self.is_result_of.iri))

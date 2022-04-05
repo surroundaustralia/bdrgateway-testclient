@@ -62,8 +62,12 @@ class Sample(Klass):
         g.add((self.iri, RDFS.label, Literal(self.label)))
         for iso in self.is_sample_of:
             g.add((self.iri, SOSA.isSampleOf, iso.iri))
+            if (iso.iri, RDF.type, None) not in g:
+                g += iso.to_graph()
         g.add((self.iri, TERN.featureType, self.feature_type.iri))
         g.add((self.iri, VOID.inDataset, self.in_dataset.iri))
+        if (self.in_dataset.iri, RDF.type, None) not in g:
+            g += self.in_dataset.to_graph()
         if self.is_result_of is not None:
             g.add((self.iri, SOSA.isResultOf, self.is_result_of.iri))
 
