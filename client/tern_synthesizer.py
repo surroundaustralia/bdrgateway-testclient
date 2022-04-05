@@ -11,7 +11,6 @@ from uuid import uuid4
 try:
     from client.model._TERN import TERN
     from client.model import *
-    from client.__main__ import MESSAGE_TYPES
 except:
     import sys
     from pathlib import Path
@@ -20,12 +19,12 @@ except:
     sys.path.append(str(p))
     from client.model._TERN import TERN
     from client.model import *
-    from client.__main__ import MESSAGE_TYPES
 
 
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
 
+MESSAGE_TYPES = ["create", "update", "delete", "exists"]
 GEOMETRY_EXTENT = {
     "CF": "POINT (-33.463985, 116.195552)",
     "MSF": "POINT (-33.458375, 116.118227)",
