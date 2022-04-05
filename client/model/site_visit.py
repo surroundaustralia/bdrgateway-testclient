@@ -21,7 +21,8 @@ class SiteVisit(Klass):
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
         assert (
-            type(started_at_time) == Literal and started_at_time.datatype == XSD.dateTime
+            type(started_at_time) == Literal
+            and started_at_time.datatype == XSD.dateTime
         ), "The value for started_at_time must be an RDFLib Literal with datatype of xsd:dateTime"
 
         if label is not None:
@@ -57,6 +58,5 @@ class SiteVisit(Klass):
         g.add((self.iri, VOID.inDataset, self.in_dataset.iri))
         if (self.in_dataset.iri, RDF.type, None) not in g:
             g += self.in_dataset.to_graph()
-
 
         return g

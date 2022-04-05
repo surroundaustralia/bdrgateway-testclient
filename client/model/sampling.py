@@ -18,12 +18,12 @@ class Sampling(Klass):
         has_result: List[Sample] = [],
         iri: Optional[str] = None,
     ):
-        assert (
-            isinstance(has_feature_of_interest.__class__, FeatureOfInterest.__class__)
+        assert isinstance(
+            has_feature_of_interest.__class__, FeatureOfInterest.__class__
         ), "The object supplied for the property has_feature_of_interest must be of type FeatureOfInterest"
 
-        assert (
-            isinstance(result_date_time.__class__, Literal.__class__)
+        assert isinstance(
+            result_date_time.__class__, Literal.__class__
         ), "The object supplied for the property result_date_time must be of type Literal"
 
         xsd_date_types = [XSD.date, XSD.dateTime, XSD.dateTimeStamp]
@@ -31,8 +31,8 @@ class Sampling(Klass):
             result_date_time.datatype in xsd_date_types
         ), f"The datatype of the property result_date_time must be one of {', '.join(xsd_date_types)}"
 
-        assert (
-            isinstance(used_procedure.__class__, URIRef.__class__)
+        assert isinstance(
+            used_procedure.__class__, URIRef.__class__
         ), "The object supplied for the property used_procedure must be of type URIRef"
 
         # assert (

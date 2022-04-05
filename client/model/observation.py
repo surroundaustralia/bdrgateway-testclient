@@ -24,24 +24,25 @@ class Observation(Klass):
         used_procedure: URIRef,
         iri: Optional[str] = None,
     ):
-        assert (
-            isinstance(in_dataset.__class__, RDFDataset.__class__)
+        assert isinstance(
+            in_dataset.__class__, RDFDataset.__class__
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
         assert isinstance(
             has_result.__class__, Value.__class__
         ), "The object supplied for the property has_result must be of type Value or a subclass of it"
 
-        assert (
-            isinstance(has_feature_of_interest.__class__, FeatureOfInterest.__class__)
+        assert isinstance(
+            has_feature_of_interest.__class__, FeatureOfInterest.__class__
         ), "The object supplied for the property has_feature_of_interest must be of type FeatureOfInterest"
 
         assert (
-            isinstance(has_simple_result.__class__, URIRef) or isinstance(has_simple_result.__class__, Literal),
+            isinstance(has_simple_result.__class__, URIRef)
+            or isinstance(has_simple_result.__class__, Literal),
         ), "There must be exactly 1 has_simple_result property"
 
-        assert (
-            isinstance(observed_property.__class__, URIRef.__class__)
+        assert isinstance(
+            observed_property.__class__, URIRef.__class__
         ), "The object supplied for the property observed_property must be of type URIRef"
 
         assert (
@@ -57,8 +58,8 @@ class Observation(Klass):
             len(used_procedure) != 1
         ), "There must be exactly 1 used_procedure property"
 
-        assert (
-            isinstance(in_dataset.__class__, RDFDataset.__class__)
+        assert isinstance(
+            in_dataset.__class__, RDFDataset.__class__
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
         """Receive and use or make an IRI"""

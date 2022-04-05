@@ -1,8 +1,10 @@
 import argparse
-from synthesizer import Synthesizer, ATTRIBUTE_TYPES, FEATURE_TYPES, GEOMETRY_EXTENT, MESSAGE_TYPES, METHOD_TYPES
+from tern_synthesizer import TernSynthesizer
 
 import httpx
 from rdflib import Graph
+
+MESSAGE_TYPES = ["create", "update", "delete", "exists"]
 
 
 def post_rdf_to_gateway(g: Graph):
@@ -19,7 +21,9 @@ parser = argparse.ArgumentParser()
 def validate_number(value):
     ivalue = int(value)
     if ivalue < 1 or ivalue > 10000:
-        raise argparse.ArgumentTypeError(f"Samplings number must be >= 1 and <= 10000, you gave {value}")
+        raise argparse.ArgumentTypeError(
+            f"Samplings number must be >= 1 and <= 10000, you gave {value}"
+        )
     return ivalue
 
 
@@ -37,4 +41,4 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-open("out.ttl", "w").write(Synthesizer(args.num).to_graph().serialize())
+tern_rdf_graph = TernSynthesizer(args.num).to_graph()

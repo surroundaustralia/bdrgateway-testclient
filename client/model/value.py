@@ -9,14 +9,11 @@ from client.model.klass import Klass
 
 
 class Value(Klass):
-    def __init__(
-            self,
-            is_blank_node: Optional[bool] = True,
-            iri: Optional[str] = None
-    ):
+    def __init__(self, is_blank_node: Optional[bool] = True, iri: Optional[str] = None):
         if is_blank_node:
-            assert iri is None, \
-                "If you set this Value to be a Blank Node (is_blank_node == True) then you cannot allocate it an IRI"
+            assert (
+                iri is None
+            ), "If you set this Value to be a Blank Node (is_blank_node == True) then you cannot allocate it an IRI"
 
         self.is_blank_node = is_blank_node
 

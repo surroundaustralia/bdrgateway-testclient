@@ -15,13 +15,16 @@ class Taxon(Value):
         scientific_name_id: URIRef,
         is_blank_node: Optional[bool] = True,
         iri: Optional[str] = None,
-        scientific_name: Optional[Literal] = None
+        scientific_name: Optional[Literal] = None,
     ):
-        assert type(scientific_name_id) == URIRef, "You must supply a URIRef for the property scientific_name_id"
+        assert (
+            type(scientific_name_id) == URIRef
+        ), "You must supply a URIRef for the property scientific_name_id"
 
         if scientific_name is not None:
-            assert type(scientific_name) == Literal, \
-                "If you provide a value for scientific_name, it must be an RDFLib Literal "
+            assert (
+                type(scientific_name) == Literal
+            ), "If you provide a value for scientific_name, it must be an RDFLib Literal "
 
         super().__init__(is_blank_node, iri)
 

@@ -8,9 +8,7 @@ DWC = Namespace("http://rs.tdwg.org/dwc/terms/")
 
 
 def test_basic_rdf():
-    rdf = Taxon(
-        URIRef("http://example.com/scientificNameID/x")
-    ).to_graph()
+    rdf = Taxon(URIRef("http://example.com/scientificNameID/x")).to_graph()
 
     assert (None, RDF.type, OWL.Class) not in rdf
     assert (None, RDF.type, TERN.Value) not in rdf

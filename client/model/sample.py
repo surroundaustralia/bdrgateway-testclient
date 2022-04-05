@@ -31,12 +31,12 @@ class Sample(Klass):
         # assert type(is_result_of) == Sampling, \
         #     "The object supplied for the property is_result_of must be of type Sampling"
 
-        assert (
-            isinstance(feature_type.__class__, Concept.__class__)
+        assert isinstance(
+            feature_type.__class__, Concept.__class__
         ), "The object supplied for the property feature_type must be of type Concept"
 
-        assert (
-            isinstance(in_dataset.__class__, RDFDataset.__class__)
+        assert isinstance(
+            in_dataset.__class__, RDFDataset.__class__
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
         """Receive and use or make an IRI"""

@@ -70,7 +70,6 @@ def link_sample_to_sampling_is_result_of(n: int):
 
 def create_n_samples_graph(n: int) -> Graph:
 
-
     dataset_1 = RDFDataset()
     feature_of_interest_1 = FeatureOfInterest(Concept(), dataset_1)
     sample_1 = Sample([feature_of_interest_1], Concept(), dataset_1, None)

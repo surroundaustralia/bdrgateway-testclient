@@ -20,8 +20,8 @@ class Site(FeatureOfInterest):
         iri: Optional[str] = None,
         label: Optional[Literal] = None,
     ):
-        assert (
-            isinstance(is_result_of.__class__, Observation.__class__)
+        assert isinstance(
+            is_result_of.__class__, Observation.__class__
         ), "You must supply an observation for sosa:isResultOf"
 
         assert len(is_sample_of) >= 1, (
@@ -29,17 +29,17 @@ class Site(FeatureOfInterest):
             " for the property is_sample_of"
         )
 
-        assert (
-            isinstance(in_dataset.__class__, RDFDataset.__class__)
+        assert isinstance(
+            in_dataset.__class__, RDFDataset.__class__
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
-        assert (
-            isinstance(feature_type.__class__, Concept.__class__)
+        assert isinstance(
+            feature_type.__class__, Concept.__class__
         ), "The object supplied for the property feature_type must be of type Concept"
 
         if label is not None:
-            assert (
-                isinstance(label.__class__, Literal.__class__)
+            assert isinstance(
+                label.__class__, Literal.__class__
             ), "If you supply a label, it must be an RDFLib Literal"
 
         # this is potentially problematic as these sites shouldn't be random

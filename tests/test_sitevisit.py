@@ -1,10 +1,7 @@
 from rdflib import Literal
 from rdflib.namespace import OWL, RDF, XSD
 
-from client.model import (
-    RDFDataset,
-    SiteVisit
-)
+from client.model import RDFDataset, SiteVisit
 from client.model._TERN import TERN
 
 

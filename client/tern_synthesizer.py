@@ -14,6 +14,7 @@ try:
 except:
     import sys
     from pathlib import Path
+
     p = Path(__file__).parent.parent.resolve()
     sys.path.append(str(p))
     from client.model._TERN import TERN
@@ -138,8 +139,12 @@ FEATURE_TYPES = [
     # plant specimen
 ]
 
-ANIMAL_CONCEPT = Concept("http://linked.data.gov.au/def/tern-cv/2361dea8-598c-4b6f-a641-2b98ff199e9e")
-ANIMAL_POPULATION_CONCEPT = Concept("http://linked.data.gov.au/def/tern-cv/cd5cbdbb-07d9-4a5b-9b11-5ab9d6015be6")
+ANIMAL_CONCEPT = Concept(
+    "http://linked.data.gov.au/def/tern-cv/2361dea8-598c-4b6f-a641-2b98ff199e9e"
+)
+ANIMAL_POPULATION_CONCEPT = Concept(
+    "http://linked.data.gov.au/def/tern-cv/cd5cbdbb-07d9-4a5b-9b11-5ab9d6015be6"
+)
 
 # Method Types vocab http://linked.data.gov.au/def/tern-cv/9b6e057f-271b-48f6-8c33-0528bf6b60df
 METHOD_TYPES = [
@@ -232,10 +237,8 @@ SCIENTIFIC_NAME_IDS = [
     URIRef("https://fake-scientific-name-id.com/name/afd/010"),
 ]
 
-MESSAGE_TYPES = ["create", "update", "delete", "exists"]
 
-
-class Synthesizer:
+class TernSynthesizer:
     datasets: List[RDFDataset]
     fois = List[FeatureOfInterest]
     sites = List[Site]
@@ -261,24 +264,34 @@ class Synthesizer:
 
         # create a list of FoI instances: 1 per 50 Samplings
         for i in range(math.floor(n / 50) + 1):
-            self.fois.append(FeatureOfInterest(Concept(), self.datasets[math.floor(i / 2)]))
+            self.fois.append(
+                FeatureOfInterest(Concept(), self.datasets[math.floor(i / 2)])
+            )
 
         # create Samplings
         for i in range(n):
             this_foi = self.fois[math.floor(i / 50)]
             this_sni = random.choice(SCIENTIFIC_NAME_IDS)
-            if random.random() > 0.667:  # 2/3 of Samplings have Samples with Observations with Taxa
+            if (
+                random.random() > 0.667
+            ):  # 2/3 of Samplings have Samples with Observations with Taxa
                 this_concept = ANIMAL_CONCEPT
                 this_simple_result = Literal(f"Species {this_sni.split('/')[1]}")
                 this_result = Taxon(scientific_name_id=this_sni)
-                this_observed_property = URIRef("http://linked.data.gov.au/def/tern-cv/70646576-6dc7-4bc5-a9d8-c4c366850df0")  # Taxon
+                this_observed_property = URIRef(
+                    "http://linked.data.gov.au/def/tern-cv/70646576-6dc7-4bc5-a9d8-c4c366850df0"
+                )  # Taxon
             else:  # 1/3 of Samplings have Observations with some numerical count, not Taxa
                 this_concept = ANIMAL_POPULATION_CONCEPT
                 this_simple_result = Literal(f"Count {this_sni.split('/')[1]}")
                 this_result = Float(random.randint(0, 1000))
-                this_observed_property = URIRef("http://linked.data.gov.au/def/tern-cv/2023575a-f0f9-40cc-b211-febbb652da22")  # basal area count
+                this_observed_property = URIRef(
+                    "http://linked.data.gov.au/def/tern-cv/2023575a-f0f9-40cc-b211-febbb652da22"
+                )  # basal area count
 
-            this_sample = Sample([this_foi], this_concept, self.datasets[math.floor(1 / 100)], None)
+            this_sample = Sample(
+                [this_foi], this_concept, self.datasets[math.floor(1 / 100)], None
+            )
             this_sampling = Sampling(
                 this_foi,
                 Literal("2000-01-01", datatype=XSD.date),
