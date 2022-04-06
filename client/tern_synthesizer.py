@@ -1,12 +1,12 @@
 import math
 import random
-import string
+from typing import List, Optional
 from typing import Literal as Lit
-from typing import List
+from uuid import uuid4
 
 from rdflib import Graph, URIRef, Literal, Namespace
-from rdflib.namespace import DCTERMS, RDF, SOSA, VOID, XSD
-from uuid import uuid4
+from rdflib.namespace import DCTERMS, SOSA, VOID, XSD
+from shapely.geometry import Polygon, Point
 
 try:
     from client.model._TERN import TERN
@@ -246,9 +246,18 @@ class TernSynthesizer:
     samples = List[Sample]
     observations = List[Observation]
     taxa = List[Taxon]
+    coordinate_bounding_box: Polygon
+    coordinate_points = List[Point]
 
-    def __init__(self, n: int):
+    def __init__(
+            self, n: int,
+            coordinate_bounding_box: Optional[Polygon] = None,
+            randomised_or_regular: Optional[Lit["randomised", "regular"]] = "randomised"
+    ):
         assert n > 0, "n, the number of Samples, must be greater than zero"
+
+        assert randomised_or_regular in ["randomised", "regular"], \
+            "The value for randomised_or_regular mut be either 'randomised', or 'regular'"
 
         self.datasets = []
         self.fois = []
@@ -257,6 +266,15 @@ class TernSynthesizer:
         self.samples = []
         self.observations = []
         self.taxa = []
+        self.coordinate_bounding_box = coordinate_bounding_box
+        if self.coordinate_bounding_box is not None:
+            self.coordinate_points = self._generate_coordinate_points(
+                n,
+                self.coordinate_bounding_box,
+                randomised_or_regular
+            )
+        else:
+            self.coordinate_points = None
 
         # create a list of RDFDataset instances
         for i in range(math.floor(n / 100) + 1):  # 1 per 100 Samplings
@@ -297,6 +315,7 @@ class TernSynthesizer:
                 Literal("2000-01-01", datatype=XSD.date),
                 random.choice(METHOD_TYPES),
                 [this_sample],
+                coordinates=self.coordinate_points[i]
             )
             this_sample.is_result_of = this_sampling
             this_obs = Observation(
@@ -325,6 +344,45 @@ class TernSynthesizer:
         g.bind("tern", TERN)
         g.bind("void", VOID)
 
+    def _generate_coordinate_points(
+            self,
+            no_of_points: int,
+            bounding_box: Polygon,
+            randomised_or_regular: Lit["randomised", "regular"] = "randomised"
+    ) -> List[Point]:
+        # buffer area by 0.1
+        min_long = bounding_box.exterior.coords[2][0] + 0.1
+        max_long = bounding_box.exterior.coords[0][0] - 0.1
+        min_lat = bounding_box.exterior.coords[0][1] + 0.1
+        max_lat = bounding_box.exterior.coords[2][1] - 0.1
+
+        sqt = math.ceil(math.sqrt(no_of_points))
+
+        coords = []
+
+        if randomised_or_regular == "randomised":
+            for x in range(sqt):
+                for y in range(sqt):
+                    x_rand = random.random()
+                    y_rand = random.random()
+                    coords.append(
+                        Point(
+                            round(((max_long - min_long) * x_rand) + min_long, 3),
+                            round(((max_lat - min_lat) * y_rand) + min_lat, 3)
+                        )
+                    )
+        else:  # "regular"
+            long_step = ((max_long - min_long) / sqt)
+            lat_step = ((max_lat - min_lat) / sqt)
+
+            for x in range(sqt):
+                x_long = round(min_long + x * long_step, 3)
+                for y in range(sqt):
+                    y_lat = round(min_lat + y * lat_step, 3)
+                    coords.append(Point(x_long, y_lat))
+
+        return coords
+
     def to_graph(self):
         g = Graph()
         self._bind_prefixes(g)
@@ -340,149 +398,3 @@ def validate_number(n):
         print("The number of Samplings you select must be > 1, < 10,000")
         return False
     return True
-
-
-def random_char(y):
-    return "".join(random.choice(string.ascii_letters) for x in range(y))
-
-
-def rdf_ds_number(n):
-    if n < 200:
-        x = 1
-        return x
-    # every increment of 200, I want to add a dataset
-    y = 1 + int(n / 200)
-    return y
-
-
-def sampling_number(n):
-    if n < 50:
-        x = 1
-        return x
-    y = 1 + int(n / 50)
-    return y
-
-
-def every_50_function(n):
-    x = []
-    for index in range(0, sampling_number(n)):
-        x.append(str(random_char(5)))
-    return x
-
-
-# only every 50 samples should there be new foi
-def create_sampling_data(n):
-    samplings_data = []
-    x = every_50_function(n)
-    for index in range(0, n):
-        samplings_data.append(
-            {
-                "foi": x[int(index / 50)],
-                "time": "2022-01-03T12:13:14",
-                "procedure": random.choice(
-                    METHOD_TYPES
-                ),  # "http://example.com/procedure/" +
-                "result": {
-                    "dataset": "fake",
-                    "feature_type": random.choice(FEATURE_TYPES),
-                },
-            }
-        )
-        # can consider the geometry but will see after
-    return samplings_data
-
-
-def create_dataset(n: int, msg_type: Lit["create", "update", "delete", "exists"]):
-    if not validate_number(n):
-        raise ValueError("%s is not >= 1" % n)
-
-    if msg_type not in MESSAGE_TYPES:
-        raise ValueError(f"msg_type must be one of {', '.join(MESSAGE_TYPES)}")
-
-    # Prefix and base URI creation
-    g = Graph(base="https://linked.data.gov.au/dataset/bdr/")
-    g.bind("bdrm", BDRM)
-    g.bind("dcterms", DCTERMS)
-    g.bind("geo", GEO)
-    g.bind("sosa", SOSA)
-    g.bind("tern", TERN)
-    g.bind("void", VOID)
-
-    # BDR Message
-    msg_iris = {
-        "create": BDRM.CreateMessage,
-        "update": BDRM.UpdateMessage,
-        "delete": BDRM.DeleteMessage,
-        "exists": BDRM.ExistsMessage,
-    }
-    msg_iri = URIRef("http://createme.org/1")
-    g.add((msg_iri, RDF.type, BDRM.CreateMessage))
-
-    # creating sampling data
-    samplings_data = create_sampling_data(n)
-
-    # RDF Dataset created based on increments of 200
-    for index in range(0, rdf_ds_number(n)):
-        ds = URIRef("http://example.com/dummy/dataset/" + str(index + 1))
-        g.add((ds, RDF.type, TERN.RDFDataset))
-
-    # FOI
-    # need to keep track of list for code below
-    foi_list = []
-    for index in range(0, sampling_number(n)):
-        foi = URIRef(
-            "https://linked.data.gov.au/dataset/bdr/site/"
-            + samplings_data[index]["foi"]
-        )
-        # + "/foi_number/" + str(index + 1))
-        foi_list.append(foi)
-        g.add((foi, RDF.type, TERN.FeatureOfInterest))
-        g.add((foi, TERN.featureType, random.choice(FEATURE_TYPES)))
-
-        # integrating foi into associated ds
-        x = int(index / 4) + 1
-        ds = URIRef("http://example.com/dummy/dataset/" + str(x))
-        g.add((foi, VOID.inDataset, ds))
-
-    # creating sampling stuff
-    createme_id_max = 1
-    for sampling in samplings_data:
-        # sampling
-        createme_id_max += 1
-        sampling_iri = URIRef("http://createme.org/" + str(createme_id_max))
-        g.add(
-            (msg_iri, DCTERMS.hasPart, sampling_iri)
-        )  # link Sampling to CreateMessage
-
-        foi_iri = URIRef(
-            "https://linked.data.gov.au/dataset/bdr/site/" + sampling["foi"]
-        )
-        g.add((sampling_iri, RDF.type, TERN.Sampling))
-        g.add((sampling_iri, SOSA.hasFeatureOfInterest, foi_iri))
-        g.add(
-            (
-                sampling_iri,
-                SOSA.resultTime,
-                Literal(sampling["time"], datatype=XSD.dateTime),
-            )
-        )
-        g.add((sampling_iri, SOSA.usedProcedure, URIRef(sampling["procedure"])))
-
-        createme_id_max += 1
-        sample_iri = URIRef("http://createme.org/" + str(createme_id_max))
-        dataset_iri = URIRef(
-            "https://linked.data.gov.au/dataset/bdr/dataset/"
-            + sampling["result"]["dataset"]
-        )
-        g.add((sample_iri, RDF.type, TERN.Sample))
-        g.add((sample_iri, SOSA.isResultOf, sampling_iri))
-        g.add((sample_iri, SOSA.isSampleOf, foi_iri))
-        g.add((sample_iri, VOID.inDataset, dataset_iri))
-        g.add(
-            (sample_iri, TERN.featureType, URIRef(sampling["result"]["feature_type"]))
-        )
-
-        # link Sample to Sampling
-        g.add((sampling_iri, SOSA.hasResult, sample_iri))
-
-    return g.serialize()

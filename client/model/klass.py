@@ -1,7 +1,7 @@
 from typing import Optional
 from uuid import uuid4
 
-from rdflib import Graph, URIRef, Literal
+from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import RDF, RDFS, OWL
 
 from client.model._TERN import TERN
@@ -25,6 +25,7 @@ class Klass:
     def to_graph(self) -> Graph:
         g = Graph()
         g.bind("tern", TERN)
+        g.bind("geo", Namespace("http://www.opengis.net/ont/geosparql#"))
 
         g.add((self.iri, RDF.type, OWL.Class))
         g.add((self.iri, RDFS.label, Literal(self.label)))

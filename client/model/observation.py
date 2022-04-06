@@ -39,7 +39,7 @@ class Observation(Klass):
         assert (
             isinstance(has_simple_result.__class__, URIRef)
             or isinstance(has_simple_result.__class__, Literal),
-        ), "There must be exactly 1 has_simple_result property"
+        ), "There must be exactly 1 has_simple_result property and it must be either a URIRef or a Literal"
 
         assert isinstance(
             observed_property.__class__, URIRef.__class__

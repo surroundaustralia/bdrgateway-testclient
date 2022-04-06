@@ -1,12 +1,15 @@
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
-from rdflib import Graph, URIRef, Literal
+from rdflib import Graph, URIRef, Literal, BNode, Namespace
 from rdflib.namespace import RDF, RDFS, SOSA, OWL, XSD
+
+GEO = Namespace("http://www.opengis.net/ont/geosparql#")
 
 from client.model._TERN import TERN
 from client.model.feature_of_interest import FeatureOfInterest
 from client.model.klass import Klass
 from client.model.sample import Sample
+from shapely.geometry import Point
 
 
 class Sampling(Klass):
@@ -17,6 +20,7 @@ class Sampling(Klass):
         used_procedure: URIRef,
         has_result: List[Sample] = [],
         iri: Optional[str] = None,
+        coordinates: Optional[Point] = None
     ):
         assert isinstance(
             has_feature_of_interest.__class__, FeatureOfInterest.__class__
@@ -44,6 +48,10 @@ class Sampling(Klass):
                 isinstance(el.__class__, Sample.__class__) for el in has_result
             ), "Every value supplied for has_result must be of type Sample"
 
+        if coordinates is not None:
+            assert isinstance(coordinates.__class__, Point.__class__), \
+                "If a coordinate is supplied, it must be a Point"
+
         """Receive and use or make an IRI"""
         if iri is None:
             self.id = self.make_uuid()
@@ -59,6 +67,7 @@ class Sampling(Klass):
         self.used_procedure = used_procedure
         self.has_result = has_result
         self.has_feature_of_interest = has_feature_of_interest
+        self.coordinates = coordinates
 
     def to_graph(self) -> Graph:
         g = super().to_graph()
@@ -75,5 +84,9 @@ class Sampling(Klass):
             g.add((self.iri, SOSA.hasResult, result.iri))
             # if (result.iri, RDF.type, None) not in g:
             #     g += result.to_graph()
+        if self.coordinates:
+            geom = BNode()
+            g.add((self.iri, GEO.hasGeometry, geom))
+            g.add((geom, GEO.asWKT, Literal(self.coordinates.wkt, datatype=GEO.wktLiteral)))
 
         return g
