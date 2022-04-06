@@ -24,6 +24,7 @@ except:
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
 
+MESSAGE_TYPES = ["create", "update", "delete", "exists"]
 GEOMETRY_EXTENT = {
     "CF": "POINT (-33.463985, 116.195552)",
     "MSF": "POINT (-33.458375, 116.118227)",
