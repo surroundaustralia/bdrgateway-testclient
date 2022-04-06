@@ -44,5 +44,6 @@ parser.add_argument(
 args = parser.parse_args()
 
 tern_rdf_graph = TernSynthesizer(args.num, box(115.992191, -33.871399, 121.9467547, -28.572837)).to_graph()
+# tern_rdf_graph = TernSynthesizer(args.num, box(117, -30, 118, -29)).to_graph()  # narrow area
 
 print(tern_rdf_graph.serialize())
