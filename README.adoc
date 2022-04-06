@@ -45,6 +45,10 @@ The main script doing all the work is `client/tern_synthesizer.py`. `__main__.py
 
 The parameter other than {N} that can be set for `TernSynthesizer` is the bounding box of the Sampling point locations. The default values present in `client/tern_synthesizer.py` are for South-West Western Australia: approximately Geralton (NW) to Esperance (SE).
 
+== Example output
+
+See the _output_broad.ttl_ and _output_narrow.ttl_ files in this repo.
+
 == License & Copyright
 
 The license for this code is the https://opensource.org/licenses/BSD-3-Clause[BSD 3-Clase License], see the LICENSE file in this repo for the deed.
