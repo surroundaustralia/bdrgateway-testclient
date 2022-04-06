@@ -1,0 +1,964 @@
+@prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ns2: <http://www.w3.org/2002/07/owl#> .
+@prefix ns3: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://linked.data.gov.au/def/tern-cv/a7609534-b988-43ba-940c-c216d9c05f59> a ns1:Concept ;
+    ns3:modified "2021-08-19T03:52:18"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/a7609534-b988-43ba-940c-c216d9c05f59> ;
+    ns1:definition "The oven-dry weight of  paper bag containing a sample. "@en ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "paper bag weight" .
+
+<http://linked.data.gov.au/def/tern-cv/02dde7af-0ec4-46b0-9c48-ffd26736ac9e> a ns1:Concept ;
+    ns3:modified "2021-08-19T02:22:19"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/02dde7af-0ec4-46b0-9c48-ffd26736ac9e> ;
+    ns1:definition "The end date of the site visit. Recommendation - use ISO 8601 international standard for representing dates and times" ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "visit end date" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/039f87e5-ffd9-4676-b126-c74844d2e095> a ns1:Concept ;
+    ns3:created "2021-02-08T23:27:17"^^xsd:dateTime ;
+    ns3:modified "2021-08-16T05:54:30"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/039f87e5-ffd9-4676-b126-c74844d2e095> ;
+    ns1:definition "Volume of the soil ring sampler used." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "soil ring volume"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/06265baf-9125-4bd1-9aca-1ee94395de52> a ns1:Concept ;
+    ns3:created "2021-03-15T06:33:33"^^xsd:dateTime ;
+    ns3:modified "2021-03-15T06:38:30"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/06265baf-9125-4bd1-9aca-1ee94395de52> ;
+    ns1:definition "The type of identification used to determine the species name and taxonomic information." ;
+    ns1:example "Recommended best practice is to use controlled vocabularies with an IRI. Examples of identification type: collected, vouchered, field identified." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "identification type"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/08035bb8-d972-4110-b3e9-1939bc972ace> a ns1:Concept ;
+    ns3:modified "2021-08-16T06:03:11"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/08035bb8-d972-4110-b3e9-1939bc972ace> ;
+    ns1:definition "Unique identifier for a sampling point in a transect." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "transect point" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/082c84fe-d923-4162-9b73-294b7a8a2dda> a ns1:Concept ;
+    ns3:modified "2021-05-17T01:19:11"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/082c84fe-d923-4162-9b73-294b7a8a2dda> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "scientific name" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/0ed27ce3-1fa4-477f-b36c-5cd64d8b6ed0> a ns1:Concept ;
+    ns3:modified "2021-02-08T01:15:39"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/0ed27ce3-1fa4-477f-b36c-5cd64d8b6ed0> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "voucher herbarium id" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/11f6e3d7-78e4-4665-9b84-a93b56f12fab> a ns1:Concept ;
+    ns3:created "2021-02-16T05:25:21"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T00:35:26"^^xsd:dateTime ;
+    ns3:source "Darwin Core Maintenance Group. 2021. List of Darwin Core terms. Biodiversity Information Standards (TDWG). http://rs.tdwg.org/dwc/doc/list/2021-07-15" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/11f6e3d7-78e4-4665-9b84-a93b56f12fab> ;
+    ns1:definition "The name, acronym, coden, or initialism identifying the collection or data set from which the record was derived." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "project id"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/15fdb5ff-f316-4c4f-a438-eb2854479a4c> a ns1:Concept ;
+    ns3:created "2021-05-19T03:55:55"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T02:52:19"^^xsd:dateTime ;
+    ns3:source "Upton, G., & Cook, I. (2014). A dictionary of statistics 3e. Oxford university press." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/15fdb5ff-f316-4c4f-a438-eb2854479a4c> ;
+    ns1:definition "The number of observations in a sample." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "sample size"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/1a283759-58e3-45bb-ab70-6f0bd82038fc> a ns1:Concept ;
+    ns3:modified "2021-08-16T05:52:11"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/1a283759-58e3-45bb-ab70-6f0bd82038fc> ;
+    ns1:definition "Supporting notes about the state of the site when sampled." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "site notes" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/1c15747b-aec7-41e1-a490-c0b317ae441a> a ns1:Concept ;
+    ns3:modified "2022-01-17T03:24:17"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/1c15747b-aec7-41e1-a490-c0b317ae441a> ;
+    ns1:altLabel "tree id" ;
+    ns1:definition "A physical identifier for a plant." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "plant id"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/1cf8e48e-266d-4431-a778-9b80347c40f6> a ns1:Concept ;
+    ns3:modified "2021-08-18T05:43:14"^^xsd:dateTime ;
+    ns3:source "White, A, Sparrow, B, Leitch, E, Foulkes, J, Flitton, R, Lowe, A & Caddy-Retalic, S 2012, 'AusPlots Rangelands Survey Protocols Manual, Version 1.2. 9 2012, p.36', University of Adelaide Press, South Australia." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/1cf8e48e-266d-4431-a778-9b80347c40f6> ;
+    ns1:definition "Name of the locality or property containinig the site." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "locality" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/20049a27-4f90-45ee-8708-4b9457ccf7b3> a ns1:Concept ;
+    ns3:created "2021-04-08T05:48:58"^^xsd:dateTime ;
+    ns3:modified "2021-04-08T05:52:17"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/20049a27-4f90-45ee-8708-4b9457ccf7b3> ;
+    ns1:definition "An identifier for a site co-located with the site currently being sampled." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "previous site id"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/20d4e292-adc1-4585-8f81-c2a0e92eacab> a ns1:Concept ;
+    ns3:created "2022-03-25T02:07:14"^^xsd:dateTime ;
+    ns3:modified "2022-03-25T02:09:26"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/20d4e292-adc1-4585-8f81-c2a0e92eacab> ;
+    ns1:definition "Duration of the sampling event." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "sampling duration"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/226e3bbe-7640-4bc6-872f-0542802880a1> a ns1:Concept ;
+    ns3:created "2021-02-16T05:26:06"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T00:39:03"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/226e3bbe-7640-4bc6-872f-0542802880a1> ;
+    ns1:definition "Unique identifier for a site within the collection or data set from which the site record was derived." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "project site id"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/263d7143-e88d-4105-83e7-00d75035a2b3> a ns1:Concept ;
+    ns3:modified "2021-08-19T23:32:32"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/263d7143-e88d-4105-83e7-00d75035a2b3> ;
+    ns1:altLabel "lower soil depth" ;
+    ns1:definition "Lower or maximum depth of soil specimen or sample, measured from the soil surface." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "soil depth max" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/2ad7e552-5bca-45cf-805a-10ba5a98862a> a ns1:Concept ;
+    ns3:modified "2021-08-18T05:30:17"^^xsd:dateTime ;
+    ns3:source "Darwin Core Maintenance Group. 2021. List of Darwin Core terms. Biodiversity Information Standards (TDWG). http://rs.tdwg.org/dwc/doc/list/2021-07-15" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/2ad7e552-5bca-45cf-805a-10ba5a98862a> ;
+    ns1:definition "A list (concatenated and separated) of names of people, groups, or organizations who assigned the Taxon to the subject." ;
+    ns1:exactMatch <http://rs.tdwg.org/dwc/terms/identifiedBy> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "identified by" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/2f9cdbf8-7973-45f7-9a31-1a53017b67a3> a ns1:Concept ;
+    ns3:created "2021-02-16T05:24:13"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T03:01:59"^^xsd:dateTime ;
+    ns3:source "Upton, G., & Cook, I. (2014). A dictionary of statistics 3e. Oxford university press." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/2f9cdbf8-7973-45f7-9a31-1a53017b67a3> ;
+    ns1:definition "The proportion of the population that it is being sampled." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "sampling intensity"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/360063cc-4bff-455e-8c8e-9562ff57994f> a ns1:Concept ;
+    ns3:created "2021-02-01T06:46:47"^^xsd:dateTime ;
+    ns3:modified "2021-02-08T01:17:31"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/360063cc-4bff-455e-8c8e-9562ff57994f> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "site description"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/37012c72-03e1-4e3f-af80-9594aade1f3d> a ns1:Concept ;
+    ns3:modified "2021-08-19T23:25:25"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/37012c72-03e1-4e3f-af80-9594aade1f3d> ;
+    ns1:definition "The date the site was established. Recommendation - use ISO 8601 international standard for representing dates and times" ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "site established date" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/376efe60-0550-42b4-b90b-110015806dc7> a ns1:Concept ;
+    ns3:modified "2021-08-19T23:33:58"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/376efe60-0550-42b4-b90b-110015806dc7> ;
+    ns1:altLabel "upper soil depth" ;
+    ns1:definition "Upper depth of soil specimen or sample, measured from the soil surface." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "soil depth min" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/3d64b224-02d5-48d4-bdf5-6caba81cfc64> a ns1:Concept ;
+    ns3:created "2021-04-08T01:58:56"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T03:16:10"^^xsd:dateTime ;
+    ns3:source "Carron, L. T. (1968). An outline of forest mensuration with special reference to Australia. Australian National University Press." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/3d64b224-02d5-48d4-bdf5-6caba81cfc64> ;
+    ns1:defintion "Height at which the diameter of a bole or standing tree has been measured." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "stem diameter point of measurement"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/3e1eaba4-c58e-42cf-b75a-8124a0bc2e9b> a ns1:Concept ;
+    ns3:modified "2021-08-18T06:05:36"^^xsd:dateTime ;
+    ns3:source "White, A, Sparrow, B, Leitch, E, Foulkes, J, Flitton, R, Lowe, A & Caddy-Retalic, S 2012, 'AusPlots Rangelands Survey Protocols Manual, Version 1.2. 9 2012, p.36', University of Adelaide Press, South Australia." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/3e1eaba4-c58e-42cf-b75a-8124a0bc2e9b> ;
+    ns1:definition "Free text observation of phenological events in a site. For example, plants in blossom or Acer sp. leaf out." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "phenology observations" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/3f7355ff-03cb-4fc7-81db-219ddfba14f5> a ns1:Concept ;
+    ns3:modified "2021-02-08T01:10:50"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/3f7355ff-03cb-4fc7-81db-219ddfba14f5> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "angle count point" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/3f92e928-d5ba-43bf-84ac-a45e678e694f> a ns1:Concept ;
+    ns3:created "2021-02-01T05:02:46"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T00:47:57"^^xsd:dateTime ;
+    ns3:source "Dictionary, O. E. (1989). Oxford english dictionary. Simpson, Ja & Weiner, Esc." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/3f92e928-d5ba-43bf-84ac-a45e678e694f> ;
+    ns1:definition "An area of the world having definable characteristics but not always fixed boundaries." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "region"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/43ed01cc-0089-4a6b-8754-0990dd0f697b> a ns1:Concept ;
+    ns3:modified "2021-08-16T06:02:03"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/43ed01cc-0089-4a6b-8754-0990dd0f697b> ;
+    ns1:broader <http://linked.data.gov.au/def/tern-cv/2ffe4363-dea1-4188-9f8f-835983d47fe2> ;
+    ns1:definition "Vertical layer of vegetation (e.g. shrubs, ground layer, top canopy)." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/5699eca7-9ef0-47a6-bcfb-9306e0e2b85e>,
+        <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "stratum type" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/45a86abc-43c7-4a30-ac73-fc8d62538140> a ns1:Concept ;
+    ns3:modified "2021-08-18T05:27:31"^^xsd:dateTime ;
+    ns3:source "Darwin Core Maintenance Group. 2021. List of Darwin Core terms. Biodiversity Information Standards (TDWG). http://rs.tdwg.org/dwc/doc/list/2021-07-15" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/45a86abc-43c7-4a30-ac73-fc8d62538140> ;
+    ns1:definition "Comments or notes on taxonomic determination." ;
+    ns1:exactMatch <http://rs.tdwg.org/dwc/terms/identificationRemarks> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "identification remarks" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/46d2e568-72cd-4df3-b0ed-4ebdaf771e4c> a ns1:Concept ;
+    ns3:created "2021-02-01T04:44:21"^^xsd:dateTime ;
+    ns3:modified "2021-08-18T05:22:49"^^xsd:dateTime ;
+    ns3:source "White, A., Sparrow, B., Leitch, E., Foulkes, J., Flitton, R., Lowe, A. J., & Caddy-Retalic, S. (2012). AusPlots Rangelands." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/46d2e568-72cd-4df3-b0ed-4ebdaf771e4c> ;
+    ns1:definition "Unique identifier for angle count sampling procedure (i.e. plot-less basal area measurement)." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "angle count point name"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/54e40f12-8c13-495a-9f8d-838d78faa5a7> a ns1:Concept ;
+    ns3:modified "2021-08-18T05:29:43"^^xsd:dateTime ;
+    ns3:source "Darwin Core Maintenance Group. 2021. List of Darwin Core terms. Biodiversity Information Standards (TDWG). http://rs.tdwg.org/dwc/doc/list/2021-07-15" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/54e40f12-8c13-495a-9f8d-838d78faa5a7> ;
+    ns1:definition "Comments on the uncertainty around the taxonomic identification or a standard term (\"cf.\", \"aff.\") to express the determiner's doubts about the Identification." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "identification uncertainty" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/56195246-ec5d-4050-a1c6-af786fbec715> a ns1:Concept ;
+    ns3:created "2021-02-01T04:37:24"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T03:02:28"^^xsd:dateTime ;
+    ns3:source "Darwin Core Maintenance Group. 2021. List of Darwin Core terms. Biodiversity Information Standards (TDWG). http://rs.tdwg.org/dwc/doc/list/2021-07-15" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/56195246-ec5d-4050-a1c6-af786fbec715> ;
+    ns1:altLabel "species name"@en ;
+    ns1:broader <http://linked.data.gov.au/def/tern-cv/8fa1c4bd-73b3-432a-ab49-9ee89928e6d9> ;
+    ns1:definition "The full scientific name, with authorship and date information if known. When forming part of an Identification, this should be the name in lowest level taxonomic rank that can be determined. This term should not contain identification qualifications, which should instead be supplied in the IdentificationQualifier term." ;
+    ns1:exactMatch <http://rs.tdwg.org/dwc/terms/scientificName> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/5699eca7-9ef0-47a6-bcfb-9306e0e2b85e>,
+        <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "scientific name"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/5968433f-6748-40ff-9cdb-6a138cb0378d> a ns1:Concept ;
+    ns3:created "2021-04-08T03:28:06"^^xsd:dateTime ;
+    ns3:modified "2021-04-08T03:31:34"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/5968433f-6748-40ff-9cdb-6a138cb0378d> ;
+    ns1:definition "A physical identifier for an organism used in a previous census effort, usually in a diffent dataset or collection." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "previous individual id"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/5acbfe4f-19e0-456c-89db-961013e6cd7c> a ns1:Concept ;
+    ns3:modified "2021-08-18T05:23:46"^^xsd:dateTime ;
+    ns3:source "Darwin Core Maintenance Group. 2021. List of Darwin Core terms. Biodiversity Information Standards (TDWG). http://rs.tdwg.org/dwc/doc/list/2021-07-15" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/5acbfe4f-19e0-456c-89db-961013e6cd7c> ;
+    ns1:definition "The date on which the subject was determined as representing the Taxon." ;
+    ns1:exactMatch <http://rs.tdwg.org/dwc/terms/dateIdentified> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "date identified" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/5fb736ae-63ff-4943-bad7-cbf292e70b1b> a ns1:Concept ;
+    ns3:created "2021-02-16T06:20:53"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T03:24:24"^^xsd:dateTime ;
+    ns3:source "Neldner, V. J., Wilson, B. A., Thompson, E. J., & Dillewaard, H. A. (2005). Methodology for survey and mapping of regional ecosystems and vegetation communities in Queensland. Version 3.1. Queensland Herbarium, Environmental Protection Agency: Brisbane" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/5fb736ae-63ff-4943-bad7-cbf292e70b1b> ;
+    ns1:definition "Whether crown cover or projective cover was measured." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "type of crown cover measure"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/61311a0e-5b09-406c-9f64-b0637271ecf2> a ns1:Concept ;
+    ns3:created "2021-04-20T04:49:27"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T01:34:01"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/61311a0e-5b09-406c-9f64-b0637271ecf2> ;
+    ns1:definition "The plot that is part of the main survey plot." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "subplot"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/6882ac67-b3e5-4195-a0c9-330c7bf14625> a ns1:Concept ;
+    ns3:modified "2021-08-19T23:34:13"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/6882ac67-b3e5-4195-a0c9-330c7bf14625> ;
+    ns1:broader <http://linked.data.gov.au/def/tern-cv/7c9c628d-535f-44cf-8dbe-6933f25a78d5> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "lower soil depth" ;
+    ns1:relatedMatch <http://vocabs.lter-europe.net/EnvThes/22247> ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/6bd73c25-98f6-4227-ab5d-a3bab18b7a8d> a ns1:Concept ;
+    ns3:modified "2021-02-08T01:11:04"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/6bd73c25-98f6-4227-ab5d-a3bab18b7a8d> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "snag" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/6d351831-45da-403c-919b-1cee41950488> a ns1:Concept ;
+    ns3:created "2021-02-01T04:37:24"^^xsd:dateTime ;
+    ns3:modified "2021-08-16T06:09:50"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/6d351831-45da-403c-919b-1cee41950488> ;
+    ns1:definition "Machine readable identifier for a material sample." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "voucher barcode"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/70aa04d4-1bd2-479f-b430-925e5bc07aad> a ns1:Concept ;
+    ns3:created "2021-04-13T05:51:00"^^xsd:dateTime ;
+    ns3:modified "2021-08-18T05:25:57"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/70aa04d4-1bd2-479f-b430-925e5bc07aad> ;
+    ns1:definition "Date a sample is collected from the field." ;
+    ns1:exactMatch <http://vocabs.lter-europe.net/EnvThes/10046> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "harvest date"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/73241f84-d579-4193-a57f-4776dabf96c0> a ns1:Concept ;
+    ns3:created "2021-02-16T04:13:49"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T02:49:48"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/73241f84-d579-4193-a57f-4776dabf96c0> ;
+    ns1:definition "A measure of the confidence that we can have in an observation or sample." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "reliability"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/7455b778-fe96-4d3a-906f-3ed1faae8055> a ns1:Concept ;
+    ns3:created "2021-03-19T01:02:34"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T03:40:56"^^xsd:dateTime ;
+    ns3:source "Neldner, V. J., Wilson, B. A., Thompson, E. J., & Dillewaard, H. A. (2005). Methodology for survey and mapping of regional ecosystems and vegetation communities in Queensland. Version 3.1. Queensland Herbarium, Environmental Protection Agency: Brisbane" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/7455b778-fe96-4d3a-906f-3ed1faae8055> ;
+    ns1:definition "Description of the vegetation structure of a plant community." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "vegetation structure description"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/755b1456-b76f-4d54-8690-10e41e25c5a7> a ns1:Concept ;
+    ns3:created "2021-12-17T05:55:52"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/755b1456-b76f-4d54-8690-10e41e25c5a7> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "conservation status jurisdiction"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/76806e0f-61a2-447c-8177-7e666637e23a> a ns1:Concept ;
+    ns3:modified "2021-03-12T06:15:46"^^xsd:dateTime ;
+    ns3:source "R.C. McDonald, R.F. Isbell and J.G. Speight (2009) Land Surface. In Australian soil and land survey field handbook (3rd edn), p128 (National Committee on Soil and Terrain) (CSIRO Publishing: Melbourne)." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/76806e0f-61a2-447c-8177-7e666637e23a> ;
+    ns1:broader <http://linked.data.gov.au/def/tern-cv/d62a4664-89a1-49a1-9ef0-f30ee2c6d22b> ;
+    ns1:closeMatch <http://vocabs.lter-europe.net/EnvThes/21956> ;
+    ns1:definition "The distance measurement, usually in the vertical or up direction, between a reference datum and a point or object. Elevation value is given in metres above sea level." ;
+    ns1:exactMatch <http://vocabs.lter-europe.net/EnvThes/21553> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/5699eca7-9ef0-47a6-bcfb-9306e0e2b85e>,
+        <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "elevation of site" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/800c04ac-9406-4655-92cd-5142764948bc> a ns1:Concept ;
+    ns3:modified "2021-02-08T01:17:45"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/800c04ac-9406-4655-92cd-5142764948bc> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "scientific name" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/8080742b-6855-4e27-812b-671d4dfe7e0f> a ns1:Concept ;
+    ns3:modified "2021-08-16T05:48:14"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/8080742b-6855-4e27-812b-671d4dfe7e0f> ;
+    ns1:definition "The form of the plot (e.g. square, circular, rectangular)." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "plot shape" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/889dfc31-5b1c-48c0-8bc7-e12f13d63891> a ns1:Concept ;
+    ns3:modified "2021-08-19T03:03:05"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/889dfc31-5b1c-48c0-8bc7-e12f13d63891> ;
+    ns1:definition "Unique identifier for the site." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "site id" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/8afbe0ce-7f7c-4a2f-bdfe-e78fe8b2dd72> a ns1:Concept ;
+    ns3:created "2021-02-08T23:28:09"^^xsd:dateTime ;
+    ns3:modified "2021-08-16T05:54:59"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/8afbe0ce-7f7c-4a2f-bdfe-e78fe8b2dd72> ;
+    ns1:definition "Weight of the soil ring sampler." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "soil ring weight"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/8b57540f-e050-4aec-9d05-46ab64c69c37> a ns1:Concept ;
+    ns3:created "2021-04-13T06:16:51"^^xsd:dateTime ;
+    ns3:modified "2021-08-18T06:07:33"^^xsd:dateTime ;
+    ns3:source "Wood, S., Stephens, H., Foulkes, J., Ebsworth, E., & Bowman, D. AusPlots Forests." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/8b57540f-e050-4aec-9d05-46ab64c69c37> ;
+    ns1: "Substance or material" ;
+    ns1:definition "The type of plant fuel matter. For example, dead shrubs, living herbs, duff, litter." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "plant fuel matter type"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/8b7b7346-4317-4bcc-9ff9-24dbf8e9c637> a ns1:Concept ;
+    ns3:created "2022-03-28T05:45:16"^^xsd:dateTime ;
+    ns3:modified "2022-03-28T06:00:22"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/8b7b7346-4317-4bcc-9ff9-24dbf8e9c637> ;
+    ns1:definition "The number of matches returned from the NSL from a single processed string value."@en ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:note "NSL stands for National Species List."@en ;
+    ns1:prefLabel "number of NSL name matches"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/8e7dfefe-e3ee-40ac-9024-ede48922bee6> a ns1:Concept ;
+    ns3:modified "2021-08-19T01:48:12"^^xsd:dateTime ;
+    ns3:source "White, A., Sparrow, B., Leitch, E., Foulkes, J., Flitton, R., Lowe, A., and Caddy-Retalic, S. (2012). AusPlots Rangelands Survey Protocols Manual Version 1.2.9. https://www.tern.org.au/wp-content/uploads/TERN-Rangelands-Survey-Protocols-Manual_web.pdf" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/8e7dfefe-e3ee-40ac-9024-ede48922bee6> ;
+    ns1:definition "The categories of soil observations such as (soil pit, existing vertical exposure, relatively undisturbed soil core or auger boring)" ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "type of soil observation" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/95a8a081-abed-4932-83de-47e0b2bea0cc> a ns1:Concept ;
+    ns3:modified "2021-08-19T23:33:21"^^xsd:dateTime ;
+    ns3:source "National Committee on Soil and Terrain (2009). Australian Soil and Land Survey Field Handbook, Third Edition. DOI:10.1071/9780643097117 " ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/95a8a081-abed-4932-83de-47e0b2bea0cc> ;
+    ns1:broader <http://linked.data.gov.au/def/tern-cv/7c9c628d-535f-44cf-8dbe-6933f25a78d5> ;
+    ns1:closeMatch <http://vocabs.lter-europe.net/EnvThes/22247> ;
+    ns1:definition "Each soil layer may consist of one or more horizons. The upper and lower depths, in metres, of each soil horizon are measured from the soil surface, excluding O horizons. O horizon depths are measured above the mineral soil surface (e.g. O1 0.12–0.10 m; O2 0.1–0.0 m)." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "upper soil depth" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/98d2cc31-354d-4e95-a7cd-218040188023> a ns1:Concept ;
+    ns3:created "2021-02-16T06:17:15"^^xsd:dateTime ;
+    ns3:modified "2021-08-18T06:00:49"^^xsd:dateTime ;
+    ns3:source "Neldner, V. J., Wilson, B. A., Thompson, E. J., & Dillewaard, H. A. (2005). Methodology for survey and mapping of regional ecosystems and vegetation communities in Queensland. Version 3.1. Queensland Herbarium, Environmental Protection Agency: Brisbane." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/98d2cc31-354d-4e95-a7cd-218040188023> ;
+    ns1:definition "Name of methodology used for estimating crown cover. For example Specth (1970) or Walker and Hopkins (1990)." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "method for estimating crown cover"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/9b2ab960-da97-473a-81af-d50ab6041739> a ns1:Concept ;
+    ns3:modified "2021-03-18T04:53:16"^^xsd:dateTime ;
+    ns3:source "White, A, Sparrow, B, Leitch, E, Foulkes, J, Flitton, R, Lowe, A & Caddy-Retalic, S 2012, 'AusPlots Rangelands Survey Protocols Manual, Version 1.2. 9 2012, p.36', University of Adelaide Press, South Australia." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/9b2ab960-da97-473a-81af-d50ab6041739> ;
+    ns1:altLabel "canopy point intercept"@en ;
+    ns1:broader <http://linked.data.gov.au/def/tern-cv/8fa1c4bd-73b3-432a-ab49-9ee89928e6d9> ;
+    ns1:definition "If foliage or branches are not intercepted, it is recorded as \"in-canopy sky\". If foliage or branches are intercepted, the species is recorded as a canopy hit and an estimate of the height is recorded." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/5699eca7-9ef0-47a6-bcfb-9306e0e2b85e>,
+        <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "in-canopy sky" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/9f8cc716-bc8c-40c4-be6b-6270813e94f3> a ns1:Concept ;
+    ns3:modified "2021-08-18T06:10:40"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/9f8cc716-bc8c-40c4-be6b-6270813e94f3> ;
+    ns1:dimention "The lenght of a plot." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "plot length" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/a37fd6b6-d041-451a-8ac6-4083a1be26c5> a ns1:Concept ;
+    ns3:modified "2021-08-19T03:03:48"^^xsd:dateTime ;
+    ns3:source "Darwin Core Maintenance Group. 2021. List of Darwin Core terms. Biodiversity Information Standards (TDWG). http://rs.tdwg.org/dwc/doc/list/2021-07-15" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/a37fd6b6-d041-451a-8ac6-4083a1be26c5> ;
+    ns1:definition "Names of people, groups, or organizations who hold the material sample used to generate a taxonomic identification." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "specimen holder" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/a4132e35-686a-4dc3-9a77-b9a00b3753f9> a ns1:Concept ;
+    ns3:created "2021-05-10T00:25:54"^^xsd:dateTime ;
+    ns3:modified "2021-05-10T00:28:50"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/a4132e35-686a-4dc3-9a77-b9a00b3753f9> ;
+    ns1:definition "The location of a point described using cardinal and ordinal directions." ;
+    ns1:example "N, NE, S, W, NW" ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "cardinal position"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/a421a75f-c695-4d7f-b361-335b86b15201> a ns1:Concept ;
+    ns3:created "2021-04-08T06:07:53"^^xsd:dateTime ;
+    ns3:modified "2021-04-08T06:10:43"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/a421a75f-c695-4d7f-b361-335b86b15201> ;
+    ns1:definition "The name (or acronym) in use by the institution having custody of the plot(s) that a sampling plot has been colocated with." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "existing plot custodian"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/a685171d-2f9d-45b6-b870-1d918ea45148> a ns1:Concept ;
+    ns3:modified "2021-08-18T05:47:14"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/a685171d-2f9d-45b6-b870-1d918ea45148> ;
+    ns1:definition "The longitude of a location. For example -122.08585 (WGS 84)." ;
+    ns1:exactMatch <https://schema.org/longitude> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "longitude" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/ac9570b4-3aaa-4a4f-b9b9-770cb0ef8c2e> a ns1:Concept ;
+    ns3:created "2021-04-13T06:00:36"^^xsd:dateTime ;
+    ns3:modified "2021-04-13T06:20:15"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/ac9570b4-3aaa-4a4f-b9b9-770cb0ef8c2e> ;
+    ns1:definition "The period of time between two dates or events or between the beginning and end of something." ;
+    ns1:exactMatch <http://vocabs.lter-europe.net/EnvThes/10046> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "timespan"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/acc89d4d-cbcf-48a6-9de5-54c33eb7d140> a ns1:Concept ;
+    ns3:created "2021-02-16T05:18:27"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T02:55:45"^^xsd:dateTime ;
+    ns3:source "Vellend, M. (2016). The theory of ecological communities (MPB-57). Princeton University Press." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/acc89d4d-cbcf-48a6-9de5-54c33eb7d140> ;
+    ns1:definition "Focal set of species sampled or observed." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "sampled community"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/aeb3149f-9354-4a0b-829a-acbaaa416a1f> a ns1:Concept ;
+    ns3:modified "2021-08-18T05:40:46"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/aeb3149f-9354-4a0b-829a-acbaaa416a1f> ;
+    ns1:definition "The latitude of a location. For example 37.42242 (WGS 84)." ;
+    ns1:exactMatch <https://schema.org/latitude> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "latitude" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/b15c4b8e-208e-4ab0-b470-0aa56b72ab38> a ns1:Concept ;
+    ns3:created "2021-04-13T05:50:07"^^xsd:dateTime ;
+    ns3:modified "2021-04-13T05:51:59"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/b15c4b8e-208e-4ab0-b470-0aa56b72ab38> ;
+    ns1:definition "Date a sample is deployed in the field." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "deployment date"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/b564f403-1b7d-4c54-b0c3-ca3fbabeed89> a ns1:Concept ;
+    ns3:created "2021-03-12T05:09:19"^^xsd:dateTime ;
+    ns3:modified "2021-08-18T06:01:33"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/b564f403-1b7d-4c54-b0c3-ca3fbabeed89> ;
+    ns1:definition "Free text comments on an observation or attribute." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "notes"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/b736e783-39b6-4408-9561-91561aa53a1d> a ns1:Concept ;
+    ns3:created "2021-02-16T04:15:02"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T01:26:19"^^xsd:dateTime ;
+    ns3:source "DCMI Usage Board (2020). DCMI Metadata Terms. https://www.dublincore.org/specifications/dublin-core/dcmi-terms/" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/b736e783-39b6-4408-9561-91561aa53a1d> ;
+    ns1:definition "A related resource from which the described resource is derived. The described resource may be derived from the related resource in whole or in part. Best practice is to identify the related resource by means of a URI or a string conforming to a formal identification system." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "source of information"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/ba619127-7393-4d55-a025-3d94a844d419> a ns1:Concept ;
+    ns3:modified "2021-02-08T01:17:12"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/ba619127-7393-4d55-a025-3d94a844d419> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "soil depth min" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/ba9c2502-5d10-4fb9-8c6b-9f654a3dc46d> a ns1:Concept ;
+    ns3:created "2021-07-06T01:30:04"^^xsd:dateTime ;
+    ns3:modified "2021-08-18T05:43:50"^^xsd:dateTime ;
+    ns3:source "White, A, Sparrow, B, Leitch, E, Foulkes, J, Flitton, R, Lowe, A & Caddy-Retalic, S 2012, 'AusPlots Rangelands Survey Protocols Manual, Version 1.2. 9 2012, p.36', University of Adelaide Press, South Australia." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/ba9c2502-5d10-4fb9-8c6b-9f654a3dc46d> ;
+    ns1:definition "Brief description of the location." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "location description"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/bb61ac09-00de-493d-9ef8-eb81fad72724> a ns1:Concept ;
+    ns3:modified "2021-02-08T01:17:19"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/bb61ac09-00de-493d-9ef8-eb81fad72724> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "soil depth max" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/c230dd97-3af1-43cf-bd27-ffcf4979d3a1> a ns1:Concept ;
+    ns3:modified "2021-08-19T00:33:33"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/c230dd97-3af1-43cf-bd27-ffcf4979d3a1> ;
+    ns1:definition "The width of a plot." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "plot width" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/c5b8b894-b5ee-49bf-be93-52491afe73a9> a ns1:Concept ;
+    ns3:created "2021-02-01T06:51:27"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T02:30:48"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/c5b8b894-b5ee-49bf-be93-52491afe73a9> ;
+    ns1:definition "Any additional information recorded during a site visit for future reference." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "visit notes"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/c60e774a-8cb7-4002-b3f1-abb1a47369bb> a ns1:Concept ;
+    ns3:modified "2021-08-18T01:48:19"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/c60e774a-8cb7-4002-b3f1-abb1a47369bb> ;
+    ns1:definition "Notes about the state of the site at the time of sampling." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "visit remarks" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/c6bd6ddd-77d8-4693-b528-67e8893dbeb7> a ns1:Concept ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/c6bd6ddd-77d8-4693-b528-67e8893dbeb7> ;
+    ns1:altLabel "plant stem id" ;
+    ns1:definition "A physical identifier for a stem that belongs to an individual plant." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "stem id"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/cc229ff9-8cca-4ddd-8f01-e1e3fb5892af> a ns1:Concept ;
+    ns3:modified "2021-08-16T05:21:57"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/cc229ff9-8cca-4ddd-8f01-e1e3fb5892af> ;
+    ns1:definition "The area of the plot." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "plot area" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/ccba73b3-0527-4a56-a711-e5628a7d0dbd> a ns1:Concept ;
+    ns3:created "2021-04-08T02:20:02"^^xsd:dateTime ;
+    ns3:modified "2021-05-17T00:25:06"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/ccba73b3-0527-4a56-a711-e5628a7d0dbd> ;
+    ns1:altLabel "tag id" ;
+    ns1:definition "A physical identifier for an organism or sample (as opposed to a digital record)." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "id"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/d0580fd1-848b-4cc8-92fb-8d455e4fe083> a ns1:Concept ;
+    ns3:modified "2021-02-08T01:11:40"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/d0580fd1-848b-4cc8-92fb-8d455e4fe083> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "basal area factor" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/d1092494-ca45-41de-8f08-9fb9d2142fb9> a ns1:Concept ;
+    ns3:created "2021-02-10T05:44:31"^^xsd:dateTime ;
+    ns3:modified "2021-08-19T03:39:05"^^xsd:dateTime ;
+    ns3:source "Neldner, V. J., Wilson, B. A., Thompson, E. J., & Dillewaard, H. A. (2005). Methodology for survey and mapping of regional ecosystems and vegetation communities in Queensland. Version 3.1. Queensland Herbarium, Environmental Protection Agency: Brisbane" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/d1092494-ca45-41de-8f08-9fb9d2142fb9> ;
+    ns1:definition "Name of clasification methodology used for describing the structural formation of the vegetation. For example Specth (1970) or Walker and Hopkins (1990)." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "vegetation structural formation classification"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/d82a71d7-677a-45fe-968f-6dad4b8e8488> a ns1:Concept ;
+    ns3:modified "2021-05-12T00:54:24"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/d82a71d7-677a-45fe-968f-6dad4b8e8488> ;
+    ns1:definition "Describe the direction of the transect." ;
+    ns1:example "S-W" ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "transect direction" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/da5ef737-f328-404b-8cc8-2fad54cac397> a ns1:Concept ;
+    ns3:modified "2021-08-16T06:00:44"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/da5ef737-f328-404b-8cc8-2fad54cac397> ;
+    ns1:definition "Unique identifier for institution keeping custody of the specimen used for taxonoic identification." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "state catalog number" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/dbf4aae7-4179-486b-b181-4f7942f657db> a ns1:Concept ;
+    ns3:modified "2021-08-16T05:20:20"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/dbf4aae7-4179-486b-b181-4f7942f657db> ;
+    ns1:definition "Name of the location where the site is found." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "location name" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/dbff3449-2ec9-4722-a953-87c78da86f74> a ns1:Concept ;
+    ns3:modified "2021-08-18T05:23:01"^^xsd:dateTime ;
+    ns3:source "Vilhena, D. A., & Antonelli, A. (2015). A network approach for identifying and delimiting biogeographical regions. Nature communications, 6(1), 1-9." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/dbff3449-2ec9-4722-a953-87c78da86f74> ;
+    ns1:definition "An area defined by its geographic and ecological characteristics, smaller than biogeographical realms but bigger than ecoregions." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "bioregion" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/dd34fc05-012d-4092-9324-a4cbcf29bf0a> a ns1:Concept ;
+    ns3:created "2021-02-01T04:46:51"^^xsd:dateTime ;
+    ns3:modified "2021-08-18T05:22:55"^^xsd:dateTime ;
+    ns3:source "Carron, L. T. (1968). An outline of forest mensuration with special reference to Australia. Australian National University Press." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/dd34fc05-012d-4092-9324-a4cbcf29bf0a> ;
+    ns1:definition "Factor gauge or wedge size selected when estimating basal area with an angle gauge size." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "basal area factor"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/e1021d25-7d76-4faa-bfcc-fb6d225eb3ec> a ns1:Concept ;
+    ns3:modified "2021-08-16T05:21:08"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/e1021d25-7d76-4faa-bfcc-fb6d225eb3ec> ;
+    ns1:definition "Whether the plot has been placed permanently or not." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "permanent plot" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/e4109f0f-4129-480d-a99a-21c9cbb88e13> a ns1:Concept ;
+    ns3:modified "2021-02-08T01:17:38"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/e4109f0f-4129-480d-a99a-21c9cbb88e13> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "scientific name" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/e66d3943-4d28-4125-a1f0-fb5b1d72171d> a ns1:Concept ;
+    ns3:modified "2022-03-10T05:55:03"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/e66d3943-4d28-4125-a1f0-fb5b1d72171d> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "plot dimensions" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/e926b2ca-2688-486c-aa28-435f91c3c110> a ns1:Concept ;
+    ns3:modified "2021-08-18T05:23:56"^^xsd:dateTime ;
+    ns3:source "White, A., Sparrow, B., Leitch, E., Foulkes, J., Flitton, R., Lowe, A. J., & Caddy-Retalic, S. (2012). AusPlots Rangelands." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/e926b2ca-2688-486c-aa28-435f91c3c110> ;
+    ns1:broader <http://linked.data.gov.au/def/tern-cv/c_012ebf32> ;
+    ns1:definition "Distance from survey site or plot to nearest human infrastructure (e.g. roads, buildings)." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/5699eca7-9ef0-47a6-bcfb-9306e0e2b85e>,
+        <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "distance to nearest human infrastructure" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/ebe5f483-e279-4153-a6d9-2a0dd82e6ea2> a ns1:Concept ;
+    ns3:modified "2021-08-19T02:22:01"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/ebe5f483-e279-4153-a6d9-2a0dd82e6ea2> ;
+    ns1:definition "The start date of the site visit. Recommendation - use ISO 8601 international standard for representing dates and times" ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "visit start date" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/f23851f3-4eac-43ec-b9ce-f40cc9df9a74> a ns1:Concept ;
+    ns3:created "2021-04-08T05:44:43"^^xsd:dateTime ;
+    ns3:modified "2021-08-18T05:44:28"^^xsd:dateTime ;
+    ns3:source "White, A, Sparrow, B, Leitch, E, Foulkes, J, Flitton, R, Lowe, A & Caddy-Retalic, S 2012, 'AusPlots Rangelands Survey Protocols Manual, Version 1.2. 9 2012, p.36', University of Adelaide Press, South Australia." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/f23851f3-4eac-43ec-b9ce-f40cc9df9a74> ;
+    ns1:definition "An identifier for the location." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "location id"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/f5a2a443-c78f-410d-a794-16ca1e23d0ad> a ns1:Concept ;
+    ns3:modified "2021-08-19T01:50:44"^^xsd:dateTime ;
+    ns3:source "White, A., Sparrow, B., Leitch, E., Foulkes, J., Flitton, R., Lowe, A., and Caddy-Retalic, S. (2012). AusPlots Rangelands Survey Protocols Manual Version 1.2.9. https://www.tern.org.au/wp-content/uploads/TERN-Rangelands-Survey-Protocols-Manual_web.pdf" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/f5a2a443-c78f-410d-a794-16ca1e23d0ad> ;
+    ns1:definition "The name of the site. It may follow the alpha-numeric coding convention assigned by a project. For example, SAASTP0001 translates to SA (the state - South Australia), A (plot type - AusPlots), STP (bioregion - Stony Plains), 0001 (plot number - Plot1)" ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "site name" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/f5b14209-f890-4d6e-a10f-fee5b1688ed6> a ns1:Concept ;
+    ns3:modified "2021-08-19T01:49:25"^^xsd:dateTime ;
+    ns3:source "White, A., Sparrow, B., Leitch, E., Foulkes, J., Flitton, R., Lowe, A., and Caddy-Retalic, S. (2012). AusPlots Rangelands Survey Protocols Manual Version 1.2.9. https://www.tern.org.au/wp-content/uploads/TERN-Rangelands-Survey-Protocols-Manual_web.pdf" ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/f5b14209-f890-4d6e-a10f-fee5b1688ed6> ;
+    ns1:definition "The site (plot) description covers important aspects of the site (generally of the land surface). Some overlap in collected information does occur due to the modular nature of the survey processes. The description provides significant background information to gain an appreciation of the plot history, topography, position in the landscape and for understanding the likely relationship between the soils, vegetation and fauna." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "site description" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/f5c125b1-81c2-448c-81e6-7ff6a2facd07> a ns1:Concept ;
+    ns3:modified "2021-08-19T01:21:36"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/f5c125b1-81c2-448c-81e6-7ff6a2facd07> ;
+    ns1:definition "The unique identifier of the field visit." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "site visit id" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/f81aa91e-5f57-4e49-bc6e-4d821d1f9de2> a ns1:Concept ;
+    ns3:modified "2021-03-26T06:11:10"^^xsd:dateTime ;
+    ns3:source "Arnold, J. F. (1955). Plant life-form classification and its use in evaluating range conditions and trend. Rangeland Ecology & Management/Journal of Range Management Archives, 8(4), 176-181." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/f81aa91e-5f57-4e49-bc6e-4d821d1f9de2> ;
+    ns1:broader <http://linked.data.gov.au/def/tern-cv/8fa1c4bd-73b3-432a-ab49-9ee89928e6d9> ;
+    ns1:closeMatch <http://vocabs.lter-europe.net/EnvThes/21412> ;
+    ns1:definition "Plant growth forms can be defined as the physical form a plant assumes under the conditions of its environment." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/5699eca7-9ef0-47a6-bcfb-9306e0e2b85e>,
+        <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "growth form" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/f82d406b-96ee-41d4-8f84-18e3e52fe530> a ns1:Concept ;
+    ns3:modified "2021-02-08T01:15:47"^^xsd:dateTime ;
+    ns2:deprecated true ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/f82d406b-96ee-41d4-8f84-18e3e52fe530> ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "voucher herbarium id" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/335a84cd-01af-49cb-8532-acf71dc1d980> a ns1:Concept ;
+    ns3:modified "2021-08-18T05:23:35"^^xsd:dateTime ;
+    ns3:source "White, A., Sparrow, B., Leitch, E., Foulkes, J., Flitton, R., Lowe, A. J., & Caddy-Retalic, S. (2012). AusPlots Rangelands." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/335a84cd-01af-49cb-8532-acf71dc1d980> ;
+    ns1:broader <http://linked.data.gov.au/def/tern-cv/5a13a61f-a43f-40cf-bc3f-3e0cc2e64ce1> ;
+    ns1:definition "Notes on community extent observations." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "comment on community extent" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/e5953626-5c62-4baa-b8e5-36a7e6660611> a ns1:Concept ;
+    ns3:modified "2021-08-18T05:23:41"^^xsd:dateTime ;
+    ns3:source "White, A., Sparrow, B., Leitch, E., Foulkes, J., Flitton, R., Lowe, A. J., & Caddy-Retalic, S. (2012). AusPlots Rangelands." ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/e5953626-5c62-4baa-b8e5-36a7e6660611> ;
+    ns1:broader <http://linked.data.gov.au/def/tern-cv/5a13a61f-a43f-40cf-bc3f-3e0cc2e64ce1> ;
+    ns1:definition "Notes on distance to infrastructure observations." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:prefLabel "comment on distance to infrastructure" ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/5a13a61f-a43f-40cf-bc3f-3e0cc2e64ce1> a ns1:Concept ;
+    ns3:created "2021-03-19T01:19:03"^^xsd:dateTime ;
+    ns3:modified "2021-08-16T02:57:39"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/5a13a61f-a43f-40cf-bc3f-3e0cc2e64ce1> ;
+    ns1:definition "Notes on observation, not captured in a standard format." ;
+    ns1:inScheme <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:narrower <http://linked.data.gov.au/def/tern-cv/335a84cd-01af-49cb-8532-acf71dc1d980>,
+        <http://linked.data.gov.au/def/tern-cv/e5953626-5c62-4baa-b8e5-36a7e6660611> ;
+    ns1:prefLabel "comment"@en ;
+    ns1:topConceptOf <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> .
+
+<http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> a ns1:ConceptScheme ;
+    ns3:created "2021-02-01T04:36:55"^^xsd:dateTime ;
+    ns3:modified "2021-09-01T03:22:27"^^xsd:dateTime ;
+    ns2:sameAs <http://linked.data.gov.au/def/tern-cv/dd085299-ae86-4371-ae15-61dfa432f924> ;
+    ns1:hasTopConcept <http://linked.data.gov.au/def/tern-cv/02dde7af-0ec4-46b0-9c48-ffd26736ac9e>,
+        <http://linked.data.gov.au/def/tern-cv/039f87e5-ffd9-4676-b126-c74844d2e095>,
+        <http://linked.data.gov.au/def/tern-cv/06265baf-9125-4bd1-9aca-1ee94395de52>,
+        <http://linked.data.gov.au/def/tern-cv/08035bb8-d972-4110-b3e9-1939bc972ace>,
+        <http://linked.data.gov.au/def/tern-cv/082c84fe-d923-4162-9b73-294b7a8a2dda>,
+        <http://linked.data.gov.au/def/tern-cv/0ed27ce3-1fa4-477f-b36c-5cd64d8b6ed0>,
+        <http://linked.data.gov.au/def/tern-cv/11f6e3d7-78e4-4665-9b84-a93b56f12fab>,
+        <http://linked.data.gov.au/def/tern-cv/15fdb5ff-f316-4c4f-a438-eb2854479a4c>,
+        <http://linked.data.gov.au/def/tern-cv/1a283759-58e3-45bb-ab70-6f0bd82038fc>,
+        <http://linked.data.gov.au/def/tern-cv/1c15747b-aec7-41e1-a490-c0b317ae441a>,
+        <http://linked.data.gov.au/def/tern-cv/1cf8e48e-266d-4431-a778-9b80347c40f6>,
+        <http://linked.data.gov.au/def/tern-cv/20049a27-4f90-45ee-8708-4b9457ccf7b3>,
+        <http://linked.data.gov.au/def/tern-cv/20d4e292-adc1-4585-8f81-c2a0e92eacab>,
+        <http://linked.data.gov.au/def/tern-cv/226e3bbe-7640-4bc6-872f-0542802880a1>,
+        <http://linked.data.gov.au/def/tern-cv/263d7143-e88d-4105-83e7-00d75035a2b3>,
+        <http://linked.data.gov.au/def/tern-cv/2ad7e552-5bca-45cf-805a-10ba5a98862a>,
+        <http://linked.data.gov.au/def/tern-cv/2f9cdbf8-7973-45f7-9a31-1a53017b67a3>,
+        <http://linked.data.gov.au/def/tern-cv/335a84cd-01af-49cb-8532-acf71dc1d980>,
+        <http://linked.data.gov.au/def/tern-cv/360063cc-4bff-455e-8c8e-9562ff57994f>,
+        <http://linked.data.gov.au/def/tern-cv/37012c72-03e1-4e3f-af80-9594aade1f3d>,
+        <http://linked.data.gov.au/def/tern-cv/376efe60-0550-42b4-b90b-110015806dc7>,
+        <http://linked.data.gov.au/def/tern-cv/3d64b224-02d5-48d4-bdf5-6caba81cfc64>,
+        <http://linked.data.gov.au/def/tern-cv/3e1eaba4-c58e-42cf-b75a-8124a0bc2e9b>,
+        <http://linked.data.gov.au/def/tern-cv/3f7355ff-03cb-4fc7-81db-219ddfba14f5>,
+        <http://linked.data.gov.au/def/tern-cv/3f92e928-d5ba-43bf-84ac-a45e678e694f>,
+        <http://linked.data.gov.au/def/tern-cv/43ed01cc-0089-4a6b-8754-0990dd0f697b>,
+        <http://linked.data.gov.au/def/tern-cv/45a86abc-43c7-4a30-ac73-fc8d62538140>,
+        <http://linked.data.gov.au/def/tern-cv/46d2e568-72cd-4df3-b0ed-4ebdaf771e4c>,
+        <http://linked.data.gov.au/def/tern-cv/54e40f12-8c13-495a-9f8d-838d78faa5a7>,
+        <http://linked.data.gov.au/def/tern-cv/56195246-ec5d-4050-a1c6-af786fbec715>,
+        <http://linked.data.gov.au/def/tern-cv/5968433f-6748-40ff-9cdb-6a138cb0378d>,
+        <http://linked.data.gov.au/def/tern-cv/5a13a61f-a43f-40cf-bc3f-3e0cc2e64ce1>,
+        <http://linked.data.gov.au/def/tern-cv/5acbfe4f-19e0-456c-89db-961013e6cd7c>,
+        <http://linked.data.gov.au/def/tern-cv/5fb736ae-63ff-4943-bad7-cbf292e70b1b>,
+        <http://linked.data.gov.au/def/tern-cv/61311a0e-5b09-406c-9f64-b0637271ecf2>,
+        <http://linked.data.gov.au/def/tern-cv/6882ac67-b3e5-4195-a0c9-330c7bf14625>,
+        <http://linked.data.gov.au/def/tern-cv/6bd73c25-98f6-4227-ab5d-a3bab18b7a8d>,
+        <http://linked.data.gov.au/def/tern-cv/6d351831-45da-403c-919b-1cee41950488>,
+        <http://linked.data.gov.au/def/tern-cv/70aa04d4-1bd2-479f-b430-925e5bc07aad>,
+        <http://linked.data.gov.au/def/tern-cv/73241f84-d579-4193-a57f-4776dabf96c0>,
+        <http://linked.data.gov.au/def/tern-cv/7455b778-fe96-4d3a-906f-3ed1faae8055>,
+        <http://linked.data.gov.au/def/tern-cv/755b1456-b76f-4d54-8690-10e41e25c5a7>,
+        <http://linked.data.gov.au/def/tern-cv/76806e0f-61a2-447c-8177-7e666637e23a>,
+        <http://linked.data.gov.au/def/tern-cv/800c04ac-9406-4655-92cd-5142764948bc>,
+        <http://linked.data.gov.au/def/tern-cv/8080742b-6855-4e27-812b-671d4dfe7e0f>,
+        <http://linked.data.gov.au/def/tern-cv/889dfc31-5b1c-48c0-8bc7-e12f13d63891>,
+        <http://linked.data.gov.au/def/tern-cv/8afbe0ce-7f7c-4a2f-bdfe-e78fe8b2dd72>,
+        <http://linked.data.gov.au/def/tern-cv/8b57540f-e050-4aec-9d05-46ab64c69c37>,
+        <http://linked.data.gov.au/def/tern-cv/8b7b7346-4317-4bcc-9ff9-24dbf8e9c637>,
+        <http://linked.data.gov.au/def/tern-cv/8e7dfefe-e3ee-40ac-9024-ede48922bee6>,
+        <http://linked.data.gov.au/def/tern-cv/95a8a081-abed-4932-83de-47e0b2bea0cc>,
+        <http://linked.data.gov.au/def/tern-cv/98d2cc31-354d-4e95-a7cd-218040188023>,
+        <http://linked.data.gov.au/def/tern-cv/9b2ab960-da97-473a-81af-d50ab6041739>,
+        <http://linked.data.gov.au/def/tern-cv/9f8cc716-bc8c-40c4-be6b-6270813e94f3>,
+        <http://linked.data.gov.au/def/tern-cv/a37fd6b6-d041-451a-8ac6-4083a1be26c5>,
+        <http://linked.data.gov.au/def/tern-cv/a4132e35-686a-4dc3-9a77-b9a00b3753f9>,
+        <http://linked.data.gov.au/def/tern-cv/a421a75f-c695-4d7f-b361-335b86b15201>,
+        <http://linked.data.gov.au/def/tern-cv/a685171d-2f9d-45b6-b870-1d918ea45148>,
+        <http://linked.data.gov.au/def/tern-cv/ac9570b4-3aaa-4a4f-b9b9-770cb0ef8c2e>,
+        <http://linked.data.gov.au/def/tern-cv/acc89d4d-cbcf-48a6-9de5-54c33eb7d140>,
+        <http://linked.data.gov.au/def/tern-cv/aeb3149f-9354-4a0b-829a-acbaaa416a1f>,
+        <http://linked.data.gov.au/def/tern-cv/b15c4b8e-208e-4ab0-b470-0aa56b72ab38>,
+        <http://linked.data.gov.au/def/tern-cv/b564f403-1b7d-4c54-b0c3-ca3fbabeed89>,
+        <http://linked.data.gov.au/def/tern-cv/b736e783-39b6-4408-9561-91561aa53a1d>,
+        <http://linked.data.gov.au/def/tern-cv/ba619127-7393-4d55-a025-3d94a844d419>,
+        <http://linked.data.gov.au/def/tern-cv/ba9c2502-5d10-4fb9-8c6b-9f654a3dc46d>,
+        <http://linked.data.gov.au/def/tern-cv/bb61ac09-00de-493d-9ef8-eb81fad72724>,
+        <http://linked.data.gov.au/def/tern-cv/c230dd97-3af1-43cf-bd27-ffcf4979d3a1>,
+        <http://linked.data.gov.au/def/tern-cv/c5b8b894-b5ee-49bf-be93-52491afe73a9>,
+        <http://linked.data.gov.au/def/tern-cv/c60e774a-8cb7-4002-b3f1-abb1a47369bb>,
+        <http://linked.data.gov.au/def/tern-cv/c6bd6ddd-77d8-4693-b528-67e8893dbeb7>,
+        <http://linked.data.gov.au/def/tern-cv/cc229ff9-8cca-4ddd-8f01-e1e3fb5892af>,
+        <http://linked.data.gov.au/def/tern-cv/ccba73b3-0527-4a56-a711-e5628a7d0dbd>,
+        <http://linked.data.gov.au/def/tern-cv/d0580fd1-848b-4cc8-92fb-8d455e4fe083>,
+        <http://linked.data.gov.au/def/tern-cv/d1092494-ca45-41de-8f08-9fb9d2142fb9>,
+        <http://linked.data.gov.au/def/tern-cv/d82a71d7-677a-45fe-968f-6dad4b8e8488>,
+        <http://linked.data.gov.au/def/tern-cv/da5ef737-f328-404b-8cc8-2fad54cac397>,
+        <http://linked.data.gov.au/def/tern-cv/dbf4aae7-4179-486b-b181-4f7942f657db>,
+        <http://linked.data.gov.au/def/tern-cv/dbff3449-2ec9-4722-a953-87c78da86f74>,
+        <http://linked.data.gov.au/def/tern-cv/dd34fc05-012d-4092-9324-a4cbcf29bf0a>,
+        <http://linked.data.gov.au/def/tern-cv/e1021d25-7d76-4faa-bfcc-fb6d225eb3ec>,
+        <http://linked.data.gov.au/def/tern-cv/e4109f0f-4129-480d-a99a-21c9cbb88e13>,
+        <http://linked.data.gov.au/def/tern-cv/e5953626-5c62-4baa-b8e5-36a7e6660611>,
+        <http://linked.data.gov.au/def/tern-cv/e66d3943-4d28-4125-a1f0-fb5b1d72171d>,
+        <http://linked.data.gov.au/def/tern-cv/e926b2ca-2688-486c-aa28-435f91c3c110>,
+        <http://linked.data.gov.au/def/tern-cv/ebe5f483-e279-4153-a6d9-2a0dd82e6ea2>,
+        <http://linked.data.gov.au/def/tern-cv/f23851f3-4eac-43ec-b9ce-f40cc9df9a74>,
+        <http://linked.data.gov.au/def/tern-cv/f5a2a443-c78f-410d-a794-16ca1e23d0ad>,
+        <http://linked.data.gov.au/def/tern-cv/f5b14209-f890-4d6e-a10f-fee5b1688ed6>,
+        <http://linked.data.gov.au/def/tern-cv/f5c125b1-81c2-448c-81e6-7ff6a2facd07>,
+        <http://linked.data.gov.au/def/tern-cv/f81aa91e-5f57-4e49-bc6e-4d821d1f9de2>,
+        <http://linked.data.gov.au/def/tern-cv/f82d406b-96ee-41d4-8f84-18e3e52fe530> ;
+    ns1:prefLabel "Attributes"@en .
+

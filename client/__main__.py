@@ -4,6 +4,8 @@ from tern_synthesizer import TernSynthesizer
 import httpx
 from rdflib import Graph
 
+from shapely.geometry import box
+
 MESSAGE_TYPES = ["create", "update", "delete", "exists"]
 
 
@@ -41,4 +43,6 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-tern_rdf_graph = TernSynthesizer(args.num).to_graph()
+tern_rdf_graph = TernSynthesizer(args.num, box(115.992191, -33.871399, 121.9467547, -28.572837)).to_graph()
+
+print(tern_rdf_graph.serialize())

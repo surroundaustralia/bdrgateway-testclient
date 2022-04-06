@@ -1,0 +1,468 @@
+@prefix ns1: <http://www.w3.org/2002/07/owl#> .
+@prefix ns2: <http://purl.org/dc/terms/> .
+@prefix ns3: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://linked.data.gov.au/def/tern-cv/05dac53a-269c-4699-9673-bf99a9406b14> a ns3:Concept ;
+    ns2:created "2022-03-01T01:52:56"^^xsd:dateTime ;
+    ns2:description "Human-defined region for business purposes such as allocated for mineral exploitation, or reserved for nature preservation or zoned for suburbs"@en ;
+    ns2:modified "2022-03-01T01:56:17"^^xsd:dateTime ;
+    ns2:source "BDR feature types."@en ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/05dac53a-269c-4699-9673-bf99a9406b14> ;
+    ns3:definition "A region of the earth's surface, terrestrial or marine or mixed, that is defined for human purposes."@en ;
+    ns3:example "Tom Price Mine, Kakadu National Park, Southern Kangaroo Island Marine Park, Shorncliffe (suburb of Brisbane), New South Wales, Meshblock 11234 (ABS census region)"@en ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "administrative-area" ;
+    ns3:prefLabel "administrative area"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/06461021-a6c2-4175-9651-23653c2b9116> a ns3:Concept ;
+    ns2:description "Soil samples are collected in the most representative geomorphic setting for a site. Usually between 1 and 2 kg of soil are collected per sample. In general, it useful to include information such as a sample id, name for the sample, collection depth, latitude and longitude, date of collection and soil moisture content/conditions of collection. Information about the landform, land use and vegetation cover are also useful." ;
+    ns2:modified "2021-06-17T01:48:49"^^xsd:dateTime ;
+    ns2:source "Friske, P. W. B., et al. North American soil geochemical landscapes project: Canadian field protocols for collecting mineral soils and measuring soil gas radon and natural radioactivity. Geological Survey of Canada, Open File 6282 (2010): 177.",
+        "Simons, B., Wilson, P., Ritchie, A. and Cox, S., 2013, April. ANZSoilML: an Australian-New Zealand standard for exchange of soil data. In EGU General Assembly Conference Abstracts (pp. EGU2013-6802)." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/06461021-a6c2-4175-9651-23653c2b9116> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/98e8d72d-f361-41ed-af9d-6e7f90c1dfce> ;
+    ns3:definition "A quantity of soil where observations and measurements are performed." ;
+    ns3:example "1000 grams of soil are collected." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "soil-sample" ;
+    ns3:prefLabel "soil sample" .
+
+<http://linked.data.gov.au/def/tern-cv/13dec53e-1062-4060-9281-f133c8269afb> a ns3:Concept ;
+    ns2:modified "2021-04-22T01:45:48"^^xsd:dateTime ;
+    ns1:deprecated true ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/13dec53e-1062-4060-9281-f133c8269afb> ;
+    ns3:definition "A point in space where observations are made or measurements taken." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:prefLabel "spatial point" ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/1f93a3e8-4c78-4b08-85a4-6869c9ee17ac> a ns3:Concept ;
+    ns2:description "A vegetation stand is a sample of a plant community (see Mueller-Dombois & Ellenberg 1974; Allen & Hoekstra 1992). Usually vegetation stands are selected on the basis of uniformity and discreteness (Van Der Maarel and Franklin, 2013). The vegetation included in the stand looks uniform and should be discernible from surrounding vegetation (Van Der Maarel and Franklin, 2013)." ;
+    ns2:modified "2021-06-17T02:00:34"^^xsd:dateTime ;
+    ns2:source "Allen, Timothy FH, and Thomas W. Hoekstra. The confusion between scale‐defined levels and conventional levels of organization in ecology. Journal of vegetation science 1.1 (1990): 5-12.",
+        "Ellenberg, Dieter, and Dieter Mueller-Dombois. Aims and methods of vegetation ecology. New York: Wiley, 1974.",
+        "Van Der Maarel, Eddy, and Janet Franklin. Vegetation ecology: historical notes and outline. Vegetation ecology 2 (2013): 1-27." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/1f93a3e8-4c78-4b08-85a4-6869c9ee17ac> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95> ;
+    ns3:definition "Continuos community of plants occupying a specific area and sufficiently uniform in species composition, structure, age, size, class, distribution." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "vegetation-stand" ;
+    ns3:prefLabel "vegetation stand" .
+
+<http://linked.data.gov.au/def/tern-cv/2090cfd9-8b6b-497b-9512-497456a18b99> a ns3:Concept ;
+    ns2:created "2021-11-19T00:47:12"^^xsd:dateTime ;
+    ns2:modified "2021-11-19T00:50:51"^^xsd:dateTime ;
+    ns2:source <http://purl.obolibrary.org/obo/ENVO_01000739> ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/2090cfd9-8b6b-497b-9512-497456a18b99> ;
+    ns3:definition "An environmental system which can sustain and allow the growth of an ecological population." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:note "A habitat's specificity to an ecological population differentiates it from other environment classes." ;
+    ns3:prefLabel "habitat"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/2361dea8-598c-4b6f-a641-2b98ff199e9e> a ns3:Concept ;
+    ns2:created "2021-12-07T06:06:14"^^xsd:dateTime ;
+    ns2:description "An animal occurrence is a sample of an animal at a particular point and time. Unlike animal individuals, an animal occurrence may not specifically relate to a distinct physical entity (e.g. a specific animal individual), but provides a sample which may come from an individuals or a group." ;
+    ns2:modified "2021-12-10T03:35:49"^^xsd:dateTime ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/2361dea8-598c-4b6f-a641-2b98ff199e9e> ;
+    ns3:closeMatch <http://rs.tdwg.org/dwc/terms/Occurrence> ;
+    ns3:definition "An existence of an animal sampled at a particular place at a particular time." ;
+    ns3:example "A cassowary in the Daintree in 2020. A dingo pack in Fraser Island the 18 of December of 2017." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "animal-occurrence" ;
+    ns3:prefLabel "animal occurrence"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/2cf3ed29-440e-4a50-9bbc-5aab30df9fcd> a ns3:Concept ;
+    ns2:created "2021-02-25T01:34:44"^^xsd:dateTime ;
+    ns2:description "The whole land surface is viewed as a mosaic of tiles of odd shapes and two sizes. The larger size is composed of mosaics of the smaller ones. Larger tiles (> 600 m across) are called landform patterns. Smaller tiles (~40m across) are called landform elements." ;
+    ns2:modified "2021-06-17T01:39:14"^^xsd:dateTime ;
+    ns2:source "Speight, Johan Garry. Landform. Australian soil and land survey field handbook (1990): 9-57." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/2cf3ed29-440e-4a50-9bbc-5aab30df9fcd> ;
+    ns3:definition "Visible features of an area of land, including the physical elements of it soils, landforms (LandSurface Feature) , geology (GeologicFeature), water bodies (StreamChannel Feature), living elements of land cover (VegetationFeature), human elements (LandUse Feature) and transitory elements (Climate Feature)." ;
+    ns3:example "Landsurface Features such as mountains and hills. StreamChannel Features such as rivers, lakes and ponds. LandUse Features including different forms of land use, buildings and structures. Climate Fature such as lighting and weather conditions." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "landform" ;
+    ns3:prefLabel "landform"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/2e122e23-881c-43fa-a921-a8745f016ceb> a ns3:Concept ;
+    ns2:description "Plant specimens usually are dried and mounted on a sheet of paper, but they may also be stored in boxes or kept in liquid preservatives. Plant specimens may be used for identification purposes, morphometrics, plant taxonomy and nomenclature, and the study of geographic distribution of plants." ;
+    ns2:modified "2021-06-17T01:57:04"^^xsd:dateTime ;
+    ns2:source "Heberling, J. Mason, L. Alan Prather, and Stephen J. Tonsor. The changing uses of herbarium data in an era of global change: An overview using automated content analysis. BioScience 69.10 (2019): 812-822." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/2e122e23-881c-43fa-a921-a8745f016ceb> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95> ;
+    ns3:closeMatch <http://rs.tdwg.org/dwc/terms/PreservedSpecimen> ;
+    ns3:definition "A plant specimen is a part of an individual plant preserved, usually in a herbarium sheet." ;
+    ns3:example "A vouchered sample of an individual plant preserved in a herbarium sheet." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "plant-specimen" ;
+    ns3:prefLabel "plant specimen" .
+
+<http://linked.data.gov.au/def/tern-cv/45a73139-f6bf-47b7-88d4-4b2865755545> a ns3:Concept ;
+    ns2:created "2021-12-16T04:48:41"^^xsd:dateTime ;
+    ns2:description "A fungal occurrence is a sample of a fungi at a particular point and time." ;
+    ns2:modified "2022-02-09T01:38:34"^^xsd:dateTime ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/45a73139-f6bf-47b7-88d4-4b2865755545> ;
+    ns3:closeMatch <http://rs.tdwg.org/dwc/terms/Occurrence> ;
+    ns3:definition "An existence of a fungi sampled at a particular place at a particular time." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "fungal-occurrence" ;
+    ns3:prefLabel "fungal occurrence"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/63e83f29-7240-499b-a6ca-015b265beda7> a ns3:Concept ;
+    ns2:modified "2021-04-22T01:45:43"^^xsd:dateTime ;
+    ns1:deprecated true ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/63e83f29-7240-499b-a6ca-015b265beda7> ;
+    ns3:definition "Straight line through space along which observations are made or measurements taken." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:prefLabel "transect" ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/6d40d71e-58cd-4f75-8304-40c01fe5f74c> a ns3:Concept ;
+    ns2:created "2021-02-25T01:00:37"^^xsd:dateTime ;
+    ns2:description "Climate is commonly defined as the weather averaged, or otherwise summarised, over a period of time much longer than the duration of any phenomenon that constitutes weather. The standard averaging period is 30 years, but other periods may be used depending on the purpose." ;
+    ns2:modified "2021-06-17T01:35:41"^^xsd:dateTime ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/6d40d71e-58cd-4f75-8304-40c01fe5f74c> ;
+    ns3:definition "Weather conditions averaged over a period of time." ;
+    ns3:exactMatch <http://purl.obolibrary.org/obo/ENVO_01001082> ;
+    ns3:example "Precipitation, average temperature, minimum temperature." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "climate" ;
+    ns3:prefLabel "climate"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/6fb57064-7198-4df9-bf7c-86b73f69da66> a ns3:Concept ;
+    ns2:created "2021-04-09T00:32:52"^^xsd:dateTime ;
+    ns2:modified "2021-04-22T01:45:38"^^xsd:dateTime ;
+    ns1:deprecated true ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/6fb57064-7198-4df9-bf7c-86b73f69da66> ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:prefLabel "subsite"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/7e256d28-e686-4b6a-b64a-ac1b1a8f164d> a ns3:Concept ;
+    ns2:created "2021-03-09T07:21:46"^^xsd:dateTime ;
+    ns2:description "Land surface disturbace is mostly focus on capturing the effect of land use change events at the site level." ;
+    ns2:modified "2021-06-17T01:38:18"^^xsd:dateTime ;
+    ns2:source "McDonald, R. C., R. F. Isbell, and J. G. Speight. Land surface. (1985)." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/7e256d28-e686-4b6a-b64a-ac1b1a8f164d> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/8282fb22-4135-415c-8ca2-317860d102fb> ;
+    ns3:closeMatch <http://vocabs.lter-europe.net/EnvThes/20373> ;
+    ns3:definition "A disturbance which occurs on the land surface, typically modifying the landscape including biological communities." ;
+    ns3:example "Fire, clearing, grazing, cultivation, logging." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "land-surface-disturbance" ;
+    ns3:prefLabel "land surface disturbance"@en .
+
+<http://linked.data.gov.au/def/tern-cv/80c39b95-0912-4267-bb66-2fa081683723> a ns3:Concept ;
+    ns2:description "A soil profile is a vertical section of a soil from the soil surface through all its horizons to parent material, other consolidated substrate material or selected depth in unconsolidated material. Because soil depth varies between very wide limits the depth of examination in practice frequently may not exceed 1.5–2 m.." ;
+    ns2:modified "2021-06-17T01:41:58"^^xsd:dateTime ;
+    ns2:source: "McDonald, R.C., Isbell, R.F., Speight, J.G., Walker, J. and Hopkins, M.S., 1998. Australian soil and land survey: field handbook (No. Ed. 2). CSIRO publishing." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/80c39b95-0912-4267-bb66-2fa081683723> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/98e8d72d-f361-41ed-af9d-6e7f90c1dfce> ;
+    ns3:definition "A collection of vertical sections of soil, usually collected to 1m depth." ;
+    ns3:example "A soil profile composed of horizons such as an organic, surface, subsoil, substratum and bedrock horizons." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "soil-profile" ;
+    ns3:prefLabel "soil profile" .
+
+<http://linked.data.gov.au/def/tern-cv/8a68b4a9-167b-40f0-9222-293a2d20ffee> a ns3:Concept ;
+    ns2:created "2021-04-21T06:28:27"^^xsd:dateTime ;
+    ns2:description "A population of animals is a collection of individuals belonging to the same species, living in the same area, vital rates such as survival, growth, migration structure the population." ;
+    ns2:modified "2021-06-17T01:35:27"^^xsd:dateTime ;
+    ns2:source "Begon, Michael, Martin Mortimer, and David J. Thompson. Population ecology: a unified study of animals and plants. John Wiley & Sons, 2009.",
+        "Silvertown, Jonathan, and Deborah Charlesworth. Introduction to plant population biology. John Wiley & Sons, 2009." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/8a68b4a9-167b-40f0-9222-293a2d20ffee> ;
+    ns3:broadMatch <http://vocabs.lter-europe.net/EnvThes/20715> ;
+    ns3:definition "Group of individuals of the same animal species living within a given area." ;
+    ns3:example "Ant colony,  a pack of dingoes, a wisdom (a group) of wombats." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "animal-population" ;
+    ns3:prefLabel "animal population"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/972669a7-8a3c-4bd6-9d24-04606fcdd773> a ns3:Concept ;
+    ns2:created "2022-03-10T05:57:00"^^xsd:dateTime ;
+    ns2:modified "2022-03-14T05:19:23"^^xsd:dateTime ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/972669a7-8a3c-4bd6-9d24-04606fcdd773> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/32834f36-a478-45be-97f4-ff2ff51e9f5c> ;
+    ns3:definition "TBD" ;
+    ns3:description "TBD" ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "plant-taxa-per-stratum" ;
+    ns3:prefLabel "plant taxa per stratum"@en .
+
+<http://linked.data.gov.au/def/tern-cv/ae71c3f6-d430-400f-a1d4-97a333b4ee02> a ns3:Concept ;
+    ns2:created "2021-02-01T04:29:24"^^xsd:dateTime ;
+    ns2:description "Collection of individuals belonging to the same species, living in the same area (Silvertown and Charlesworth 2001). In practice, the focal set of individuals and the spatial scale of the populations has to be define." ;
+    ns2:modified "2021-10-06T23:59:31"^^xsd:dateTime ;
+    ns2:source "Silvertown, Jonathan, and Deborah Charlesworth. Introduction to plant population biology. John Wiley & Sons, 2009." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/ae71c3f6-d430-400f-a1d4-97a333b4ee02> ;
+    ns3:broadMatch <http://vocabs.lter-europe.net/EnvThes/20715> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95> ;
+    ns3:definition "Group of individuals of the same plant species living within a given area." ;
+    ns3:example "A population of Corymbia clarksoniana, 20 individuals of Taraxacum officinalis" ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "plant-population" ;
+    ns3:prefLabel "plant population"@en .
+
+<http://linked.data.gov.au/def/tern-cv/aef12cd6-3826-4988-a54c-8578d3fb4c8d> a ns3:Concept ;
+    ns2:created "2021-05-10T02:34:49"^^xsd:dateTime ;
+    ns2:description "Land surface substrate is the combination of vegetation, soil, rock, dead plant materials which make up the land surface." ;
+    ns2:modified "2021-06-17T01:38:42"^^xsd:dateTime ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/aef12cd6-3826-4988-a54c-8578d3fb4c8d> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/8282fb22-4135-415c-8ca2-317860d102fb> ;
+    ns3:definition "Materials, soils or rock that can be found on the land surface." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "land-surface-substrate" ;
+    ns3:prefLabel "land surface substrate"@en .
+
+<http://linked.data.gov.au/def/tern-cv/afc81cca-9122-4e36-823d-31dd765e9257> a ns3:Concept ;
+    ns2:created "2021-02-26T05:11:16"^^xsd:dateTime ;
+    ns2:description "Geological substrates are materials and masses of earth or rock that do not show pedological development. They are not soils, but typically underlie them. The geological substrate includes the R horizon (continuous masses of rock, excluding pans, e.g. bedrock) and the part of the C horizon that shows no pedological development, but excludes the solum, buried soil horizons (including D horizons), and pans. The geological substrate beneath a soil profile may or may not be the parent material of the soil." ;
+    ns2:modified "2021-06-17T01:36:10"^^xsd:dateTime ;
+    ns2:source "McDonald, R.C., Isbell, R.F., Speight, J.G., Walker, J. and Hopkins, M.S., 1998. Australian soil and land survey: field handbook (No. Ed. 2). CSIRO publishing.",
+        "Valentine, P.C., 2019, Sediment classification and the characterization, identification, and mapping of geologic substrates for the glaciated Gulf of Maine seabed and other terrains, providing a physical framework for ecological research and seabed management: U.S. Geological Survey Scientific Investigations Report 2019–5073, 37 p., https://doi.org/10.3133/sir20195073." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/afc81cca-9122-4e36-823d-31dd765e9257> ;
+    ns3:definition "Surface (or volume) of sediment or rock where physical, chemical, and biological processes occur, such as the movement and deposition of sediment, the formation of bedforms, and the attachment, burrowing, feeding, reproduction, and sheltering of organisms." ;
+    ns3:example "By origin sedimentary, igneous, metamorphic. By chemical composition alluvium, sandstone, carbonate" ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "geologic-substrate" ;
+    ns3:prefLabel "geologic substrate"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/b311c0d3-4a1a-4932-a39c-f5cdc1afa611> a ns3:Concept ;
+    ns2:created "2021-10-06T23:53:25"^^xsd:dateTime ;
+    ns2:description "A plant occurrence is a sample of a plant at a particular point and time. Unlike plant individuals, a plant occurrence may not specifically relate to a distinct physical entity (e.g. a specific plant individual), but provides a sample which may come from an individual or a plant aggregate." ;
+    ns2:modified "2021-11-02T03:30:18"^^xsd:dateTime ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/b311c0d3-4a1a-4932-a39c-f5cdc1afa611> ;
+    ns3:altLabel "plant sample" ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95> ;
+    ns3:closeMatch <http://rs.tdwg.org/dwc/terms/Occurrence> ;
+    ns3:definition "An existence of plant sampled at a particular place at a particular time." ;
+    ns3:example "A clump of grass sampled at a point intercept along a transect. An individual tree sampled along a transect. An Ironbark population on ForFar state Forest. An epiphyte in in the Syndey Botanical Garden at 12:29 on 2017-12-18. A plant in Kakadu National Park in the dry season of 2020." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "plant-occurrence" ;
+    ns3:prefLabel "plant occurrence"@en .
+
+<http://linked.data.gov.au/def/tern-cv/caab05f4-084e-4cd8-b219-199529807d3d> a ns3:Concept ;
+    ns2:created "2021-12-17T03:50:10"^^xsd:dateTime ;
+    ns2:description "A stem often bears leaves and buds. It is usually above ground, and is more or less negatively geotropic. A shoot axis (PO:0025029) that is the primary axis of a plant." ;
+    ns2:modified "2021-12-17T04:15:11"^^xsd:dateTime ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/caab05f4-084e-4cd8-b219-199529807d3d> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/60d7edf8-98c6-43e9-841c-e176c334d270> ;
+    ns3:definition "A shoot axis that is the primary axis of a plant." ;
+    ns3:exactMatch <http://purl.obolibrary.org/obo/PO_0009047> ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:prefLabel "individual stem"@en .
+
+<http://linked.data.gov.au/def/tern-cv/cd5cbdbb-07d9-4a5b-9b11-5ab9d6015be6> a ns3:Concept ;
+    ns2:created "2021-11-24T02:21:51"^^xsd:dateTime ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/cd5cbdbb-07d9-4a5b-9b11-5ab9d6015be6> ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:prefLabel "animal specimen"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/d4fc54b1-0ad3-4512-86b7-d42b121ece45> a ns3:Concept ;
+    ns2:created "2021-03-11T00:22:45"^^xsd:dateTime ;
+    ns2:description "Vegetation disturbance occurs at multiple temporal and spatial scales (Pickett and White, 1985). The main sources of variation in disturbance include difference in ecosystem scale, the type of disturbance and differences in the disturbance regime. Disturbance can be described in terms of their distribution, frequency, cycle/turnover time, rotation period, predictability, area, magnitude/intensity, severity and synergism with other disturbances (Pickett and White, 1985). Most disturbance produce heterogenous and patchy effects (Pickett and White, 1985)." ;
+    ns2:modified "2021-06-17T01:58:50"^^xsd:dateTime ;
+    ns2:source "Pickett, S. T. A., and P. S. White. Natural disturbance and patch dynamics. (1985)." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/d4fc54b1-0ad3-4512-86b7-d42b121ece45> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95> ;
+    ns3:closeMatch <http://vocabs.lter-europe.net/EnvThes/USLterCV_805> ;
+    ns3:definition "Events that disrupts the plant component of ecosystems and communities or directly impact plant population structure." ;
+    ns3:example "Frequency and intensity of fires or pests; the amout of land clearing; presence and abundance of cattle." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "vegetation-disturbance" ;
+    ns3:prefLabel "vegetation disturbance"@en .
+
+<http://linked.data.gov.au/def/tern-cv/d738a3f9-9b00-4adf-9dc8-0577269b691d> a ns3:Concept ;
+    ns2:created "2021-02-23T04:51:29"^^xsd:dateTime ;
+    ns2:description "Soil specimens, are collected for their preservation, usually between 1 and 2 kg of soil are collected per specimen. Information about the type of specimens, the amount of material, the specimen id, collection depth, latitude and longitude, date of collection and soil moisture content/conditions of collection are recorded." ;
+    ns2:modified "2021-07-12T04:48:13"^^xsd:dateTime ;
+    ns2:source "Simons, B., Wilson, P., Ritchie, A. and Cox, S., 2013, April. ANZSoilML: an Australian-New Zealand standard for exchange of soil data. In EGU General Assembly Conference Abstracts (pp. EGU2013-6802)." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/d738a3f9-9b00-4adf-9dc8-0577269b691d> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/98e8d72d-f361-41ed-af9d-6e7f90c1dfce> ;
+    ns3:definition "A preserved (physical) soil sample." ;
+    ns3:example "A soil sample preserved in a collection usually with a voucher number." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "soil-specimen" ;
+    ns3:prefLabel "soil specimen"@en .
+
+<http://linked.data.gov.au/def/tern-cv/df7fd606-8145-4206-b66e-b86444888802> a ns3:Concept ;
+    ns2:created "2021-04-20T04:15:03"^^xsd:dateTime ;
+    ns2:description "Organic matter provides the fuel for fire. The diversity of types of natural fire is, in part, a result of the corresponding diversity in vegetation and litter (Cornnwell et al., 2015). The fire regime in a place will be dependent on the vegetation fule properties, along wiht climate, weather and ignition sources (Johnson, 1992; Swetnam, 1993). Vegation fuels can be classified into three major categories: crown, surface and ground." ;
+    ns2:modified "2021-06-17T02:00:09"^^xsd:dateTime ;
+    ns2:source "Cornwell, William K., et al. Flammability across the gymnosperm phylogeny: the importance of litter particle size. New Phytologist 206.2 (2015): 672-681.",
+        "Cruz, M.G., Gould, J.S., Hollis, J.J. and McCaw, W., 2018. A Hierarchical classification of wildland fire fuels for Australian vegetation types. Fire, 1(1), p.13.",
+        "Johnson, Kirk R. Leaf-fossil evidence for extensive floral extinction at the Cretaceous-Tertiary boundary, North Dakota, USA. Cretaceous Research 13.1 (1992): 91-117.",
+        "Swetnam, Thomas W. Fire history and climate change in giant sequoia groves. Science 262.5135 (1993): 885-889." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/df7fd606-8145-4206-b66e-b86444888802> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95> ;
+    ns3:definition "Dead and alive vegetation characteristics relevant to its flammability." ;
+    ns3:example "Canopy lenght and load; bark fuels; biomass of dead and live plants on the ground." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "vegetation-fuel" ;
+    ns3:prefLabel "vegetation fuel"@en .
+
+<http://linked.data.gov.au/def/tern-cv/e1c7c434-1321-4601-9079-e837b7ffc293> a ns3:Concept ;
+    ns2:modified "2021-04-22T01:45:53"^^xsd:dateTime ;
+    ns1:deprecated true ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/e1c7c434-1321-4601-9079-e837b7ffc293> ;
+    ns3:definition "An area in space where observations are made or measurements taken." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:prefLabel "site" ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/e6ed6e58-5916-4d31-9ed5-109ab3436fce> a ns3:Concept ;
+    ns2:created "2021-04-20T03:43:43"^^xsd:dateTime ;
+    ns2:description "Decomposition causes a decrease in plant detrital mass through leaching, fragmentation, and chemical alteration of dead plant material. Plant material is converted to other organic compounds, and ultimately to inorganic nutrients and CO2 (Chapin III et al., 2011)." ;
+    ns2:modified "2021-07-12T04:59:59"^^xsd:dateTime ;
+    ns2:source "Chapin III, F. Stuart, Pamela A. Matson, and Peter Vitousek. Principles of terrestrial ecosystem ecology. Springer Science & Business Media, 2011." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/e6ed6e58-5916-4d31-9ed5-109ab3436fce> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95> ;
+    ns3:closeMatch <http://vocabs.lter-europe.net/EnvThes/20955> ;
+    ns3:definition "Decayed plant residues (i.e. wood, leaf or root) and related characteristics." ;
+    ns3:example "Leaf litter decomposition, coarse woody debris mass, fine woody debris production." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "plant-litter" ;
+    ns3:prefLabel "plant litter"@en .
+
+<http://linked.data.gov.au/def/tern-cv/ea3a4c64-dac3-4660-809a-8ad5ced8997b> a ns3:Concept ;
+    ns2:created "2021-02-25T01:03:50"^^xsd:dateTime ;
+    ns2:description: "Theoretically, it is useful to consider the complete set of plants belonging to all species living in a particular place and time as plant community (community sensu lato see Vellend 2016). In practice, studies often focus on a subset of the whole plant community chosen on the basis of growth form, taxonomy or particular interactions (Morin 2011)." ;
+    ns2:modified "2021-06-17T01:52:44"^^xsd:dateTime ;
+    ns2:source "Morin, P. J. Community ecology. Wiley. (2011).",
+        "Vellend, Mark. The theory of ecological communities (MPB-57). Princeton University Press, 2020." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/ea3a4c64-dac3-4660-809a-8ad5ced8997b> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95> ;
+    ns3:definition "Group of plants representing multiple species living in a specified place and time." ;
+    ns3:example "Trees, shrubs, and grasses in an area; only Myrtaceae in a savannah; only vascular plants." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "plant-community" ;
+    ns3:prefLabel "plant community"@en .
+
+<http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7> a ns3:Concept ;
+    ns2:created "2021-04-21T06:30:18"^^xsd:dateTime ;
+    ns2:description "An animal indvidual is a physiological independent individual that has some kind of autonomous agency and has a life cycle that allow them to form some kind of reproductive lineages. Operationally, in some cases superorganisms or colonies (e.g. corals) may be considered a special kind of individual." ;
+    ns2:modified "2021-06-17T01:35:06"^^xsd:dateTime ;
+    ns2:source "Wilson, Robert A., and Matthew Barker. The biological notion of individual. (2007)." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7> ;
+    ns3:broadMatch <http://linkeddata.ge.imati.cnr.it/resource/EARTh/45460>,
+        <http://www.eionet.europa.eu/gemet/concept/5914> ;
+    ns3:definition "Physiologically distinct and independent organism" ;
+    ns3:example "A wombat, a bird, a termite, a nematode" ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:notation "animal-individual" ;
+    ns3:prefLabel "animal individual"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/32834f36-a478-45be-97f4-ff2ff51e9f5c> a ns3:Concept ;
+    ns2:created "2021-03-15T02:16:26"^^xsd:dateTime ;
+    ns2:description "A stratum is an easily seen layer of foliage and branches of a distinct and measurable height. One or more strata can exist in a pathc of vegetation." ;
+    ns2:modified "2021-06-17T02:01:53"^^xsd:dateTime ;
+    ns2:source "Hnatiuk, R.J., Thackway, R., and Walker, J. Vegetation. In National Committee on Soil and Terrain (2009) ‘Australian soil and land survey field handbook (3rd edn).’ (CSIRO Publishing: Melbourne)." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/32834f36-a478-45be-97f4-ff2ff51e9f5c> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95> ;
+    ns3:definition "Distinct height class in the vegetation." ;
+    ns3:example "Top canopy, shrubs, ground cover" ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:narrower <http://linked.data.gov.au/def/tern-cv/972669a7-8a3c-4bd6-9d24-04606fcdd773> ;
+    ns3:notation "vegetation-stratum" ;
+    ns3:prefLabel "vegetation stratum"@en .
+
+<http://linked.data.gov.au/def/tern-cv/60d7edf8-98c6-43e9-841c-e176c334d270> a ns3:Concept ;
+    ns2:description "In practice the definition of plant individual is based on physiological independence (ramet) rather than on a strict genetic criterion (i.e. genets). Most studies will define a plant individual based on the physical independence of its aboveground vegetative part (sensu Cook, 1979). Thus in plants a physiological individual will not always coincidence with the genetic individual (e.g. a clonal species population can have hundreds of physiological independent individuals consisting of a handful of genotypes)." ;
+    ns2:modified "2021-06-17T01:53:44"^^xsd:dateTime ;
+    ns2:source "Cook, Robert Edward. Asexual reproduction: a further consideration. The American Naturalist 113.5 (1979): 769-772.",
+        "Harper, J. L. Modules, branches, and the capture of resources. In Population biology and evolution of clonal organisms.(Eds JBC Jackson, LW Buss, RE Cook) pp. 1–33. (1985)." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/60d7edf8-98c6-43e9-841c-e176c334d270> ;
+    ns3:broadMatch <http://www.eionet.europa.eu/gemet/concept/5914> ;
+    ns3:broader <http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95> ;
+    ns3:definition "Physiologically distinct and independent plant." ;
+    ns3:example "An individual tree, an individual shrub, a single Licuala ramsayi individual" ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:narrower <http://linked.data.gov.au/def/tern-cv/caab05f4-084e-4cd8-b219-199529807d3d> ;
+    ns3:notation "plant-individual" ;
+    ns3:prefLabel "plant individual" .
+
+<http://linked.data.gov.au/def/tern-cv/8282fb22-4135-415c-8ca2-317860d102fb> a ns3:Concept ;
+    ns2:created "2021-02-25T01:11:44"^^xsd:dateTime ;
+    ns2:descrition "Most of the attributes for land surface deal with its physical properties (e.g. aspect, elevation). Some other reflect properties within (e.g. microrelief). Some attributes reflect the influence of present or past land use practice (e.g. disturbance of site, erosion)." ;
+    ns2:modified "2021-06-17T01:37:36"^^xsd:dateTime ;
+    ns2:source "McDonald, R. C., R. F. Isbell, and J. G. Speight. Land surface. (1985)." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/8282fb22-4135-415c-8ca2-317860d102fb> ;
+    ns3:definition "Surface layer of Earth which is primarily composed of solid material and is not covered by oceans or other bodies of water." ;
+    ns3:exactMatch <http://purl.obolibrary.org/obo/ENVO_01001785> ;
+    ns3:example "Elevation, slope, microrelief, erosion, inundation." ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:narrower <http://linked.data.gov.au/def/tern-cv/7e256d28-e686-4b6a-b64a-ac1b1a8f164d>,
+        <http://linked.data.gov.au/def/tern-cv/aef12cd6-3826-4988-a54c-8578d3fb4c8d> ;
+    ns3:notation "land-surface" ;
+    ns3:prefLabel "land surface"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/98e8d72d-f361-41ed-af9d-6e7f90c1dfce> a ns3:Concept ;
+    ns2:created "2021-03-16T05:07:09"^^xsd:dateTime ;
+    ns2:modified "2021-06-17T01:39:46"^^xsd:dateTime ;
+    ns2:source "Simons, B., Wilson, P., Ritchie, A. and Cox, S., 2013, April. ANZSoilML: an Australian-New Zealand standard for exchange of soil data. In EGU General Assembly Conference Abstracts (pp. EGU2013-6802)." ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/98e8d72d-f361-41ed-af9d-6e7f90c1dfce> ;
+    ns3:definition "Natural body comprised of minerals, soil organic matter, living organisms, gas, and water." ;
+    ns3:exactMatch <http://vocabs.lter-europe.net/EnvThes/24> ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:narrower <http://linked.data.gov.au/def/tern-cv/06461021-a6c2-4175-9651-23653c2b9116>,
+        <http://linked.data.gov.au/def/tern-cv/80c39b95-0912-4267-bb66-2fa081683723>,
+        <http://linked.data.gov.au/def/tern-cv/d738a3f9-9b00-4adf-9dc8-0577269b691d> ;
+    ns3:notation "soil" ;
+    ns3:prefLabel "soil"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95> a ns3:Concept ;
+    ns2:created "2021-03-11T00:21:46"^^xsd:dateTime ;
+    ns2:modified "2021-06-17T01:51:28"^^xsd:dateTime ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95> ;
+    ns3:definition "Plant life in a location." ;
+    ns3:exactMatch <http://vocabs.lter-europe.net/EnvThes/20535> ;
+    ns3:inScheme <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:narrower <http://linked.data.gov.au/def/tern-cv/1f93a3e8-4c78-4b08-85a4-6869c9ee17ac>,
+        <http://linked.data.gov.au/def/tern-cv/2e122e23-881c-43fa-a921-a8745f016ceb>,
+        <http://linked.data.gov.au/def/tern-cv/32834f36-a478-45be-97f4-ff2ff51e9f5c>,
+        <http://linked.data.gov.au/def/tern-cv/60d7edf8-98c6-43e9-841c-e176c334d270>,
+        <http://linked.data.gov.au/def/tern-cv/ae71c3f6-d430-400f-a1d4-97a333b4ee02>,
+        <http://linked.data.gov.au/def/tern-cv/b311c0d3-4a1a-4932-a39c-f5cdc1afa611>,
+        <http://linked.data.gov.au/def/tern-cv/d4fc54b1-0ad3-4512-86b7-d42b121ece45>,
+        <http://linked.data.gov.au/def/tern-cv/df7fd606-8145-4206-b66e-b86444888802>,
+        <http://linked.data.gov.au/def/tern-cv/e6ed6e58-5916-4d31-9ed5-109ab3436fce>,
+        <http://linked.data.gov.au/def/tern-cv/ea3a4c64-dac3-4660-809a-8ad5ced8997b> ;
+    ns3:notation "vegetation" ;
+    ns3:prefLabel "vegetation"@en ;
+    ns3:topConceptOf <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> .
+
+<http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> a ns3:ConceptScheme ;
+    ns2:created "2021-02-01T04:23:43"^^xsd:dateTime ;
+    ns2:modified "2021-09-01T03:18:03"^^xsd:dateTime ;
+    ns1:sameAs <http://linked.data.gov.au/def/tern-cv/68af3d25-c801-4089-afff-cf701e2bd61d> ;
+    ns3:hasTopConcept <http://linked.data.gov.au/def/tern-cv/05dac53a-269c-4699-9673-bf99a9406b14>,
+        <http://linked.data.gov.au/def/tern-cv/13dec53e-1062-4060-9281-f133c8269afb>,
+        <http://linked.data.gov.au/def/tern-cv/2090cfd9-8b6b-497b-9512-497456a18b99>,
+        <http://linked.data.gov.au/def/tern-cv/2361dea8-598c-4b6f-a641-2b98ff199e9e>,
+        <http://linked.data.gov.au/def/tern-cv/2be2d5ce-ca9d-4dff-8e79-948983944f95>,
+        <http://linked.data.gov.au/def/tern-cv/2cf3ed29-440e-4a50-9bbc-5aab30df9fcd>,
+        <http://linked.data.gov.au/def/tern-cv/45a73139-f6bf-47b7-88d4-4b2865755545>,
+        <http://linked.data.gov.au/def/tern-cv/63e83f29-7240-499b-a6ca-015b265beda7>,
+        <http://linked.data.gov.au/def/tern-cv/6d40d71e-58cd-4f75-8304-40c01fe5f74c>,
+        <http://linked.data.gov.au/def/tern-cv/6fb57064-7198-4df9-bf7c-86b73f69da66>,
+        <http://linked.data.gov.au/def/tern-cv/8282fb22-4135-415c-8ca2-317860d102fb>,
+        <http://linked.data.gov.au/def/tern-cv/8a68b4a9-167b-40f0-9222-293a2d20ffee>,
+        <http://linked.data.gov.au/def/tern-cv/98e8d72d-f361-41ed-af9d-6e7f90c1dfce>,
+        <http://linked.data.gov.au/def/tern-cv/afc81cca-9122-4e36-823d-31dd765e9257>,
+        <http://linked.data.gov.au/def/tern-cv/cd5cbdbb-07d9-4a5b-9b11-5ab9d6015be6>,
+        <http://linked.data.gov.au/def/tern-cv/e1c7c434-1321-4601-9079-e837b7ffc293>,
+        <http://linked.data.gov.au/def/tern-cv/ecb855ed-50e1-4299-8491-861759ef40b7> ;
+    ns3:prefLabel "Feature Type"@en .
+

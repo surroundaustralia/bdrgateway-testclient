@@ -11,3 +11,6 @@ from .observation import Observation
 from .value_taxon import Taxon
 from .value_float import Float
 from .site_visit import SiteVisit
+from .types_attributes import ATTRIBUTE_TYPES
+from .types_features import FEATURE_TYPES
+from .types_methods import METHOD_TYPES
