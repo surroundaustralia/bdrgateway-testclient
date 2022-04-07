@@ -55,7 +55,7 @@ class Observation(Klass):
         ), f"The datatype of the property result_date_time must be one of {', '.join(xsd_date_types)}"
 
         assert (
-            len(used_procedure) != 1
+            isinstance(used_procedure.__class__, URIRef.__class__)
         ), "There must be exactly 1 used_procedure property"
 
         assert isinstance(

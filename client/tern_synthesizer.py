@@ -92,7 +92,7 @@ class TernSynthesizer:
         # create a list of FoI instances: 1 per 50 Samplings
         for i in range(math.floor(n / 50) + 1):
             self.fois.append(
-                FeatureOfInterest(Concept(), self.datasets[math.floor(i / 2)])
+                FeatureOfInterest(Concept(random.choice(FEATURE_TYPES)), self.datasets[math.floor(i / 2)])
             )
 
         # create Samplings
@@ -116,7 +116,7 @@ class TernSynthesizer:
                     "http://linked.data.gov.au/def/tern-cv/2023575a-f0f9-40cc-b211-febbb652da22"
                 )  # basal area count
                 this_attribute = Attribute(
-                    random.choice(ATTRIBUTE_TYPES),
+                    URIRef(random.choice(ATTRIBUTE_TYPES)),
                     Literal(42),
                     Value(True),
                     this_result,
@@ -130,7 +130,7 @@ class TernSynthesizer:
             this_sampling = Sampling(
                 this_foi,
                 Literal("2000-01-01", datatype=XSD.date),
-                random.choice(METHOD_TYPES),
+                URIRef(random.choice(METHOD_TYPES)),
                 [this_sample],
                 coordinates=self.coordinate_points[i]
             )
@@ -143,7 +143,7 @@ class TernSynthesizer:
                 this_observed_property,
                 URIRef(f"http://example.com/instant/{uuid4()}"),
                 Literal("2000-01-01", datatype=XSD.date),
-                random.choice(METHOD_TYPES),
+                URIRef(random.choice(METHOD_TYPES)),
             )
 
             # no Sites for now
