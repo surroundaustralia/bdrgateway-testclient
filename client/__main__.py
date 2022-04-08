@@ -1,11 +1,13 @@
 import argparse
-from tern_synthesizer import TernSynthesizer
+from synthesizer_tern import TernSynthesizer
+from synthesizer_abis import AbisSynthesizer
 
 import httpx
 from rdflib import Graph
 
 from shapely.geometry import box
 
+SCENARIOS = ["broad", "degree", "narrow", "embargoed"]
 MESSAGE_TYPES = ["create", "update", "delete", "exists"]
 
 
@@ -26,24 +28,47 @@ def validate_number(value):
     return ivalue
 
 
-parser = argparse.ArgumentParser()
+def process_args():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "scenario",
+        help="The data generation scenario wanted. 'broad' is Esperance to Geralton, 'degree' is a 1 square degree "
+             "area, 'narrow' is a 0.1 x 0.1 degree area",
+        choices=SCENARIOS,
+    )
+
+    parser.add_argument(
+        "num",
+        help="The number of Samplings you want to synthesise data for",
+        type=validate_number,
+    )
+
+    parser.add_argument(
+        "-m",
+        "--msgtype",
+        help="The type of message to wrap the data in",
+        choices=MESSAGE_TYPES,
+    )
+
+    return parser.parse_args()
 
 
-parser.add_argument(
-    "num",
-    help="The number of Samplings you want to synthesise data for",
-    type=validate_number,
-)
+def main(args):
+    if args.scenario == "broad":
+        # Geralton to Esperance area
+        g = TernSynthesizer(args.num, box(115.992191, -33.871399, 121.9467547, -28.572837)).to_graph()
+    elif args.scenario == "degree":
+        # 1 degree square area
+        g = TernSynthesizer(args.num, box(117, -30, 118, -29)).to_graph()
+    elif args.scenario == "narrow":
+        g = TernSynthesizer(args.num, box(116, -30, 116.01, -29.99)).to_graph()
+    elif args.scenario == "embargoed":
+        g = AbisSynthesizer("embargoed_datasets").to_graph()
 
-parser.add_argument(
-    "msg_type",
-    help="The type of message to wrap the data in",
-    choices=MESSAGE_TYPES,
-)
+    return g.serialize()
 
-args = parser.parse_args()
 
-tern_rdf_graph = TernSynthesizer(args.num, box(115.992191, -33.871399, 121.9467547, -28.572837)).to_graph()  # 100
-# tern_rdf_graph = TernSynthesizer(args.num, box(117, -30, 118, -29)).to_graph()  # narrow area, 25
-
-print(tern_rdf_graph.serialize())
+if __name__ == "__main__":
+    args = process_args()
+    print(main(args))

@@ -1,4 +1,4 @@
-from client.tern_synthesizer import TernSynthesizer
+from client.synthesizer_tern import TernSynthesizer
 from shapely.geometry import box
 from client.model._TERN import TERN
 from rdflib.namespace import RDF

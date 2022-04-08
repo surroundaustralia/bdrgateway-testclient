@@ -26,28 +26,30 @@ image::images/abisdm.png[]
 
 The `__main__.py` file within the `client/` module is the entry point for this program and can be run from the command line, within the main directory of this repository when cloned locally, as follows:
 
-~$ python client {N} {MESSAGE_TYPE}
+~$ python client {SCENARIO} {N}
 
 where:
 
-* {N} is the number of Samplings to make
-* {MESSAGE_TYPE} is the type of BDR message to wrap the data in -- currently un-implemented
+* {SCENARIO} is the fixed bounding area (broad, degree, narrow) of the data
+* {N} is the number of Samplings to make within the scenario's area
 
 This will print data to standard out, so you may wish to redirect it to a file as follows:
 
-~$ python client {N} {MESSAGE_TYPE} > out.ttl
+~$ python client 25 broad > my_file.ttl
 
-`out.ttl` will be a Turtle file with your result.
+`my_file.ttl` will be a Turtle file with your result.
 
 === Other configuration
 
-The main script doing all the work is `client/tern_synthesizer.py`. `__main__.py` just calls that script to create a `TernSynthesizer` object on which `to_graph()` is then called to make a result.
+The main script doing all the work is `client/synthesizer_tern.py`. `__main__.py` just calls that script to create a `TernSynthesizer` object on which `to_graph()` is then called to make a result.
 
-The parameter other than {N} that can be set for `TernSynthesizer` is the bounding box of the Sampling point locations. The default values present in `client/tern_synthesizer.py` are for South-West Western Australia: approximately Geraldton (NW) to Esperance (SE).
+For ABIS Data Management ontology additions to TERN output, see the `client/synthesizer_abis.py` file.
 
-== Example output
+For BDR message wrapping of TERN or ABIS outputs, see the `client/synthesizer_bdr.py` file _(not implemented yet)_.
 
-See the _output_broad.ttl_ and _output_narrow.ttl_ files in this repo.
+== Example outputs
+
+See the _scenario_*.ttl_ files in this repo.
 
 == License & Copyright
 

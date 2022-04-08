@@ -59,7 +59,7 @@ class TernSynthesizer:
 
     def __init__(
             self, n: int,
-            coordinate_bounding_box: Optional[Polygon] = None,
+            coordinate_bounding_box: Polygon,
             randomised_or_regular: Optional[Lit["randomised", "regular"]] = "randomised"
     ):
         assert n > 0, "n, the number of Samples, must be greater than zero"
@@ -76,14 +76,11 @@ class TernSynthesizer:
         self.taxa = []
         self.attributes = []
         self.coordinate_bounding_box = coordinate_bounding_box
-        if self.coordinate_bounding_box is not None:
-            self.coordinate_points = self._generate_coordinate_points(
-                n,
-                self.coordinate_bounding_box,
-                randomised_or_regular
-            )
-        else:
-            self.coordinate_points = None
+        self.coordinate_points = self._generate_coordinate_points(
+            n,
+            self.coordinate_bounding_box,
+            randomised_or_regular
+        )
 
         # create a list of RDFDataset instances
         for i in range(math.floor(n / 100) + 1):  # 1 per 100 Samplings
@@ -167,11 +164,11 @@ class TernSynthesizer:
             bounding_box: Polygon,
             randomised_or_regular: Lit["randomised", "regular"] = "randomised"
     ) -> List[Point]:
-        # buffer area by 0.1
-        min_long = bounding_box.exterior.coords[2][0] + 0.1
-        max_long = bounding_box.exterior.coords[0][0] - 0.1
-        min_lat = bounding_box.exterior.coords[0][1] + 0.1
-        max_lat = bounding_box.exterior.coords[2][1] - 0.1
+        # buffer area by 0.01
+        min_long = bounding_box.exterior.coords[2][0] + 0.01
+        max_long = bounding_box.exterior.coords[0][0] - 0.01
+        min_lat = bounding_box.exterior.coords[0][1] + 0.01
+        max_lat = bounding_box.exterior.coords[2][1] - 0.01
 
         sqt = math.ceil(math.sqrt(no_of_points))
 
@@ -210,10 +207,3 @@ class TernSynthesizer:
         for o in self.attributes:
             g += o.to_graph()
         return g
-
-
-def validate_number(n):
-    if n < 1 or n > 10000:
-        print("The number of Samplings you select must be > 1, < 10,000")
-        return False
-    return True
