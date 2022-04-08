@@ -138,7 +138,7 @@ class AbisSynthesizer:
                     dataset_graph.add((
                         URIRef(dataset_iri),
                         ABISDM.embargoPeriod,
-                        Literal(f"P{i}M", datatype=XSD.date)
+                        Literal(f"P{i}M", datatype=XSD.duration)
                     ))
                 else:
                     # add no embargoed properties

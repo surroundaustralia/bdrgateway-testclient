@@ -87,6 +87,7 @@ class Sampling(Klass):
         if self.geometry:
             geom_iri = URIRef(self.iri + "/geom")
             g.add((self.iri, GEO.hasGeometry, geom_iri))
+            g.add((geom_iri, RDF.type, GEO.Geometry))
             g.add((geom_iri, GEO.asWKT, Literal(self.geometry.wkt, datatype=GEO.wktLiteral)))
 
         return g
