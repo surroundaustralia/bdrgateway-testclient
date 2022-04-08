@@ -129,7 +129,7 @@ class TernSynthesizer:
                 Literal("2000-01-01", datatype=XSD.date),
                 URIRef(random.choice(METHOD_TYPES)),
                 [this_sample],
-                coordinates=self.coordinate_points[i]
+                geometry=self.coordinate_points[i]
             )
             this_sample.is_result_of = this_sampling
             this_obs = Observation(
