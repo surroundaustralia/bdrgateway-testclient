@@ -7,7 +7,7 @@ from rdflib import Graph
 
 from shapely.geometry import box
 
-SCENARIOS = ["broad", "degree", "narrow", "embargoed"]
+SCENARIOS = ["broad", "degree", "narrow", "embargoed", "conservation"]
 MESSAGE_TYPES = ["create", "update", "delete", "exists"]
 
 
@@ -39,9 +39,11 @@ def process_args():
     )
 
     parser.add_argument(
-        "num",
+        "-n",
+        "--num",
         help="The number of Samplings you want to synthesise data for",
         type=validate_number,
+        required=False
     )
 
     parser.add_argument(
@@ -64,7 +66,9 @@ def main(args):
     elif args.scenario == "narrow":
         g = TernSynthesizer(args.num, box(116, -30, 116.01, -29.99)).to_graph()
     elif args.scenario == "embargoed":
-        g = AbisSynthesizer("embargoed_datasets").to_graph()
+        g = AbisSynthesizer("embargoed").to_graph()
+    elif args.scenario == "conservation":
+        g = AbisSynthesizer("conservation").to_graph()
 
     return g.serialize()
 

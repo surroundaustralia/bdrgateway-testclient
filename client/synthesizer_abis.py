@@ -9,17 +9,22 @@ from shapely.geometry import box
 from model.agent import Agent
 from model.concept import Concept
 from model.rdf_dataset import RDFDataset
+from model._TERN import TERN
+from model.types_conservation_status_taxa import CONSERVATION_STATUS_TAXA
 from synthesizer_tern import TernSynthesizer
 
 ABISDM = Namespace("https://linked.data.gov.au/def/abisdm/")
+DWC = Namespace("http://rs.tdwg.org/dwc/terms/")
+
 
 class AbisSynthesizer:
     def __init__(
             self,
-            abis_additions: Lit["embargoed_datasets", "conservation_statues", "ed_and_cs"]
+            abis_additions: Lit["embargoed", "conservation", "e_and_c"]
     ):
-        if abis_additions == "embargoed_datasets":
-            self.graph = Graph()
+        self.graph = Graph()
+
+        if abis_additions == "embargoed":
             titles = [
                 "Dataset Title 01",
                 "Dataset Title 02",
@@ -166,6 +171,12 @@ class AbisSynthesizer:
                 tern_graph += dataset_graph
 
                 self.graph += tern_graph
+        elif abis_additions == "conservation":
+            self.graph = TernSynthesizer(100, box(115.992191, -33.871399, 121.9467547, -28.572837)).to_graph()
+            for s, o in self.graph.subject_objects(DWC.scientificNameID):
+                if random.random() >= 0.9:
+                    self.graph.remove((s, DWC.scientificNameID, o))
+                    self.graph.add((s, DWC.scientificNameID, URIRef(random.choice(CONSERVATION_STATUS_TAXA))))
 
     def to_graph(self):
         self.graph.bind("tern", Namespace("https://w3id.org/tern/ontologies/tern/"))

@@ -23,6 +23,8 @@ except:
 
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
+DWC = Namespace("http://rs.tdwg.org/dwc/terms/")
+
 
 MESSAGE_TYPES = ["create", "update", "delete", "exists"]
 ANIMAL_CONCEPT = Concept(
@@ -153,6 +155,7 @@ class TernSynthesizer:
     def _bind_prefixes(self, g: Graph):
         g.bind("bdrm", BDRM)
         g.bind("dcterms", DCTERMS)
+        g.bind("dwc", DWC)
         g.bind("geo", GEO)
         g.bind("sosa", SOSA)
         g.bind("tern", TERN)

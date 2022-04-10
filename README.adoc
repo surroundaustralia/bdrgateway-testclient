@@ -49,7 +49,7 @@ For BDR message wrapping of TERN or ABIS outputs, see the `client/synthesizer_bd
 
 == Example outputs
 
-See the _scenario_*.ttl_ files in this repo.
+See the _test_client_*.ttl_ files in this repo.
 
 == License & Copyright
 
