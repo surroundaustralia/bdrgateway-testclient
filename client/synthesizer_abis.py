@@ -172,9 +172,9 @@ class AbisSynthesizer:
 
                 self.graph += tern_graph
         elif abis_additions == "conservation":
-            self.graph = TernSynthesizer(100, box(115.992191, -33.871399, 121.9467547, -28.572837)).to_graph()
+            self.graph = TernSynthesizer(250, box(115.992191, -33.871399, 121.9467547, -28.572837)).to_graph()
             for s, o in self.graph.subject_objects(DWC.scientificNameID):
-                if random.random() >= 0.9:
+                if random.random() >= 0.75:
                     self.graph.remove((s, DWC.scientificNameID, o))
                     self.graph.add((s, DWC.scientificNameID, URIRef(random.choice(CONSERVATION_STATUS_TAXA))))
 
