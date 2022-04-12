@@ -68,7 +68,7 @@ class RDFDataset(Klass):
         """Receive and use or make an IRI"""
         if iri is None:
             self.id = self.make_uuid()
-            iri = URIRef(f"http://example.com/sample/{self.id}")
+            iri = URIRef(f"http://example.com/rdfdataset/{self.id}")
 
         self.iri = URIRef(iri)
 
