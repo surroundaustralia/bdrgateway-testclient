@@ -128,7 +128,7 @@ class TernSynthesizer:
             )
             this_sampling = Sampling(
                 this_foi,
-                Literal("2000-01-01", datatype=XSD.date),
+                Literal("2000-01-01+09:00", datatype=XSD.dateTime),
                 URIRef(random.choice(METHOD_TYPES)),
                 [this_sample],
                 geometry=self.coordinate_points[i]
@@ -137,17 +137,19 @@ class TernSynthesizer:
             this_obs = Observation(
                 self.datasets[math.floor(n / 100)],
                 this_result,
-                this_sample,
+                this_foi,
                 this_simple_result,
                 this_observed_property,
                 URIRef(f"http://example.com/instant/{uuid4()}"),
-                Literal("2000-01-01", datatype=XSD.date),
+                Literal("2000-01-01+09:00", datatype=XSD.dateTime),
                 URIRef(random.choice(METHOD_TYPES)),
             )
 
-            # no Sites for now
-            # site1 = Site(observation_1, [this_foi], ds, Concept())
-            # s.is_sample_of.append(site1)
+            # Potential site
+            site1 = Site(this_obs, [this_foi], RDFDataset("http://example.com/rdfdataset/western_australia_dataset", "Western Australia Dataset", "This is an example dataset for testing in the Western Australia region", None, None, None, None, None, "2000-01-01"), this_concept)
+            this_sampling.has_site_visit = site1
+
+            self.sites.append(site1)
 
             self.samples.append(this_sample)
             self.observations.append(this_obs)
@@ -209,4 +211,6 @@ class TernSynthesizer:
             g += o.to_graph()
         for o in self.attributes:
             g += o.to_graph()
+        for s in self.sites:
+            g += s.to_graph()
         return g
