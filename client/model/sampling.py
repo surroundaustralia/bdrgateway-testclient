@@ -9,6 +9,7 @@ from client.model._TERN import TERN
 from client.model.feature_of_interest import FeatureOfInterest
 from client.model.klass import Klass
 from client.model.sample import Sample
+from client.model.site import Site
 from shapely.geometry import Point
 
 
@@ -20,7 +21,8 @@ class Sampling(Klass):
         used_procedure: URIRef,
         has_result: List[Sample] = [],
         iri: Optional[str] = None,
-        geometry: Optional[Point] = None
+        geometry: Optional[Point] = None,
+        has_site_visit: Optional[Site] = None
     ):
         assert isinstance(
             has_feature_of_interest.__class__, FeatureOfInterest.__class__
@@ -52,6 +54,10 @@ class Sampling(Klass):
             assert isinstance(geometry.__class__, Point.__class__), \
                 "If a coordinate is supplied, it must be a Point"
 
+        if has_site_visit is not None:
+            assert isinstance(has_site_visit.__class__, Site.__class__), \
+                "There is a maximum of one site visits per sampling"
+
         """Receive and use or make an IRI"""
         if iri is None:
             self.id = self.make_uuid()
@@ -68,6 +74,7 @@ class Sampling(Klass):
         self.has_result = has_result
         self.has_feature_of_interest = has_feature_of_interest
         self.geometry = geometry
+        self.has_site_visit = has_site_visit
 
     def to_graph(self) -> Graph:
         g = super().to_graph()
@@ -89,5 +96,7 @@ class Sampling(Klass):
             g.add((self.iri, GEO.hasGeometry, geom_iri))
             g.add((geom_iri, RDF.type, GEO.Geometry))
             g.add((geom_iri, GEO.asWKT, Literal(self.geometry.wkt, datatype=GEO.wktLiteral)))
+        if self.has_site_visit:
+            g.add((self.iri, TERN.hasSiteVisit, self.has_site_visit.iri))
 
         return g
