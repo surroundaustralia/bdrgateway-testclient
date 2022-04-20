@@ -8,7 +8,7 @@ from client.model.concept import Concept
 from client.model.feature_of_interest import FeatureOfInterest
 from client.model.observation import Observation
 from client.model.rdf_dataset import RDFDataset
-from client.model.has_site_visit import HasSiteVisit
+from client.model.site_visit import SiteVisit
 
 
 class Site(FeatureOfInterest):
@@ -20,7 +20,7 @@ class Site(FeatureOfInterest):
         feature_type: Concept,
         iri: Optional[str] = None,
         label: Optional[Literal] = None,
-        has_site_visit: Optional[HasSiteVisit] = None,
+        has_site_visit: Optional[SiteVisit] = None,
     ):
         assert isinstance(
             is_result_of.__class__, Observation.__class__
@@ -45,8 +45,8 @@ class Site(FeatureOfInterest):
             ), "If you supply a label, it must be an RDFLib Literal"
 
         if has_site_visit:
-            assert isinstance(has_site_visit.__class__, HasSiteVisit.__class__), \
-                    "The object supplied for the property has_site_visit must be of type HasSiteVisit"
+            assert isinstance(has_site_visit.__class__, SiteVisit.__class__), \
+                    "The object supplied for the property has_site_visit must be of type SiteVisit"
 
         """Receive and use or make an IRI"""
         if iri is None:

@@ -58,7 +58,7 @@ class TernSynthesizer:
     taxa = List[Taxon]
     coordinate_bounding_box: Polygon
     coordinate_points = List[Point]
-    site_visit = List[HasSiteVisit]
+    site_visit = List[SiteVisit]
 
     def __init__(
             self, n: int,
@@ -149,12 +149,12 @@ class TernSynthesizer:
                 URIRef(random.choice(METHOD_TYPES)),
             )
             # Potential site
-            site1 = Site(this_obs, [this_foi], RDFDataset("http://example.com/rdfdataset/western_australia_dataset", "Western Australia Dataset", "This is an example dataset for testing in the Western Australia region", None, None, None, None, None, "2000-01-01"), this_concept)
+            site1 = Site(this_obs, [this_foi], self.datasets[math.floor(n / 100)], this_concept)
             this_sampling.has_site_visit = site1
 
             # creating site visit and links
-            this_site_visit = HasSiteVisit(self.datasets[math.floor(1 / 100)],
-                                           Literal("2000-01-01+09:00", datatype=XSD.dateTime))
+            this_site_visit = SiteVisit(self.datasets[math.floor(1 / 100)],
+                                        Literal("2000-01-01+09:00", datatype=XSD.dateTime))
             this_sampling.has_site_visit = this_site_visit
             this_obs.has_site_visit = this_site_visit
             site1.has_site_visit = this_site_visit

@@ -1,8 +1,9 @@
-from rdflib import Literal
+from rdflib import Literal, URIRef
 from rdflib.namespace import OWL, RDF, XSD
 
 from client.model import RDFDataset, SiteVisit
 from client.model._TERN import TERN
+from client.model import (Site, Sample, Observation, RDFDataset, Value, FeatureOfInterest, Concept, Sampling)
 
 
 def test_basic_rdf():
@@ -11,3 +12,62 @@ def test_basic_rdf():
 
     assert (None, RDF.type, OWL.Class) not in rdf
     assert (None, RDF.type, TERN.SiteVisit)
+
+def test_simple_sitevisit_with_site():
+    rdfdataset1 = RDFDataset()
+    foi1 = FeatureOfInterest(
+        Concept(),
+        rdfdataset1,
+    )
+    sv = SiteVisit(rdfdataset1, Literal("2000-01-01+09:00", datatype=XSD.dateTime))
+    s1 = Observation(
+        rdfdataset1,
+        Value(),
+        foi1,
+        URIRef("https://example.com/simpleresult/x"),
+        URIRef("http://example.com/observedproperty/x"),
+        URIRef("http://example.com/instant/x"),
+        Literal("2001-01-01", datatype=XSD.date),
+        URIRef("https://example.com/procedure/x/"), has_site_visit=sv
+    )
+    site1 = Site(s1, [foi1], rdfdataset1, Concept(), has_site_visit=sv)
+
+    rdf = site1.to_graph()
+    assert (None, RDF.type, TERN.SiteVisit)
+    assert (site1.iri, TERN.hasSiteVisit, sv.iri)
+    assert (s1.iri, TERN.hasSiteVisit, sv.iri)
+
+def test_sitevisit_with_site_and_sampling():
+    rdfdataset1 = RDFDataset()
+    foi1 = FeatureOfInterest(
+        Concept(),
+        rdfdataset1,
+    )
+    sv = SiteVisit(rdfdataset1, Literal("2000-01-01+09:00", datatype=XSD.dateTime))
+    s1 = Observation(
+        rdfdataset1,
+        Value(),
+        foi1,
+        URIRef("https://example.com/simpleresult/x"),
+        URIRef("http://example.com/observedproperty/x"),
+        URIRef("http://example.com/instant/x"),
+        Literal("2001-01-01", datatype=XSD.date),
+        URIRef("https://example.com/procedure/x/"), has_site_visit=sv
+    )
+    site1 = Site(s1, [foi1], rdfdataset1, Concept(), has_site_visit=sv)
+
+    sample1 = Sample([site1], Concept(), rdfdataset1, None)
+
+    sampling1 = Sampling(foi1, Literal("2000-01-01+09:00", datatype=XSD.dateTime),
+                         URIRef("https://example.org/procedure/x"), [sample1], has_site_visit=sv)
+    sample1.is_result_of = sampling1
+    foi1.has_sample = sample1
+
+    rdf = sampling1.to_graph()
+
+    assert (None, RDF.type, TERN.SiteVisit)
+    assert (site1.iri, TERN.hasSiteVisit, sv.iri)
+    assert (s1.iri, TERN.hasSiteVisit, sv.iri)
+    assert (sampling1.iri, TERN.hasSiteVisit, sv.iri)
+    assert (foi1.iri, TERN.Sample, sample1.iri)
+

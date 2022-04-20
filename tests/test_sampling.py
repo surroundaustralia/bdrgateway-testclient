@@ -40,7 +40,7 @@ def test_coordinates_point():
         Literal("2001-01-01", datatype=XSD.date),
         URIRef("http://example.com/procedure/x"),
         [Sample([foi1], Concept(), ds, None)],
-        coordinates=Point(118.4435416, -29.9785035)
+        geometry=Point(118.4435416, -29.9785035)
     )
 
     g = s1.to_graph()

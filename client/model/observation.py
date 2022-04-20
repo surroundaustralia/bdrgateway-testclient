@@ -9,7 +9,7 @@ from client.model.klass import Klass
 from client.model.rdf_dataset import RDFDataset
 from client.model.value import Value
 from client.model.value_taxon import Taxon
-from client.model.has_site_visit import HasSiteVisit
+from client.model.site_visit import SiteVisit
 
 
 class Observation(Klass):
@@ -24,7 +24,7 @@ class Observation(Klass):
         result_date_time: Literal,
         used_procedure: URIRef,
         iri: Optional[str] = None,
-        has_site_visit: Optional[HasSiteVisit] = None,
+        has_site_visit: Optional[SiteVisit] = None,
     ):
         assert isinstance(
             in_dataset.__class__, RDFDataset.__class__
@@ -65,8 +65,8 @@ class Observation(Klass):
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
         if has_site_visit:
-            assert isinstance(has_site_visit.__class__, HasSiteVisit.__class__), \
-                    "The object supplied for the property has_site_visit must be of type HasSiteVisit" \
+            assert isinstance(has_site_visit.__class__, SiteVisit.__class__), \
+                    "The object supplied for the property has_site_visit must be of type SiteVisit" \
                     "and has a maximum of 1 supplied properties"
 
         """Receive and use or make an IRI"""

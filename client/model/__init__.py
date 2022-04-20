@@ -14,4 +14,3 @@ from .site_visit import SiteVisit
 from .types_attributes import ATTRIBUTE_TYPES
 from .types_features import FEATURE_TYPES
 from .types_methods import METHOD_TYPES
-from .has_site_visit import HasSiteVisit
