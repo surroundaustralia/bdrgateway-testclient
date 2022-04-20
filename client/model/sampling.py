@@ -11,6 +11,7 @@ from client.model.klass import Klass
 from client.model.sample import Sample
 from client.model.site import Site
 from shapely.geometry import Point
+from client.model.has_site_visit import HasSiteVisit
 
 
 class Sampling(Klass):
@@ -22,7 +23,7 @@ class Sampling(Klass):
         has_result: List[Sample] = [],
         iri: Optional[str] = None,
         geometry: Optional[Point] = None,
-        has_site_visit: Optional[Site] = None
+        has_site_visit: Optional[HasSiteVisit] = None
     ):
         assert isinstance(
             has_feature_of_interest.__class__, FeatureOfInterest.__class__
@@ -55,7 +56,7 @@ class Sampling(Klass):
                 "If a coordinate is supplied, it must be a Point"
 
         if has_site_visit is not None:
-            assert isinstance(has_site_visit.__class__, Site.__class__), \
+            assert isinstance(has_site_visit.__class__, HasSiteVisit.__class__), \
                 "There is a maximum of one site visits per sampling"
 
         """Receive and use or make an IRI"""
