@@ -134,6 +134,10 @@ class TernSynthesizer:
                 geometry=self.coordinate_points[i]
             )
             this_sample.is_result_of = this_sampling
+
+            # linking the foi to the sample
+            this_foi.has_sample = this_sample
+
             this_obs = Observation(
                 self.datasets[math.floor(n / 100)],
                 this_result,
