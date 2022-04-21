@@ -8,6 +8,7 @@ from client.model.concept import Concept
 from client.model.feature_of_interest import FeatureOfInterest
 from client.model.observation import Observation
 from client.model.rdf_dataset import RDFDataset
+from client.model.site_visit import SiteVisit
 
 
 class Site(FeatureOfInterest):
@@ -19,6 +20,7 @@ class Site(FeatureOfInterest):
         feature_type: Concept,
         iri: Optional[str] = None,
         label: Optional[Literal] = None,
+        has_site_visit: Optional[SiteVisit] = None,
     ):
         assert isinstance(
             is_result_of.__class__, Observation.__class__
@@ -42,8 +44,10 @@ class Site(FeatureOfInterest):
                 label.__class__, Literal.__class__
             ), "If you supply a label, it must be an RDFLib Literal"
 
-        # this is potentially problematic as these sites shouldn't be random
-        # But for now will continue and use the same logic as prior
+        if has_site_visit:
+            assert isinstance(has_site_visit.__class__, SiteVisit.__class__), \
+                    "The object supplied for the property has_site_visit must be of type SiteVisit"
+
         """Receive and use or make an IRI"""
         if iri is None:
             self.id = self.make_uuid()
@@ -59,6 +63,7 @@ class Site(FeatureOfInterest):
             self.label = f"Site with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
         else:
             self.label = label
+        self.has_site_visit = has_site_visit
 
     def to_graph(self) -> Graph:
         g = super().to_graph()
@@ -80,5 +85,8 @@ class Site(FeatureOfInterest):
                 g += self.is_result_of.to_graph()
         for ele in self.is_sample_of:
             g.add((self.iri, SOSA.isSampleOf, ele.iri))
+
+        if self.has_site_visit:
+            g.add((self.iri, TERN.hasSiteVisit, self.has_site_visit.iri))
 
         return g

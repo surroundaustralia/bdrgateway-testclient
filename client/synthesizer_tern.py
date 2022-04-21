@@ -58,6 +58,7 @@ class TernSynthesizer:
     taxa = List[Taxon]
     coordinate_bounding_box: Polygon
     coordinate_points = List[Point]
+    site_visit = List[SiteVisit]
 
     def __init__(
             self, n: int,
@@ -77,6 +78,7 @@ class TernSynthesizer:
         self.observations = []
         self.taxa = []
         self.attributes = []
+        self.site_visit = []
         self.coordinate_bounding_box = coordinate_bounding_box
         self.coordinate_points = self._generate_coordinate_points(
             n,
@@ -122,33 +124,43 @@ class TernSynthesizer:
                     self.datasets[math.floor(n / 100)],
                 )
                 self.attributes.append(this_attribute)
-
             this_sample = Sample(
                 [this_foi], this_concept, self.datasets[math.floor(1 / 100)], None
             )
             this_sampling = Sampling(
                 this_foi,
-                Literal("2000-01-01", datatype=XSD.date),
+                Literal("2000-01-01+09:00", datatype=XSD.dateTime),
                 URIRef(random.choice(METHOD_TYPES)),
                 [this_sample],
                 geometry=self.coordinate_points[i]
             )
             this_sample.is_result_of = this_sampling
+            # linking the foi to the sample
+            this_foi.has_sample = this_sample
+
             this_obs = Observation(
                 self.datasets[math.floor(n / 100)],
                 this_result,
-                this_sample,
+                this_foi,
                 this_simple_result,
                 this_observed_property,
                 URIRef(f"http://example.com/instant/{uuid4()}"),
-                Literal("2000-01-01", datatype=XSD.date),
+                Literal("2000-01-01+09:00", datatype=XSD.dateTime),
                 URIRef(random.choice(METHOD_TYPES)),
             )
+            # Potential site
+            site1 = Site(this_obs, [this_foi], self.datasets[math.floor(n / 100)], this_concept)
+            this_sampling.has_site_visit = site1
 
-            # no Sites for now
-            # site1 = Site(observation_1, [this_foi], ds, Concept())
-            # s.is_sample_of.append(site1)
+            # creating site visit and links
+            this_site_visit = SiteVisit(self.datasets[math.floor(1 / 100)],
+                                        Literal("2000-01-01+09:00", datatype=XSD.dateTime))
+            this_sampling.has_site_visit = this_site_visit
+            this_obs.has_site_visit = this_site_visit
+            site1.has_site_visit = this_site_visit
 
+            self.site_visit.append(this_site_visit)
+            self.sites.append(site1)
             self.samples.append(this_sample)
             self.observations.append(this_obs)
 
@@ -208,5 +220,9 @@ class TernSynthesizer:
         for o in self.observations:
             g += o.to_graph()
         for o in self.attributes:
+            g += o.to_graph()
+        for s in self.sites:
+            g += s.to_graph()
+        for o in self.site_visit:
             g += o.to_graph()
         return g

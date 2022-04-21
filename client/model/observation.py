@@ -9,6 +9,7 @@ from client.model.klass import Klass
 from client.model.rdf_dataset import RDFDataset
 from client.model.value import Value
 from client.model.value_taxon import Taxon
+from client.model.site_visit import SiteVisit
 
 
 class Observation(Klass):
@@ -23,6 +24,7 @@ class Observation(Klass):
         result_date_time: Literal,
         used_procedure: URIRef,
         iri: Optional[str] = None,
+        has_site_visit: Optional[SiteVisit] = None,
     ):
         assert isinstance(
             in_dataset.__class__, RDFDataset.__class__
@@ -62,6 +64,11 @@ class Observation(Klass):
             in_dataset.__class__, RDFDataset.__class__
         ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
+        if has_site_visit:
+            assert isinstance(has_site_visit.__class__, SiteVisit.__class__), \
+                    "The object supplied for the property has_site_visit must be of type SiteVisit" \
+                    "and has a maximum of 1 supplied properties"
+
         """Receive and use or make an IRI"""
         if iri is None:
             self.id = self.make_uuid()
@@ -78,6 +85,7 @@ class Observation(Klass):
         self.phenomenon_time = phenomenon_time
         self.result_date_time = result_date_time
         self.used_procedure = used_procedure
+        self.has_site_visit = has_site_visit
 
     def to_graph(self) -> Graph:
         g = super().to_graph()
@@ -101,5 +109,7 @@ class Observation(Klass):
         g.add((self.iri, SOSA.phenomenonTime, self.phenomenon_time))
         g.add((self.iri, TERN.resultDateTime, Literal(self.result_date_time)))
         g.add((self.iri, SOSA.usedProcedure, self.used_procedure))
+        if self.has_site_visit:
+            g.add((self.iri, TERN.hasSiteVisit, self.has_site_visit.iri))
 
         return g
