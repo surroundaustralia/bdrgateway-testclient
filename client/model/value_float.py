@@ -25,7 +25,7 @@ class Float(Value):
 
     def to_graph(self) -> Graph:
         g = super().to_graph()
-        g.remove((self.iri, RDF.type, TERN.Value))
+        # g.remove((self.iri, RDF.type, TERN.Value))
         g.add((self.iri, RDF.type, TERN.Float))
         g.remove((self.iri, RDFS.label, None))
         # no label

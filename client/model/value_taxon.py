@@ -33,7 +33,7 @@ class Taxon(Value):
 
     def to_graph(self) -> Graph:
         g = super().to_graph()
-        g.remove((self.iri, RDF.type, TERN.Value))
+        # g.remove((self.iri, RDF.type, TERN.Value))
         g.add((self.iri, RDF.type, TERN.Taxon))
         g.remove((self.iri, RDFS.label, None))
         g.add((self.iri, RDFS.label, Literal(self.label)))

@@ -62,7 +62,7 @@ class Attribute(Klass):
 
         g.add((self.iri, RDF.type, TERN.Attribute))
         g.add((self.iri, RDFS.label, Literal(self.label)))
-        g.add((self.iri, TERN.Attribute, self.attribute))
+        g.add((self.iri, TERN.attribute, self.attribute))
         g.add((self.iri, VOID.inDataset, self.in_dataset.iri))
         g.add((self.iri, TERN.hasSimpleValue, self.has_simple_value))
         if (self.has_value.iri, RDF.type, None) not in g:

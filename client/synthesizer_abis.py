@@ -130,7 +130,7 @@ class AbisSynthesizer:
                     publisher=random.choice(publishers),
                     created=f"2022-01-{str(i+1).zfill(2)}"
                 )
-                # Create ABIS properties for the Dataset
+                # Create ABIS properties for the Datasets
                 dataset_graph = d.to_graph()
                 r = random.random()
                 if r >= 0.75:
@@ -149,7 +149,7 @@ class AbisSynthesizer:
                     # add no embargoed properties
                     pass
 
-                # create TERN data for the Dataset
+                # create TERN data for the Datasets
                 x = math.floor(i / 4) + 1
                 y = math.floor(i / 5) + 1
                 tern_graph = TernSynthesizer(10, box(116 + x, -32 + y, 116 + x + 1, -28 + y + 1), "randomised").to_graph()

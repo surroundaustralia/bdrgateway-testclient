@@ -78,7 +78,7 @@ class TernSynthesizer:
         self.observations = []
         self.taxa = []
         self.attributes = []
-        self.site_visit = []
+        self.site_visits = []
         self.coordinate_bounding_box = coordinate_bounding_box
         self.coordinate_points = self._generate_coordinate_points(
             n,
@@ -94,6 +94,36 @@ class TernSynthesizer:
         for i in range(math.floor(n / 50) + 1):
             self.fois.append(
                 FeatureOfInterest(Concept(random.choice(FEATURE_TYPES)), self.datasets[math.floor(i / 2)])
+            )
+
+        # create a list of Site instances: 1 per 25 Samplings
+        for i in range(math.floor(n / 25) + 1):
+            this_site_dataset = random.choice(self.datasets)
+            this_site_foi = random.choice(self.fois)
+            self.sites.append(
+                Site(
+                    Observation(
+                        this_site_dataset,
+                        Value(),
+                        this_site_foi,
+                        Literal("Site establishment"),
+                        URIRef("http://linked.data.gov.au/def/tern-cv/889dfc31-5b1c-48c0-8bc7-e12f13d63891"),  # site id
+                        URIRef(f"http://example.com/instant/{uuid4()}"),
+                        Literal("2000-01-01", datatype=XSD.date),
+                        URIRef(random.choice(METHOD_TYPES))
+                    ),
+                    [this_site_foi],
+                    this_site_dataset,
+                    Concept("http://linked.data.gov.au/def/tern-cv/e1c7c434-1321-4601-9079-e837b7ffc293")  # site
+                )
+            )
+
+        # create a list of SiteVisits instances: 1 per 12 Samplings
+        for i in range(math.floor(n / 12) + 1):
+            self.site_visits.append(
+                SiteVisit(
+                    random.choice(self.datasets),
+                    Literal("2000-01-01T10:00:00", datatype=XSD.dateTime))
             )
 
         # create Samplings
@@ -129,7 +159,7 @@ class TernSynthesizer:
             )
             this_sampling = Sampling(
                 this_foi,
-                Literal("2000-01-01+09:00", datatype=XSD.dateTime),
+                Literal("2000-01-01", datatype=XSD.date),
                 URIRef(random.choice(METHOD_TYPES)),
                 [this_sample],
                 geometry=self.coordinate_points[i]
@@ -145,21 +175,18 @@ class TernSynthesizer:
                 this_simple_result,
                 this_observed_property,
                 URIRef(f"http://example.com/instant/{uuid4()}"),
-                Literal("2000-01-01+09:00", datatype=XSD.dateTime),
+                Literal("2000-01-01", datatype=XSD.date),
                 URIRef(random.choice(METHOD_TYPES)),
             )
-            # Potential site
-            site1 = Site(this_obs, [this_foi], self.datasets[math.floor(n / 100)], this_concept)
+            site1 = random.choice(self.sites)
             this_sampling.has_site_visit = site1
 
             # creating site visit and links
-            this_site_visit = SiteVisit(self.datasets[math.floor(1 / 100)],
-                                        Literal("2000-01-01+09:00", datatype=XSD.dateTime))
-            this_sampling.has_site_visit = this_site_visit
-            this_obs.has_site_visit = this_site_visit
-            site1.has_site_visit = this_site_visit
+            sv1 = random.choice(self.site_visits)
+            this_sampling.has_site_visit = sv1
+            this_obs.has_site_visit = sv1
+            site1.has_site_visit = sv1
 
-            self.site_visit.append(this_site_visit)
             self.sites.append(site1)
             self.samplings.append(this_sampling)
             self.observations.append(this_obs)
@@ -223,6 +250,4 @@ class TernSynthesizer:
             g += o.to_graph()
         for s in self.sites:
             g += s.to_graph()
-        for o in self.site_visit:
-            g += o.to_graph()
         return g

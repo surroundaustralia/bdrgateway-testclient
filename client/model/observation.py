@@ -1,7 +1,7 @@
 from typing import Optional, Union
 
-from rdflib import Graph, URIRef, Literal
-from rdflib.namespace import RDF, RDFS, OWL, VOID, SOSA, XSD
+from rdflib import Graph, URIRef, Literal, BNode
+from rdflib.namespace import RDF, RDFS, OWL, VOID, SOSA, TIME, XSD
 
 from client.model._TERN import TERN
 from client.model.feature_of_interest import FeatureOfInterest
@@ -38,10 +38,8 @@ class Observation(Klass):
             has_feature_of_interest.__class__, FeatureOfInterest.__class__
         ), "The object supplied for the property has_feature_of_interest must be of type FeatureOfInterest"
 
-        assert (
-            isinstance(has_simple_result.__class__, URIRef)
-            or isinstance(has_simple_result.__class__, Literal),
-        ), "There must be exactly 1 has_simple_result property and it must be either a URIRef or a Literal"
+        simple_result_types = [URIRef, Literal]
+        assert has_simple_result.__class__ in simple_result_types, "There must be exactly 1 has_simple_result property and it must be either a URIRef or a Literal"
 
         assert isinstance(
             observed_property.__class__, URIRef.__class__
@@ -106,7 +104,10 @@ class Observation(Klass):
             g += self.has_feature_of_interest.to_graph()
         g.add((self.iri, SOSA.hasSimpleResult, self.has_simple_result))
         g.add((self.iri, SOSA.observedProperty, self.observed_property))
+        t = BNode()
         g.add((self.iri, SOSA.phenomenonTime, self.phenomenon_time))
+        g.add((self.phenomenon_time, RDF.type, TIME.Instant))
+        g.add((self.phenomenon_time, TIME.inXSDDate, Literal("2001-01-01", datatype=XSD.date)))
         g.add((self.iri, TERN.resultDateTime, Literal(self.result_date_time)))
         g.add((self.iri, SOSA.usedProcedure, self.used_procedure))
         if self.has_site_visit:
