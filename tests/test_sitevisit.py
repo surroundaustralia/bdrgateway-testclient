@@ -13,6 +13,7 @@ def test_basic_rdf():
     assert (None, RDF.type, OWL.Class) not in rdf
     assert (None, RDF.type, TERN.SiteVisit)
 
+
 def test_simple_sitevisit_with_site():
     rdfdataset1 = RDFDataset()
     foi1 = FeatureOfInterest(
@@ -33,9 +34,13 @@ def test_simple_sitevisit_with_site():
     site1 = Site(s1, [foi1], rdfdataset1, Concept(), has_site_visit=sv)
 
     rdf = site1.to_graph()
-    assert (None, RDF.type, TERN.SiteVisit)
-    assert (site1.iri, TERN.hasSiteVisit, sv.iri)
-    assert (s1.iri, TERN.hasSiteVisit, sv.iri)
+    # adding to same graph
+    rdf += sv.to_graph()
+
+    assert (None, RDF.type, TERN.SiteVisit) in rdf
+    assert (site1.iri, TERN.hasSiteVisit, sv.iri) in rdf
+    assert (s1.iri, TERN.hasSiteVisit, sv.iri) in rdf
+
 
 def test_sitevisit_with_site_and_sampling():
     rdfdataset1 = RDFDataset()
@@ -65,9 +70,9 @@ def test_sitevisit_with_site_and_sampling():
 
     rdf = sampling1.to_graph()
 
-    assert (None, RDF.type, TERN.SiteVisit)
-    assert (site1.iri, TERN.hasSiteVisit, sv.iri)
-    assert (s1.iri, TERN.hasSiteVisit, sv.iri)
-    assert (sampling1.iri, TERN.hasSiteVisit, sv.iri)
-    assert (foi1.iri, TERN.Sample, sample1.iri)
+    assert (None, RDF.type, TERN.SiteVisit) in rdf
+    assert (site1.iri, TERN.hasSiteVisit, sv.iri) in rdf
+    assert (s1.iri, TERN.hasSiteVisit, sv.iri) in rdf
+    assert (sampling1.iri, TERN.hasSiteVisit, sv.iri) in rdf
+    assert (foi1.iri, TERN.Sample, sample1.iri) in rdf
 
