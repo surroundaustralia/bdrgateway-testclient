@@ -17,4 +17,4 @@ def test_basic_rdf():
     rdf = s1.to_graph()
 
     assert (None, RDF.type, OWL.Class) not in rdf
-    assert (None, RDF.type, TERN.Attribute)
+    assert (None, RDF.type, TERN.Attribute) in rdf
