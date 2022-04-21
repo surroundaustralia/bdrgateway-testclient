@@ -88,5 +88,7 @@ class Site(FeatureOfInterest):
 
         if self.has_site_visit:
             g.add((self.iri, TERN.hasSiteVisit, self.has_site_visit.iri))
+            if (self.has_site_visit.iri, RDF.type, None) not in g:
+                g += self.has_site_visit.to_graph()
 
         return g

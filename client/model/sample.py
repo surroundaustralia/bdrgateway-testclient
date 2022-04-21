@@ -71,7 +71,7 @@ class Sample(Klass):
             g += self.in_dataset.to_graph()
         if self.is_result_of is not None:
             g.add((self.iri, SOSA.isResultOf, self.is_result_of.iri))
-            if (self.is_result_of.iri, RDF.type, None) not in g:
-                g += self.is_result_of.to_graph()
+            # if (self.is_result_of.iri, RDF.type, None) not in g:
+            #     g += self.is_result_of.to_graph()
 
         return g

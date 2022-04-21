@@ -90,8 +90,8 @@ class Sampling(Klass):
         g.add((self.iri, SOSA.usedProcedure, self.used_procedure))
         for result in self.has_result:
             g.add((self.iri, SOSA.hasResult, result.iri))
-            # if (result.iri, RDF.type, None) not in g:
-            #     g += result.to_graph()
+            if (result.iri, RDF.type, None) not in g:
+                g += result.to_graph()
         if self.geometry:
             geom_iri = URIRef(self.iri + "/geom")
             g.add((self.iri, GEO.hasGeometry, geom_iri))
@@ -99,5 +99,7 @@ class Sampling(Klass):
             g.add((geom_iri, GEO.asWKT, Literal(self.geometry.wkt, datatype=GEO.wktLiteral)))
         if self.has_site_visit:
             g.add((self.iri, TERN.hasSiteVisit, self.has_site_visit.iri))
+            if (self.has_site_visit.iri, RDF.type, None) not in g:
+                g += self.has_site_visit.to_graph()
 
         return g

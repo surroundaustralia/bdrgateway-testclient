@@ -35,7 +35,7 @@ class SiteVisit(Klass):
         """Receive and use or make an IRI"""
         if iri is None:
             self.id = self.make_uuid()
-            iri = URIRef(f"http://example.com/site/{self.id}")
+            iri = URIRef(f"http://example.com/sitevisit/{self.id}")
 
         self.iri = URIRef(iri)
         super().__init__(iri)
@@ -43,7 +43,7 @@ class SiteVisit(Klass):
         self.started_at_time = started_at_time
 
         if label is None:
-            self.label = f"Site with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
+            self.label = f"SiteVisit with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
         else:
             self.label = label
 
@@ -53,7 +53,6 @@ class SiteVisit(Klass):
         g.remove((self.iri, RDFS.label, None))
 
         g.add((self.iri, RDF.type, TERN.SiteVisit))
-        g.add((self.iri, RDF.type, PROV.Activity))
         g.add((self.iri, RDFS.label, Literal(self.label)))
         g.add((self.iri, VOID.inDataset, self.in_dataset.iri))
         if (self.in_dataset.iri, RDF.type, None) not in g:

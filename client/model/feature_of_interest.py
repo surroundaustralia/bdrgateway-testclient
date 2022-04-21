@@ -1,7 +1,7 @@
 from typing import Optional
 
 from rdflib import Graph, URIRef, Literal
-from rdflib.namespace import RDF, RDFS, OWL, VOID
+from rdflib.namespace import RDF, RDFS, SOSA, OWL, VOID
 
 from client.model._TERN import TERN
 from client.model.concept import Concept
@@ -58,6 +58,6 @@ class FeatureOfInterest(Klass):
         if (self.in_dataset.iri, RDF.type, None) not in g:
             g += self.in_dataset.to_graph()
         if self.has_sample:
-            g.add((self.iri, TERN.Sample, self.has_sample.iri))
+            g.add((self.iri, SOSA.hasSample, self.has_sample.iri))
 
         return g
