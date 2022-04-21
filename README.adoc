@@ -35,7 +35,7 @@ where:
 
 This will print data to standard out, so you may wish to redirect it to a file as follows:
 
-~$ python client 25 broad > my_file.ttl
+~$ python client -n 25 broad > my_file.ttl
 
 `my_file.ttl` will be a Turtle file with your result.
 
