@@ -57,5 +57,6 @@ class SiteVisit(Klass):
         g.add((self.iri, VOID.inDataset, self.in_dataset.iri))
         if (self.in_dataset.iri, RDF.type, None) not in g:
             g += self.in_dataset.to_graph()
+        g.add((self.iri, PROV.startedAtTime, self.started_at_time))
 
         return g

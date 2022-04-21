@@ -161,7 +161,7 @@ class TernSynthesizer:
 
             self.site_visit.append(this_site_visit)
             self.sites.append(site1)
-            self.samples.append(this_sample)
+            self.samplings.append(this_sampling)
             self.observations.append(this_obs)
 
     def _bind_prefixes(self, g: Graph):
@@ -215,7 +215,7 @@ class TernSynthesizer:
     def to_graph(self):
         g = Graph()
         self._bind_prefixes(g)
-        for s in self.samples:
+        for s in self.samplings:
             g += s.to_graph()
         for o in self.observations:
             g += o.to_graph()

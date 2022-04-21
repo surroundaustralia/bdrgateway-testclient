@@ -11,6 +11,7 @@ def test_samplings_count():
     synth = TernSynthesizer(3, box(115.992191, -33.871399, 121.9467547, -28.572837))
     g = synth.to_graph()
     assert len(list(g.subjects(RDF.type, TERN.Sampling))) == 3
+    assert len(list(g.subjects(RDF.type, TERN.Sample))) == 3
 
 
 def test_coordinates():

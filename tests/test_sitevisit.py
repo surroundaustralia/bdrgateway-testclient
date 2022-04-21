@@ -1,5 +1,5 @@
 from rdflib import Literal, URIRef
-from rdflib.namespace import OWL, RDF, SOSA, XSD
+from rdflib.namespace import OWL, PROV, RDF, SOSA, XSD
 
 from client.model import RDFDataset, SiteVisit
 from client.model._TERN import TERN
@@ -35,11 +35,11 @@ def test_simple_sitevisit_with_site():
     site1 = Site(s1, [foi1], rdfdataset1, Concept(), has_site_visit=sv)
 
     rdf = site1.to_graph()
-    print(rdf.serialize())
 
     assert (None, RDF.type, TERN.SiteVisit) in rdf
     assert (site1.iri, TERN.hasSiteVisit, sv.iri) in rdf
     assert (s1.iri, TERN.hasSiteVisit, sv.iri) in rdf
+    assert (sv.iri, PROV.startedAtTime, None) in rdf
 
 
 def test_sitevisit_with_site_and_sampling():
