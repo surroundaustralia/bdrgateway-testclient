@@ -1,0 +1,115 @@
+# A single Sample with an Observation that indicates a Taxon with Conservation status
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix tern: <https://w3id.org/tern/ontologies/tern/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.com/attribute/91afe3fb-8b0d-4cc1-b55b-82ca30205bd1> a tern:Attribute ;
+    rdfs:label "Attribute with ID 91afe3fb-8b0d-4cc1-b55b-82ca30205bd1" ;
+    void:inDataset <http://example.com/rdfdataset/9735e603-3f41-4370-861f-c190c9e2d3b8> ;
+    tern:attribute <http://linked.data.gov.au/def/tern-cv/b15c4b8e-208e-4ab0-b470-0aa56b72ab38> ;
+    tern:hasSimpleValue 42 ;
+    tern:hasValue [ a tern:Value ;
+            rdfs:label "Value Blank Node" ] ;
+    tern:isAttributeOf _:Na0efb48fcd0e4b589331a9a8d94b6175 .
+
+<http://example.com/featureofinterest/e7584516-d5a3-4a11-b80f-79b75ccc9ff8> a tern:FeatureOfInterest,
+        tern:Site ;
+    rdfs:label "Site with ID e7584516-d5a3-4a11-b80f-79b75ccc9ff8" ;
+    void:inDataset <http://example.com/rdfdataset/9735e603-3f41-4370-861f-c190c9e2d3b8> ;
+    sosa:isResultOf <http://example.com/observation/e4855a94-dc7d-40cb-bbcd-adc1bf6045de> ;
+    sosa:isSampleOf <http://example.com/featureofinterest/5911d839-f1eb-4865-bc1c-008fdbfa905b> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/e1c7c434-1321-4601-9079-e837b7ffc293> ;
+    tern:hasSiteVisit <http://example.com/sitevisit/6d467023-0d7a-489f-84a4-8ba8636b7556> .
+
+<http://example.com/observation/b801cf97-4552-4927-92bb-26a9f8648e4e> a tern:Observation ;
+    rdfs:label "Observation with ID b801cf97-4552-4927-92bb-26a9f8648e4e" ;
+    void:inDataset <http://example.com/rdfdataset/9735e603-3f41-4370-861f-c190c9e2d3b8> ;
+    sosa:hasFeatureOfInterest <http://example.com/featureofinterest/5911d839-f1eb-4865-bc1c-008fdbfa905b> ;
+    sosa:hasResult _:Na0efb48fcd0e4b589331a9a8d94b6175 ;
+    sosa:hasSimpleResult "Count " ;
+    sosa:observedProperty <http://linked.data.gov.au/def/tern-cv/2023575a-f0f9-40cc-b211-febbb652da22> ;
+    sosa:phenomenonTime <http://example.com/instant/acf4535c-a0be-47c6-b20f-2132bb38a7ef> ;
+    sosa:usedProcedure <http://linked.data.gov.au/def/tern-cv/8fef9acb-e702-4b2c-8b79-3b22b00987da> ;
+    tern:hasSiteVisit <http://example.com/sitevisit/6d467023-0d7a-489f-84a4-8ba8636b7556> ;
+    tern:resultDateTime "2000-01-01"^^xsd:date .
+
+<http://example.com/instant/6c3010e4-07e0-405a-8314-f2d3cf4448d3> a time:Instant ;
+    time:inXSDDate "2001-01-01"^^xsd:date .
+
+<http://example.com/instant/acf4535c-a0be-47c6-b20f-2132bb38a7ef> a time:Instant ;
+    time:inXSDDate "2001-01-01"^^xsd:date .
+
+<http://example.com/observation/e4855a94-dc7d-40cb-bbcd-adc1bf6045de> a tern:Observation ;
+    rdfs:label "Observation with ID e4855a94-dc7d-40cb-bbcd-adc1bf6045de" ;
+    void:inDataset <http://example.com/rdfdataset/9735e603-3f41-4370-861f-c190c9e2d3b8> ;
+    sosa:hasFeatureOfInterest <http://example.com/featureofinterest/5911d839-f1eb-4865-bc1c-008fdbfa905b> ;
+    sosa:hasResult [ a tern:Value ;
+            rdfs:label "Value Blank Node" ] ;
+    sosa:hasSimpleResult "Site establishment" ;
+    sosa:observedProperty <http://linked.data.gov.au/def/tern-cv/889dfc31-5b1c-48c0-8bc7-e12f13d63891> ;
+    sosa:phenomenonTime <http://example.com/instant/6c3010e4-07e0-405a-8314-f2d3cf4448d3> ;
+    sosa:usedProcedure <http://linked.data.gov.au/def/tern-cv/70e2c6e3-c699-4505-aeb0-4af2684f3bb2> ;
+    tern:resultDateTime "2000-01-01"^^xsd:date .
+
+<http://example.com/sampling/5eb2414e-3d06-4ce5-81a3-135cb4021e24> a tern:Sampling ;
+    rdfs:label "Sampling with ID 5eb2414e-3d06-4ce5-81a3-135cb4021e24" ;
+    geo:hasGeometry <http://example.com/sampling/5eb2414e-3d06-4ce5-81a3-135cb4021e24/geom> ;
+    sosa:hasFeatureOfInterest <http://example.com/featureofinterest/5911d839-f1eb-4865-bc1c-008fdbfa905b> ;
+    sosa:hasResult <http://example.com/sample/c42b0446-2363-484c-a861-d63f3943e9d5> ;
+    sosa:usedProcedure <http://linked.data.gov.au/def/tern-cv/70e2c6e3-c699-4505-aeb0-4af2684f3bb2> ;
+    tern:hasSiteVisit <http://example.com/sitevisit/6d467023-0d7a-489f-84a4-8ba8636b7556> ;
+    tern:resultDateTime "2000-01-01"^^xsd:date .
+
+<http://example.com/sampling/5eb2414e-3d06-4ce5-81a3-135cb4021e24/geom> a geo:Geometry ;
+    geo:asWKT "POINT (117.712 -29.391)"^^geo:wktLiteral .
+
+<http://example.com/sample/c42b0446-2363-484c-a861-d63f3943e9d5> a tern:Sample , tern:FeatureOfInterest ;
+    rdfs:label "Sample with ID c42b0446-2363-484c-a861-d63f3943e9d5" ;
+    void:inDataset <http://example.com/rdfdataset/9735e603-3f41-4370-861f-c190c9e2d3b8> ;
+    sosa:isResultOf <http://example.com/sampling/5eb2414e-3d06-4ce5-81a3-135cb4021e24> ;
+    sosa:isSampleOf <http://example.com/featureofinterest/5911d839-f1eb-4865-bc1c-008fdbfa905b> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/cd5cbdbb-07d9-4a5b-9b11-5ab9d6015be6> .
+
+<http://example.com/sitevisit/6d467023-0d7a-489f-84a4-8ba8636b7556> a tern:SiteVisit ;
+    rdfs:label "SiteVisit with ID 6d467023-0d7a-489f-84a4-8ba8636b7556" ;
+    void:inDataset <http://example.com/rdfdataset/9735e603-3f41-4370-861f-c190c9e2d3b8> ;
+    prov:startedAtTime "2000-01-01T10:00:00"^^xsd:dateTime .
+
+<http://example.com/featureofinterest/5911d839-f1eb-4865-bc1c-008fdbfa905b> a tern:FeatureOfInterest ;
+    rdfs:label "Feature of Interest with ID 5911d839-f1eb-4865-bc1c-008fdbfa905b" ;
+    void:inDataset <http://example.com/rdfdataset/9735e603-3f41-4370-861f-c190c9e2d3b8> ;
+    sosa:hasSample <http://example.com/sample/c42b0446-2363-484c-a861-d63f3943e9d5> ;
+    tern:featureType <http://linked.data.gov.au/def/tern-cv/7e256d28-e686-4b6a-b64a-ac1b1a8f164d> .
+
+<http://example.com/rdfdataset/9735e603-3f41-4370-861f-c190c9e2d3b8> a tern:RDFDataset ;
+    rdfs:label "RDF Dataset with ID 9735e603-3f41-4370-861f-c190c9e2d3b8" ;
+    dcterms:title "RDF Dataset with ID 9735e603-3f41-4370-861f-c190c9e2d3b8" .
+
+_:Na0efb48fcd0e4b589331a9a8d94b6175 a tern:Float,
+        tern:Value ;
+    rdf:value 1.2e+02 .
+
+
+<http://example.com/observation/04eab06d-8f21-4c50-a82e-cb77521d0104> a tern:Observation ;
+    rdfs:label "Observation with ID 04eab06d-8f21-4c50-a82e-cb77521d0104" ;
+    void:inDataset <http://example.com/rdfdataset/9735e603-3f41-4370-861f-c190c9e2d3b8> ;
+    sosa:hasFeatureOfInterest <http://example.com/sample/c42b0446-2363-484c-a861-d63f3943e9d5> ;
+    sosa:hasResult [
+        a tern:Taxon , tern:Value ;
+        rdfs:label "Value Blank Node" ;
+        dwc:scientificNameID <https://test-idafd.biodiversity.org.au/name/afd/70409735>
+    ] ;
+    sosa:hasSimpleResult "Species 70409735" ;
+    sosa:observedProperty <http://linked.data.gov.au/def/tern-cv/70646576-6dc7-4bc5-a9d8-c4c366850df0> ;
+    sosa:phenomenonTime <http://example.com/instant/f95e5e67-a88c-4322-b566-9550bca38f0c> ;
+    sosa:usedProcedure <http://linked.data.gov.au/def/tern-cv/e9ce7cdb-cb2f-4d2e-8011-05b1669cfade> ;
+    tern:resultDateTime "2000-01-01"^^xsd:date .
