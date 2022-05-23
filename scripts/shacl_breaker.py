@@ -8,7 +8,7 @@ Adds ".broken" to the input_rdf_file_path to create a file path for the output
 
 e.g.:
 
-~$ python shacl_breaker.py test_client_conservation_01.ttl
+~$ python shacl_breaker.py ../test_client_conservation_01.ttl
 -->
 test_client_conservation_01.broken.ttl
 
