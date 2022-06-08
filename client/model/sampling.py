@@ -1,7 +1,7 @@
 from typing import List, Optional, Tuple
 
 from rdflib import Graph, URIRef, Literal, BNode, Namespace
-from rdflib.namespace import RDF, RDFS, SOSA, OWL, XSD
+from rdflib.namespace import RDF, RDFS, SOSA, OWL, XSD, VOID
 
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
 
@@ -12,18 +12,20 @@ from client.model.sample import Sample
 from client.model.site import Site
 from shapely.geometry import Point
 from client.model.site_visit import SiteVisit
+from client.model.rdf_dataset import RDFDataset
 
 
 class Sampling(Klass):
     def __init__(
         self,
+        in_dataset: RDFDataset,
         has_feature_of_interest: FeatureOfInterest,
         result_date_time: Literal,
         used_procedure: URIRef,
         has_result: List[Sample] = [],
         iri: Optional[str] = None,
         geometry: Optional[Point] = None,
-        has_site_visit: Optional[SiteVisit] = None
+        has_site_visit: Optional[SiteVisit] = None,
     ):
         assert isinstance(
             has_feature_of_interest.__class__, FeatureOfInterest.__class__
@@ -45,6 +47,10 @@ class Sampling(Klass):
         # assert (
         #     len(has_result) >= 1
         # ), "You must supply a minimum of 1 Sample objects for the property has_result"
+
+        assert isinstance(
+            in_dataset.__class__, RDFDataset.__class__
+        ), "The object supplied for the property in_dataset must be of type RDFDataset"
 
         if len(has_result) > 0:
             assert all(
@@ -76,6 +82,7 @@ class Sampling(Klass):
         self.has_feature_of_interest = has_feature_of_interest
         self.geometry = geometry
         self.has_site_visit = has_site_visit
+        self.in_dataset = in_dataset
 
     def to_graph(self) -> Graph:
         g = super().to_graph()
@@ -88,6 +95,7 @@ class Sampling(Klass):
         g.add((self.iri, RDFS.label, Literal(self.label)))
         g.add((self.iri, TERN.resultDateTime, self.result_date_time))
         g.add((self.iri, SOSA.usedProcedure, self.used_procedure))
+        g.add((self.iri, VOID.inDataset, self.in_dataset.iri))
         for result in self.has_result:
             g.add((self.iri, SOSA.hasResult, result.iri))
             if (result.iri, RDF.type, None) not in g:

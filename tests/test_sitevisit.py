@@ -63,7 +63,7 @@ def test_sitevisit_with_site_and_sampling():
 
     sample1 = Sample([site1], Concept(), rdfdataset1, None)
 
-    sampling1 = Sampling(foi1, Literal("2000-01-01+09:00", datatype=XSD.dateTime),
+    sampling1 = Sampling(rdfdataset1, foi1, Literal("2000-01-01+09:00", datatype=XSD.dateTime),
                          URIRef("https://example.org/procedure/x"), [sample1], has_site_visit=sv)
     sample1.is_result_of = sampling1
     foi1.has_sample = sample1

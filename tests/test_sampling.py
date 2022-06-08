@@ -1,5 +1,5 @@
 from rdflib import Literal, URIRef, Namespace
-from rdflib.namespace import OWL, RDF, XSD
+from rdflib.namespace import OWL, RDF, XSD, VOID
 
 from client.model import Concept, FeatureOfInterest, RDFDataset, Sample, Sampling
 from client.model._TERN import TERN
@@ -15,6 +15,7 @@ def test_basic_rdf():
     )
     sample1 = Sample([foi1], Concept(), rdfdataset1, None)
     s1 = Sampling(
+        rdfdataset1,
         foi1,
         Literal("2001-01-01", datatype=XSD.date),
         URIRef("http://example.com/procedure/x"),
@@ -24,9 +25,11 @@ def test_basic_rdf():
         s1  # link the Sample to the Sampling, now that both are declared
     )
     rdf = s1.to_graph()
+    print(rdf.serialize())
 
     assert (None, RDF.type, OWL.Class) not in rdf
     assert (None, RDF.type, TERN.Sampling) in rdf
+    assert (None, VOID.inDataset, rdfdataset1.iri) in rdf
 
 
 def test_coordinates_point():
@@ -36,6 +39,7 @@ def test_coordinates_point():
         ds,
     )
     s1 = Sampling(
+        ds,
         foi1,
         Literal("2001-01-01", datatype=XSD.date),
         URIRef("http://example.com/procedure/x"),

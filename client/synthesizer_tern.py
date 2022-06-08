@@ -20,11 +20,9 @@ except:
     from client.model._TERN import TERN
     from client.model import *
 
-
 BDRM = Namespace("https://linked.data.gov.au/def/bdr-msg/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
 DWC = Namespace("http://rs.tdwg.org/dwc/terms/")
-
 
 MESSAGE_TYPES = ["create", "update", "delete", "exists"]
 ANIMAL_CONCEPT = Concept(
@@ -128,10 +126,13 @@ class TernSynthesizer:
 
         # create Samplings
         for i in range(n):
+            self.datasets[math.floor(n / 100)].creator = Agent("person")
+            self.datasets[math.floor(n / 100)].publisher = Agent("organisation")
+
             this_foi = self.fois[math.floor(i / 50)]
             this_sni = random.choice(SCIENTIFIC_NAME_IDS)
             if (
-                random.random() < 0.667
+                    random.random() < 0.667
             ):  # 2/3 of Samplings have Samples with Observations with Taxa
                 this_concept = ANIMAL_CONCEPT
                 this_simple_result = Literal(f"Species {this_sni.split('/')[1]}")
@@ -158,6 +159,7 @@ class TernSynthesizer:
                 [this_foi], this_concept, self.datasets[math.floor(1 / 100)], None
             )
             this_sampling = Sampling(
+                self.datasets[math.floor(1 / 100)],
                 this_foi,
                 Literal("2000-01-01", datatype=XSD.date),
                 URIRef(random.choice(METHOD_TYPES)),
@@ -171,7 +173,8 @@ class TernSynthesizer:
             this_obs = Observation(
                 self.datasets[math.floor(n / 100)],
                 this_result,
-                this_sample if this_observed_property == URIRef("http://linked.data.gov.au/def/tern-cv/70646576-6dc7-4bc5-a9d8-c4c366850df0") else this_foi,
+                this_sample if this_observed_property == URIRef(
+                    "http://linked.data.gov.au/def/tern-cv/70646576-6dc7-4bc5-a9d8-c4c366850df0") else this_foi,
                 this_simple_result,
                 this_observed_property,
                 URIRef(f"http://example.com/instant/{uuid4()}"),

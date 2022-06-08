@@ -1,7 +1,7 @@
 from typing import Optional, List, Union
 
 from rdflib import Graph, URIRef, Literal
-from rdflib.namespace import OWL, RDF, RDFS, SOSA, VOID
+from rdflib.namespace import OWL, RDF, RDFS, SOSA, VOID, DCTERMS
 
 from client.model._TERN import TERN
 from client.model.concept import Concept
@@ -19,6 +19,7 @@ class Sample(Klass):
         in_dataset: RDFDataset,
         is_result_of: Union["Sampling", None],
         iri: Optional[str] = None,
+        identifier: Optional[Literal] = None,
     ):
         assert (
             len(is_sample_of) >= 1
@@ -43,6 +44,16 @@ class Sample(Klass):
         if iri is None:
             self.id = self.make_uuid()
             iri = URIRef(f"http://example.com/sample/{self.id}")
+
+        if identifier is not None:
+            assert isinstance(
+                identifier.__class__, Literal.__class__
+            ), "If you supply a label, it must be an RDFLib Literal"
+
+        if identifier is None:
+            self.identifier = f"Site with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
+        else:
+            self.identifier = identifier
 
         self.iri = URIRef(iri)
 
@@ -71,7 +82,9 @@ class Sample(Klass):
             g += self.in_dataset.to_graph()
         if self.is_result_of is not None:
             g.add((self.iri, SOSA.isResultOf, self.is_result_of.iri))
+        g.add((self.iri, RDF.type, TERN.FeatureOfInterest))
             # if (self.is_result_of.iri, RDF.type, None) not in g:
             #     g += self.is_result_of.to_graph()
+        g.add((self.iri, DCTERMS.identifier, Literal(self.identifier)))
 
         return g
