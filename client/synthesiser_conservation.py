@@ -1,10 +1,11 @@
-import math, random, time
+import math
+import random
 from typing import List, Optional
 from typing import Literal as Lit
 from uuid import uuid4
 
 from rdflib import Graph, URIRef, Literal, Namespace
-from rdflib.namespace import DCTERMS, SOSA, VOID, XSD, RDF
+from rdflib.namespace import DCTERMS, SOSA, VOID, XSD
 from shapely.geometry import Polygon, Point
 
 try:
@@ -31,7 +32,7 @@ ANIMAL_POPULATION_CONCEPT = Concept(
     "http://linked.data.gov.au/def/tern-cv/cd5cbdbb-07d9-4a5b-9b11-5ab9d6015be6"
 )
 
-SCIENTIFIC_NAME_IDS = [
+SCIENTIFIC_NAME_IDS_FAKE = [
     URIRef("https://fake-scientific-name-id.com/name/afd/001"),
     URIRef("https://fake-scientific-name-id.com/name/afd/002"),
     URIRef("https://fake-scientific-name-id.com/name/afd/003"),
@@ -53,8 +54,15 @@ NSL_REAL_VALUES = [
     URIRef("https://id.biodiversity.org.au/tree/apc"),
 ]
 
-
-class TernSynthesizer:
+SCIENTIFIC_NAME_IDS_REAL = [
+    URIRef("https://test-idafd.biodiversity.org.au/name/afd/70433252"), # Pseudohydryphantes doegi
+    URIRef("https://test-idafd.biodiversity.org.au/name/afd/70404974"), # Nedsia sp
+    URIRef("https://example.com/asdfasdfasdf"), # 100 should have abisdm:conservationStatusSupplied cstatus:P2
+]
+SCI_NAME_VAL = [
+    "Pseudohydryphantes doegi", "Nedsia sp", "fake"
+]
+class TernSynthesizerConservation:
     datasets: List[RDFDataset]
     fois = List[FeatureOfInterest]
     sites = List[Site]
@@ -71,7 +79,6 @@ class TernSynthesizer:
             coordinate_bounding_box: Polygon,
             randomised_or_regular: Optional[Lit["randomised", "regular"]] = "randomised"
     ):
-        init_total_st = time.time()
         assert n > 0, "n, the number of Samples, must be greater than zero"
 
         assert randomised_or_regular in ["randomised", "regular"], \
@@ -94,20 +101,17 @@ class TernSynthesizer:
         )
 
         # create a list of RDFDataset instances
-        rdf_st = time.time()
         for i in range(math.floor(n / 100) + 1):  # 1 per 100 Samplings
-            self.datasets.append(RDFDataset())
-        rdf_et = time.time()
+            self.datasets.append(RDFDataset(title=f"Dataset: {i}"))
 
-        foi_st = time.time()
         # create a list of FoI instances: 1 per 50 Samplings
         for i in range(math.floor(n / 50) + 1):
             self.fois.append(
-                FeatureOfInterest(Concept(random.choice(FEATURE_TYPES)), self.datasets[math.floor(i / 2)])
+                FeatureOfInterest(
+                    Concept(random.choice(FEATURE_TYPES), pref_label=f"Concept: {i}"),
+                    self.datasets[math.floor(i / 2)])
             )
-        foi_et = time.time()
 
-        site_st = time.time()
         # create a list of Site instances: 1 per 25 Samplings
         for i in range(math.floor(n / 25) + 1):
             this_site_dataset = random.choice(self.datasets)
@@ -129,9 +133,7 @@ class TernSynthesizer:
                     Concept("http://linked.data.gov.au/def/tern-cv/e1c7c434-1321-4601-9079-e837b7ffc293")  # site
                 )
             )
-        site_et = time.time()
 
-        site_visit_st = time.time()
         # create a list of SiteVisits instances: 1 per 12 Samplings
         for i in range(math.floor(n / 12) + 1):
             self.site_visits.append(
@@ -139,21 +141,21 @@ class TernSynthesizer:
                     random.choice(self.datasets),
                     Literal("2000-01-01T10:00:00", datatype=XSD.dateTime))
             )
-        site_visit_et = time.time()
 
-        sampling_st = time.time()
         # create Samplings
         for i in range(n):
             self.datasets[math.floor(n / 100)].creator = Agent("person")
             self.datasets[math.floor(n / 100)].publisher = Agent("organisation")
 
             this_foi = self.fois[math.floor(i / 50)]
-            this_sni = random.choice(NSL_REAL_VALUES)
+            this_sni = random.choice(SCIENTIFIC_NAME_IDS_REAL)
             if (
                     random.random() < 0.667
             ):  # 2/3 of Samplings have Samples with Observations with Taxa
                 this_concept = ANIMAL_CONCEPT
-                this_simple_result = Literal(f"Species {this_sni.split('/')[1]}")
+                this_simple_result = Literal(
+                    f"{SCI_NAME_VAL[0] if this_sni == SCIENTIFIC_NAME_IDS_REAL[0] else SCI_NAME_VAL[1] if this_sni == SCIENTIFIC_NAME_IDS_REAL[1] else SCI_NAME_VAL[2]} "
+                )
                 this_result = Taxon(scientific_name_id=this_sni)
                 this_observed_property = URIRef(
                     "http://linked.data.gov.au/def/tern-cv/70646576-6dc7-4bc5-a9d8-c4c366850df0"
@@ -212,24 +214,6 @@ class TernSynthesizer:
             self.samplings.append(this_sampling)
             self.observations.append(this_obs)
 
-        # This pertains to timing and logging that timing
-        sampling_et = time.time()
-        rdf_time = rdf_et - rdf_st
-        foi_time = foi_et - foi_st
-        site_time = site_et - site_st
-        site_visit_time = site_visit_et - site_visit_st
-        sampling_time = sampling_et - sampling_st
-        init_total_et = time.time()
-        init_elapsed_time = init_total_et - init_total_st
-        print(f"Individual \n"
-              f"_____________________________________________\n"
-              f"Init function elapsed time: {init_elapsed_time} \n"
-              f"Dataset elapsed time: {rdf_time} \n"
-              f"FOI elapsed time: {foi_time} \n"
-              f"Site elapsed time: {site_time} \n"
-              f"SiteVisit elapsed time: {site_visit_time} \n"
-              f"Sampling elapsed time: {sampling_time} \n")
-
     def _bind_prefixes(self, g: Graph):
         g.bind("bdrm", BDRM)
         g.bind("dcterms", DCTERMS)
@@ -279,8 +263,6 @@ class TernSynthesizer:
         return coords
 
     def to_graph(self):
-        graph_st = time.time()
-
         g = Graph()
         self._bind_prefixes(g)
         for s in self.samplings:
@@ -291,14 +273,4 @@ class TernSynthesizer:
             g += o.to_graph()
         for s in self.sites:
             g += s.to_graph()
-
-        # THIS IS A TEMPORARY LINE TO BYPASS A SHACL VALIDATION -
-        # todo: ADDRESS THIS DCTERMS.HASPART
-        random_create_msg = URIRef(f"https://linked.data.gov.au/dataset/bdr/message/{uuid4()}")
-        g.add((random_create_msg, RDF.type, BDRM.CreateMessage))
-        g.add((random_create_msg, DCTERMS.hasPart, URIRef(f"https://example.com/random_uri/{uuid4()}")))
-
-        graph_et = time.time()
-        print(f"to_graph fx elapsed time {graph_et - graph_st}")
-
         return g

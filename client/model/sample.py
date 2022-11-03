@@ -20,6 +20,7 @@ class Sample(Klass):
         is_result_of: Union["Sampling", None],
         iri: Optional[str] = None,
         identifier: Optional[Literal] = None,
+        label: Optional[str] = None,
     ):
         assert (
             len(is_sample_of) >= 1
@@ -58,9 +59,9 @@ class Sample(Klass):
         self.iri = URIRef(iri)
 
         super().__init__(iri)
-
-        self.label = f"Sample with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
-
+        if label is None:
+            label = f"Sample with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
+        self.label = label
         self.is_sample_of = is_sample_of
         self.is_result_of = is_result_of
         self.feature_type = feature_type

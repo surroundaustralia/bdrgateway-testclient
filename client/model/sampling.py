@@ -26,6 +26,7 @@ class Sampling(Klass):
         iri: Optional[str] = None,
         geometry: Optional[Point] = None,
         has_site_visit: Optional[SiteVisit] = None,
+        label: Optional[str] = None,
     ):
         assert isinstance(
             has_feature_of_interest.__class__, FeatureOfInterest.__class__
@@ -73,9 +74,9 @@ class Sampling(Klass):
         self.iri = URIRef(iri)
 
         super().__init__(iri)
-
-        self.label = f"Sampling with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
-
+        if label is None:
+            label = f"Sampling with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
+        self.label = label
         self.result_date_time = result_date_time
         self.used_procedure = used_procedure
         self.has_result = has_result

@@ -16,6 +16,7 @@ class FeatureOfInterest(Klass):
             in_dataset: RDFDataset,
             iri: Optional[str] = None,
             has_sample: Optional["Sample"] = None,
+            label: Optional[str] = None,
     ):
         assert isinstance(
             feature_type.__class__, Concept.__class__
@@ -40,8 +41,10 @@ class FeatureOfInterest(Klass):
         self.iri = URIRef(iri)
 
         super().__init__(iri)
+        if label is None:
+            label = f"Feature of Interest with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
 
-        self.label = f"Feature of Interest with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
+        self.label = label
 
         self.feature_type = feature_type
         self.in_dataset = in_dataset

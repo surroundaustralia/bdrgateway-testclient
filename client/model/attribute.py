@@ -21,6 +21,7 @@ class Attribute(Klass):
         is_attribute_of: Union[Float, Taxon, Value],
         in_dataset: RDFDataset,
         iri: Optional[str] = None,
+        label: Optional[str] = None,
     ):
         assert isinstance(attribute.__class__, URIRef.__class__) >= 1, "You must supply exactly 1 attributes"
 
@@ -45,8 +46,10 @@ class Attribute(Klass):
 
         self.iri = URIRef(iri)
         super().__init__(iri)
+        if label is None:
+            label = f"Attribute with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
 
-        self.label = f"Attribute with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
+        self.label = label
         self.attribute = attribute
         self.has_simple_value = has_simple_value
         self.has_value = has_value

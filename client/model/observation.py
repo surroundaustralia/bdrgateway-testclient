@@ -25,6 +25,7 @@ class Observation(Klass):
         used_procedure: URIRef,
         iri: Optional[str] = None,
         has_site_visit: Optional[SiteVisit] = None,
+        label: Optional[str] = None,
     ):
         assert isinstance(
             in_dataset.__class__, RDFDataset.__class__
@@ -74,7 +75,10 @@ class Observation(Klass):
 
         self.iri = URIRef(iri)
         super().__init__(iri)
-        self.label = f"Observation with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
+        if label is None:
+            label = f"Observation with ID {self.id if hasattr(self, 'id') else self.iri.split('/')[-1]}"
+
+        self.label = label
         self.in_dataset = in_dataset
         self.has_result = has_result
         self.has_feature_of_interest = has_feature_of_interest

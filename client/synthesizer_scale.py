@@ -4,8 +4,9 @@ from typing import Literal as Lit
 from uuid import uuid4
 
 from rdflib import Graph, URIRef, Literal, Namespace
-from rdflib.namespace import DCTERMS, SOSA, VOID, XSD, RDF
+from rdflib.namespace import DCTERMS, SOSA, VOID, XSD, OWL, RDF, RDFS, TIME, PROV, SDO
 from shapely.geometry import Polygon, Point
+from shapely.geometry import box
 
 try:
     from client.model._TERN import TERN
@@ -54,7 +55,7 @@ NSL_REAL_VALUES = [
 ]
 
 
-class TernSynthesizer:
+class TernSynthesizerNonUUIDLabels:
     datasets: List[RDFDataset]
     fois = List[FeatureOfInterest]
     sites = List[Site]
@@ -211,14 +212,14 @@ class TernSynthesizer:
             self.sites.append(site1)
             self.samplings.append(this_sampling)
             self.observations.append(this_obs)
-
-        # This pertains to timing and logging that timing
         sampling_et = time.time()
+
         rdf_time = rdf_et - rdf_st
         foi_time = foi_et - foi_st
         site_time = site_et - site_st
         site_visit_time = site_visit_et - site_visit_st
         sampling_time = sampling_et - sampling_st
+
         init_total_et = time.time()
         init_elapsed_time = init_total_et - init_total_st
         print(f"Individual \n"
@@ -238,6 +239,11 @@ class TernSynthesizer:
         g.bind("sosa", SOSA)
         g.bind("tern", TERN)
         g.bind("void", VOID)
+        g.bind("owl", OWL)
+        g.bind("time", TIME)
+        g.bind("prov", PROV)
+        g.bind("xmlns", SDO)
+
 
     def _generate_coordinate_points(
             self,
@@ -280,25 +286,71 @@ class TernSynthesizer:
 
     def to_graph(self):
         graph_st = time.time()
-
         g = Graph()
         self._bind_prefixes(g)
+        print("Bound Prefixes\n")
+        samp_timings = time.time()
+        print(f"Began Samplings to graph. There are {len(self.samplings)} samplings")
         for s in self.samplings:
             g += s.to_graph()
+        print(f"Finished the samplings tograph in {time.time() - samp_timings}........ 1/4 Complete\n")
+        obs_timings = time.time()
+        print(f"Began Observations to graph. There are {len(self.observations)} observations")
         for o in self.observations:
             g += o.to_graph()
+        print(f"Finished observations tograph in {time.time() - obs_timings}......... 2/4 Complete\n")
+        att_timings = time.time()
+        print(f"Began Attributes to graph. THere are {len(self.attributes)} attributes")
         for o in self.attributes:
             g += o.to_graph()
+        print(f"Finished attributes tograph in {time.time() - att_timings}.......... 3/4 Complete\n")
+        sites_timings = time.time()
+        print(f"Began sites to graph. There are {len(self.sites)} sites")
         for s in self.sites:
             g += s.to_graph()
-
-        # THIS IS A TEMPORARY LINE TO BYPASS A SHACL VALIDATION -
-        # todo: ADDRESS THIS DCTERMS.HASPART
-        random_create_msg = URIRef(f"https://linked.data.gov.au/dataset/bdr/message/{uuid4()}")
-        g.add((random_create_msg, RDF.type, BDRM.CreateMessage))
-        g.add((random_create_msg, DCTERMS.hasPart, URIRef(f"https://example.com/random_uri/{uuid4()}")))
-
+        print(f"Finished sites tograph in {time.time() - sites_timings}............ 4/4 Complete\n")
+        # Ontology adding
+        print("Note the ontology for this dataset is: https://linked.data.gov.au/dataset/bdr/generated_"
+              "dataset/23_mil_samplings_1_bil_triples")
+        g.add((URIRef("https://linked.data.gov.au/dataset/bdr/generated_dataset/23_mil_samplings_1_bil_triples"),
+               RDF.type,
+               OWL.Ontology))
+        g.add((URIRef("https://linked.data.gov.au/dataset/bdr/generated_dataset/23_mil_samplings_1_bil_triples"),
+               RDFS.comment,
+               Literal("Generated Scale Testing Dataset With 1 billion triples")))
+        g.add((URIRef("https://linked.data.gov.au/dataset/bdr/generated_dataset/23_mil_samplings_1_bil_triples"),
+               RDFS.label,
+               Literal("Generated Scale Testing Dataset With 1 billion triples")))
         graph_et = time.time()
         print(f"to_graph fx elapsed time {graph_et - graph_st}")
-
+        print("\n _______________________________________________________________________ \n")
         return g
+
+
+if __name__ == '__main__':
+    g = TernSynthesizerNonUUIDLabels(23000000, box(115.992191, -33.871399, 121.9467547, -28.572837)).to_graph()
+    serialize_st = time.time()
+    g.serialize(destination="23_mil_samplings_1_bil_triples.nt", format="nt", encoding="utf-8")
+    print(f"serialize fx completed, it took {time.time() - serialize_st}")
+    print("Final files completed!")
+    # for i in [10, 20, 30, 40]:
+    #     print(i)
+    # 100 samplings should have assertion (random) with abisdm:conservationstatussupplied cstatus:p2,
+    # these 100 and then another 100 on top of that should also have
+    # "Pseudohydryphantes doegi" ;   dwc:scientificNameID <https://test-idafd.biodiversity.org.au/name/afd/70433252>
+
+    # another 100 should have dwc:scientificNameID <https://test-idafd.biodiversity.org.au/name/afd/70404974> ;
+    # Nedsia sp
+
+    # essentially a 300 datapoints with 200 protected species, 100 non-protected.
+    # of the protected species, half being with the conservation status flag, half without
+
+    # 120 billion triples timing -> 260k samplings
+    # Init function elapsed time: 37.18876791000366
+    # Dataset elapsed time: 0.01701521873474121
+    # FOI elapsed time: 0.0790717601776123
+    # Site elapsed time: 0.6050221920013428
+    # SiteVisit elapsed time: 0.5637328624725342
+    # Sampling elapsed time: 34.49554467201233
+
+
